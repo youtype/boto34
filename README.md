@@ -1,5 +1,8 @@
 # boto34
 
+[![PyPI - boto34](https://img.shields.io/pypi/v/boto34.svg?color=blue&label=boto34)](https://pypi.org/project/boto34)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/boto34.svg?color=blue)](https://pypi.org/project/boto34)
+
 > There are type annotations for it. No exceptions.
 
 Type annotated AWS SDK for Python.
