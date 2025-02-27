@@ -6,7 +6,7 @@ Copyright 2025 Vlad Emelianov
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Generic, TypeVar
+from typing import TYPE_CHECKING, Any, Awaitable, Generic, TypeVar
 
 from aioboto3.resources.base import AIOBoto3ServiceResource
 from aioboto3.session import ResourceCreatorContext
@@ -57,17 +57,19 @@ class ServiceFactory(Generic[_Client, _WaiterFactory, _PaginatorFactory]):
         service_name: str | None = None,
         partition_name: str = "aws",
         allow_non_regional: bool = False,
-    ) -> list[str]:
+    ) -> Awaitable[list[str]]:
         """
         Proxy method to aioboto3.session.Session.get_available_regions.
 
         Arguments are the same, but service_name is ignored.
         """
-        return self._session.get_available_regions(
+        result: Awaitable[list[str]]
+        result = self._session.get_available_regions(  # type: ignore[assignment]
             service_name=self.SERVICE_NAME,
             partition_name=partition_name,
             allow_non_regional=allow_non_regional,
         )
+        return result
 
     def _get_waiter_factory(self, client: _Client) -> _WaiterFactory:
         if not self._WAITER_FACTORY_CLS:

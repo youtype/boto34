@@ -34,7 +34,7 @@ class ServiceFactory(Generic[_Client, _WaiterFactory, _PaginatorFactory]):
     def __init__(self, session: Session) -> None:
         self._session = session
 
-    def _client(
+    def client(
         self,
         service_name: str | None = None,
         **kwargs: Unpack[ClientKwargs],

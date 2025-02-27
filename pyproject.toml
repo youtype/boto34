@@ -22,6 +22,8 @@ dev = [
     "pyright",
     "mypy",
     "pytest",
+    "pytest-asyncio",
+    "pytest-mock",
     "types-boto3-lite",
     "types-boto3-full",
     "types-aiobotocore-lite",
@@ -29,6 +31,7 @@ dev = [
     "types-aiobotocore-full",
     "aiobotocore",
     "aioboto3",
+    "moto[server,s3]",
 ]
 
 [tool.uv]
@@ -127,6 +130,26 @@ unfixable = ["B"]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 exclude = ["*.pyi", "examples/*", "integration/*"]
 
+
+[tool.ruff.lint.per-file-ignores]
+"test_*.py" = [
+    "D",       # missing-docstring
+    "S101",    # use-of-assert
+    "N803",    # argument-name-does-not-match
+    "PLR2004", # constant-comparison
+    "CPY001",  # missing-copyright
+    "SLF001",  # private-member-access
+    "S106",    # hardcoded-credentials
+]
+"conftest.py" = [
+    "D",       # missing-docstring
+    "S101",    # use-of-assert
+    "N803",    # argument-name-does-not-match
+    "PLR2004", # constant-comparison
+    "CPY001",  # missing-copyright
+    "SLF001",  # private-member-access
+]
+
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
@@ -139,3 +162,6 @@ docstring-code-line-length = "dynamic"
 # author = "Vlad Emelianov"
 min-file-size = 200
 notice-rgx = "(?i)Copyright \\d{4}"
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore::DeprecationWarning:botocore"]

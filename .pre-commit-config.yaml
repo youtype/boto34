@@ -21,8 +21,8 @@ repos:
         language: system
         pass_filenames: false
         entry: uv run mypy src/boto34
-      # - id: pytest
-      #   name: pytest
-      #   language: system
-      #   pass_filenames: false
-      #   entry: uv run pytest
+      - id: pytest
+        name: pytest
+        language: system
+        pass_filenames: false
+        entry: uv run pytest
