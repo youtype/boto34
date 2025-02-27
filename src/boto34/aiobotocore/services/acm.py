@@ -19,45 +19,24 @@ Usage::
     # Uses the same arguments as aiobotocore.create_client method
     # Returns type annotated aiobotocore ACM client
     async with session.acm.create_client() as acm_client:
-        acm_client: types_aiobotocore_acm.client.ACMClient```
+        acm_client: types_aiobotocore_acm.client.ACMClient
+    ```
 """
 
 from __future__ import annotations
 
 from types_aiobotocore_acm.client import ACMClient
-from types_aiobotocore_acm.paginator import ListCertificatesPaginator
-from types_aiobotocore_acm.waiter import CertificateValidatedWaiter
 
-from boto34.aiobotocore.client_factory import ClientFactory
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-
-class ACMWaiterFactory(ClientFactory[ACMClient]):
-    @property
-    def certificate_validated(self) -> CertificateValidatedWaiter:
-        return self._client.get_waiter("certificate_validated")
-
-
-class ACMPaginatorFactory(ClientFactory[ACMClient]):
-    @property
-    def list_certificates(self) -> ListCertificatesPaginator:
-        return self._client.get_paginator("list_certificates")
+try:
+    from types_aiobotocore_acm.client import ACMClient
+except ImportError:
+    ACMClient = object  # type: ignore[misc,assignment]
 
 
 class ACMService(
-    ServiceFactory[
-        ACMClient,
-        ACMWaiterFactory,
-        ACMPaginatorFactory,
-    ]
+    ServiceFactory[ACMClient]  # type: ignore[misc,assignment]
 ):
     SERVICE_NAME = "acm"
     _SERVICE_PROP = "acm"
-    _WAITER_FACTORY_CLS = ACMWaiterFactory
-    _PAGINATOR_FACTORY_CLS = ACMPaginatorFactory
-
-    def get_waiters(self, client: ACMClient) -> ACMWaiterFactory:
-        return self._get_waiter_factory(client)
-
-    def get_paginators(self, client: ACMClient) -> ACMPaginatorFactory:
-        return self._get_paginator_factory(client)

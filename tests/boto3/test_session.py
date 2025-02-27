@@ -1,6 +1,5 @@
 import pytest
 from botocore.exceptions import UnknownServiceError
-from moto import mock_aws
 
 from boto34.boto3 import Session
 
@@ -29,13 +28,11 @@ def test_session_resource(moto_server_url: str) -> None:
     assert s3_resource.Bucket("test-bucket").Object("test-key").get()["Body"].read() == b"test-body"
 
 
-@mock_aws
 def test_session_proxy_methods() -> None:
     session = get_session()
     assert len(session.s3.get_available_regions())
 
 
-@mock_aws
 def test_session_invalid_service(moto_server_url: str) -> None:
     session = get_session()
     s3_session = session.s3

@@ -2,9 +2,22 @@
 
 > There are type annotations for it. No exceptions.
 
-Type annotated AWS SDK for Python. `boto3`, `aiobotocore`, and `aioboto3` clients included.
+Type annotated AWS SDK for Python. `boto3`, `aiobotocore`, and `aioboto3` included.
 
 This package is part of [mypy_boto3_builder](https://github.com/youtype/mypy_boto3_builder) project.
+
+- [boto34](#boto34)
+  - [Features](#features)
+  - [What is not included](#what-is-not-included)
+  - [Quickstart](#quickstart)
+    - [boto3 / botocore](#boto3--botocore)
+    - [aiobotocore](#aiobotocore)
+    - [aioboto3](#aioboto3)
+  - [How it works](#how-it-works)
+    - [boto3 / botocore](#boto3--botocore-1)
+    - [aioboto3 / aiobotocore](#aioboto3--aiobotocore)
+  - [Versioning](#versioning)
+  - [Latest changes](#latest-changes)
 
 ## Features
 
@@ -29,19 +42,16 @@ Then, rewrite your code:
 ```python
 from boto34.boto3 import Session
 
-# this is not a boto3 Session, but arguments are the same
+# this is a wrapper for boto3.Session, arguments are the same
+# all services are accessible as attributes
 session = Session()
 
 # this is a boto3 Client for s3 service
 # no wrappers and fully type annotated
-s3_client = session.s3.client(region_name="us-west-1")
+s3_client = session.s3.client(region_name="us-east-1")
 
 # same for ServiceResource
-s3_resource = session.s3.resource(region_name="us-west-1")
-
-# oh, I almost forgot about waiters and paginators
-object_exists_waiter = session.s3.get_waiters(s3_client).object_exists
-list_objects_paginator = session.s3.get_paginators(s3_client).list_objects_v2
+s3_resource = session.s3.resource(region_name="us-east-1")
 ```
 
 ### aiobotocore
@@ -53,12 +63,13 @@ Then, rewrite your code:
 ```python
 from boto34.aiobotocore import get_session
 
-# this is not an aiobotocore Session, but arguments are the same
+# this is a wrapper for aiobotocore.Session/get_session, arguments are the same
+# all services are accessible as attributes
 session = get_session()
 
 # this is a aiobotocore Client for s3 service
 # no wrappers and fully type annotated
-async with session.s3.create_client(region_name="us-west-1") as s3_client:
+async with session.s3.create_client(region_name="us-east-1") as s3_client:
     ...
 ```
 
@@ -71,19 +82,19 @@ Then, rewrite your code:
 ```python
 from boto34.aioboto3 import Session
 
-# this is not an aioboto3 Session, but arguments are the same
+# this is a wrapper for aioboto3.Session, arguments are the same
+# all services are accessible as attributes
 session = Session()
 
 # this is a aioboto3 Client for s3 service
 # no wrappers and fully type annotated
-async with session.s3.client(region_name="us-west-1") as s3_client:
+async with session.s3.client(region_name="us-east-1") as s3_client:
     ...
 
 # same for ServiceResource
-async with session.s3.resource(region_name="us-west-1") as s3_resource:
+async with session.s3.resource(region_name="us-east-1") as s3_resource:
     ...
 ```
-
 
 ## How it works
 

@@ -1,10 +1,37 @@
 [project]
 name = "boto34"
 version = "0.1.0"
-description = "Type annotated wrapper for boto3, aiobotocore, and aioboto3."
+description = "Type annotated AWS SDK for boto3, aiobotocore, and aioboto3."
 readme = "README.md"
 authors = [{ name = "Vlad Emelianov", email = "vlad.emelianov.nz@gmail.com" }]
 requires-python = ">=3.8"
+keywords = [
+    "boto3",
+    "aiobotocore",
+    "aioboto3",
+    "type-annotations",
+    "pyright",
+    "mypy",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Typing :: Typed",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = ["typing-extensions"]
 
 [project.optional-dependencies]
@@ -23,7 +50,6 @@ dev = [
     "mypy",
     "pytest",
     "pytest-asyncio",
-    "pytest-mock",
     "types-boto3-lite",
     "types-boto3-full",
     "types-aiobotocore-lite",
@@ -33,6 +59,14 @@ dev = [
     "aioboto3",
     "moto[server,s3]",
 ]
+
+
+[project.urls]
+Homepage = "https://github.com/youtype/boto34"
+Documentation = "https://youtype.github.io/boto34/"
+Repository = "https://github.com/youtype/boto34"
+Changelog = "https://github.com/youtype/boto34/releases"
+Issues = "https://github.com/youtype/boto34/issues"
 
 [tool.uv]
 default-groups = ["dev"]
