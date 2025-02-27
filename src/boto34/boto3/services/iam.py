@@ -31,8 +31,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_iam.client import IAMClient
-
 from boto34.boto3.service_factory import ServiceResourceFactory
 
 try:

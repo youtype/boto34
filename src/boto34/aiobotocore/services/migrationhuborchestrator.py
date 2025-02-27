@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_migrationhuborchestrator.client import MigrationHubOrchestratorClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

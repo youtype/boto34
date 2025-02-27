@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_chime_sdk_media_pipelines.client import ChimeSDKMediaPipelinesClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

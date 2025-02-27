@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_pca_connector_scep.client import PrivateCAConnectorforSCEPClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

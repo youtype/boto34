@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_payment_cryptography_data.client import PaymentCryptographyDataPlaneClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

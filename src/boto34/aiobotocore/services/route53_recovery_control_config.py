@@ -29,10 +29,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_route53_recovery_control_config.client import (
-    Route53RecoveryControlConfigClient,
-)
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

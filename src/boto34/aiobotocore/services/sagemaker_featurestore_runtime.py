@@ -29,10 +29,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_sagemaker_featurestore_runtime.client import (
-    SageMakerFeatureStoreRuntimeClient,
-)
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

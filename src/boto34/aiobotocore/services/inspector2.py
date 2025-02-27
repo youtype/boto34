@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_inspector2.client import Inspector2Client
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

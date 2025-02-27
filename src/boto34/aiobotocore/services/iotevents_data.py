@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_iotevents_data.client import IoTEventsDataClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

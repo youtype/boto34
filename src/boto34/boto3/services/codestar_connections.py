@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_codestar_connections.client import CodeStarconnectionsClient
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:

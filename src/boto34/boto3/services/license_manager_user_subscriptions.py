@@ -27,10 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_license_manager_user_subscriptions.client import (
-    LicenseManagerUserSubscriptionsClient,
-)
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:

@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_pinpoint_sms_voice_v2.client import PinpointSMSVoiceV2Client
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

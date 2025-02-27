@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_redshift_serverless.client import RedshiftServerlessClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_snow_device_management.client import SnowDeviceManagementClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

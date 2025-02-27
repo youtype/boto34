@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_servicecatalog_appregistry.client import AppRegistryClient
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:

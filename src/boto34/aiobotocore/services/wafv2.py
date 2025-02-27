@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_wafv2.client import WAFV2Client
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

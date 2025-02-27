@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_marketplace_agreement.client import AgreementServiceClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

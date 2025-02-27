@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_backupsearch.client import BackupSearchClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

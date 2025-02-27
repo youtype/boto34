@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_apigatewayv2.client import ApiGatewayV2Client
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:

@@ -27,10 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_license_manager_linux_subscriptions.client import (
-    LicenseManagerLinuxSubscriptionsClient,
-)
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

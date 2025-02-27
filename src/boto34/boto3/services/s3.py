@@ -31,8 +31,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_s3.client import S3Client
-
 from boto34.boto3.service_factory import ServiceResourceFactory
 
 try:

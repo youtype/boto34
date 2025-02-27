@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_iot_data.client import IoTDataPlaneClient
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:

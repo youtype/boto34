@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_codeguruprofiler.client import CodeGuruProfilerClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

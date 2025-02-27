@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_workspaces_thin_client.client import WorkSpacesThinClientClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

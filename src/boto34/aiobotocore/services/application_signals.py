@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_application_signals.client import CloudWatchApplicationSignalsClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

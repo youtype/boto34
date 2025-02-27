@@ -158,6 +158,7 @@ ignore = [
     "D",       # flake8-docstrings
     "TC",      # flake8-type-checking
     "FBT",     # flake8-boolean-trap
+    "E501",    # line-too-long
 ]
 fixable = ["ALL"]
 unfixable = ["B"]

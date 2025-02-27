@@ -29,8 +29,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_migration_hub_refactor_spaces.client import MigrationHubRefactorSpacesClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

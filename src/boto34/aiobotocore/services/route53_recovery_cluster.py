@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_route53_recovery_cluster.client import Route53RecoveryClusterClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

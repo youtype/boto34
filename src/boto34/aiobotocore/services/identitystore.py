@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_identitystore.client import IdentityStoreClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

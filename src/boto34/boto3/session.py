@@ -382,7 +382,7 @@ from boto34.boto3.services.shield import ShieldService
 from boto34.boto3.services.signer import SignerService
 from boto34.boto3.services.simspaceweaver import SimSpaceWeaverService
 from boto34.boto3.services.sms import SMSService
-from boto34.boto3.services.sms_voice import PinpointSMSVoiceService
+from boto34.boto3.services.sms_voice import SMSVoiceService
 from boto34.boto3.services.snow_device_management import SnowDeviceManagementService
 from boto34.boto3.services.snowball import SnowballService
 from boto34.boto3.services.sns import SNSService
@@ -1001,7 +1001,7 @@ class Session(_Session):
         return ElasticsearchServiceService(self)
 
     @property
-    def events(self) -> EventBridgeService:
+    def events_(self) -> EventBridgeService:
         return EventBridgeService(self)
 
     @property
@@ -1853,8 +1853,8 @@ class Session(_Session):
         return SMSService(self)
 
     @property
-    def sms_voice(self) -> PinpointSMSVoiceService:
-        return PinpointSMSVoiceService(self)
+    def sms_voice(self) -> SMSVoiceService:
+        return SMSVoiceService(self)
 
     @property
     def snow_device_management(self) -> SnowDeviceManagementService:

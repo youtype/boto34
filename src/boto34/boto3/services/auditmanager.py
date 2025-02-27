@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_auditmanager.client import AuditManagerClient
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:

@@ -25,10 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_bcm_pricing_calculator.client import (
-    BillingandCostManagementPricingCalculatorClient,
-)
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_network_firewall.client import NetworkFirewallClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

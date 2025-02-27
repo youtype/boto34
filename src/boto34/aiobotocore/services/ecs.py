@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_ecs.client import ECSClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_ec2_instance_connect.client import EC2InstanceConnectClient
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:

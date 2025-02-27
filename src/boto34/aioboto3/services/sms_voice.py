@@ -1,5 +1,5 @@
 """
-Wrapper for aioboto3 PinpointSMSVoice service.
+Wrapper for aioboto3 SMSVoice service.
 
 [Documentation](https://youtype.github.io/types_aioboto3_docs/types_aiobotocore_sms_voice/)
 
@@ -17,9 +17,9 @@ Usage::
 
     # Type annotated aioboto3.Client
     # Uses the same arguments as aioboto3.client method
-    # Returns type annotated aioboto3 PinpointSMSVoice client
+    # Returns type annotated aioboto3 SMSVoice client
     sms_voice_client = session.sms_voice.client()
-    sms_voice_client: types_aiobotocore_sms_voice.client.PinpointSMSVoiceClient
+    sms_voice_client: types_aiobotocore_sms_voice.client.SMSVoiceClient
     ```
 """
 
@@ -28,13 +28,13 @@ from __future__ import annotations
 from boto34.aioboto3.service_factory import ServiceFactory
 
 try:
-    from types_aiobotocore_sms_voice.client import PinpointSMSVoiceClient
+    from types_aiobotocore_sms_voice.client import SMSVoiceClient
 except ImportError:
-    PinpointSMSVoiceClient = object  # type: ignore[misc,assignment]
+    SMSVoiceClient = object  # type: ignore[misc,assignment]
 
 
-class PinpointSMSVoiceService(
-    ServiceFactory[PinpointSMSVoiceClient]  # type: ignore[misc,assignment]
+class SMSVoiceService(
+    ServiceFactory[SMSVoiceClient]  # type: ignore[misc,assignment]
 ):
     SERVICE_NAME = "sms-voice"
     _SERVICE_PROP = "sms_voice"

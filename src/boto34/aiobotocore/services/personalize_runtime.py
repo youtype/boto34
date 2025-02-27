@@ -27,8 +27,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_aiobotocore_personalize_runtime.client import PersonalizeRuntimeClient
-
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 try:

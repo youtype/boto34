@@ -154,7 +154,7 @@ You can use any service with any backend. Service availability depends on your [
 | [EMRServerless](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/emr-serverless.html#emrserverless) | ✓ | `session.emr_serverless.client(...)` | `boto3.client("emr-serverless", ...)` |
 | [EntityResolution](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/entityresolution.html#entityresolution) | ✓ | `session.entityresolution.client(...)` | `boto3.client("entityresolution", ...)` |
 | [ElasticsearchService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/es.html#elasticsearchservice) | ✓ | `session.es.client(...)` | `boto3.client("es", ...)` |
-| [EventBridge](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/events.html#eventbridge) | ✓ | `session.events.client(...)` | `boto3.client("events", ...)` |
+| [EventBridge](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/events.html#eventbridge) | ✓ | `session.events_.client(...)` | `boto3.client("events", ...)` |
 | [CloudWatchEvidently](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/evidently.html#cloudwatchevidently) | ✓ | `session.evidently.client(...)` | `boto3.client("evidently", ...)` |
 | [Finspace](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/finspace.html#finspace) | ✓ | `session.finspace.client(...)` | `boto3.client("finspace", ...)` |
 | [FinSpaceData](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/finspace-data.html#finspacedata) | ✓ | `session.finspace_data.client(...)` | `boto3.client("finspace-data", ...)` |
@@ -367,7 +367,7 @@ You can use any service with any backend. Service availability depends on your [
 | [Signer](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/signer.html#signer) | ✓ | `session.signer.client(...)` | `boto3.client("signer", ...)` |
 | [SimSpaceWeaver](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/simspaceweaver.html#simspaceweaver) | ✓ | `session.simspaceweaver.client(...)` | `boto3.client("simspaceweaver", ...)` |
 | [SMS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sms.html#sms) | ✓ | `session.sms.client(...)` | `boto3.client("sms", ...)` |
-| [PinpointSMSVoice](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sms-voice.html#pinpointsmsvoice) | ✓ | `session.sms_voice.client(...)` | `boto3.client("sms-voice", ...)` |
+| [SMSVoice](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sms-voice.html#smsvoice) | ✓ | `session.sms_voice.client(...)` | `boto3.client("sms-voice", ...)` |
 | [SnowDeviceManagement](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/snow-device-management.html#snowdevicemanagement) | ✓ | `session.snow_device_management.client(...)` | `boto3.client("snow-device-management", ...)` |
 | [Snowball](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/snowball.html#snowball) | ✓ | `session.snowball.client(...)` | `boto3.client("snowball", ...)` |
 | [SNS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sns.html#sns) | ✓ | `session.sns.client(...)`<br />`session.sns.resource(...)` | `boto3.client("sns", ...)`<br />`boto3.resource("sns", ...)` |

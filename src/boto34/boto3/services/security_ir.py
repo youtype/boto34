@@ -25,8 +25,6 @@ Usage::
 
 from __future__ import annotations
 
-from types_boto3_security_ir.client import SecurityIncidentResponseClient
-
 from boto34.boto3.service_factory import ServiceFactory
 
 try:
