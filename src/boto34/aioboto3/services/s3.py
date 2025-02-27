@@ -42,8 +42,6 @@ Usage::
 
 from __future__ import annotations
 
-from aioboto3.session import ResourceCreatorContext
-from aiobotocore.session import ClientCreatorContext
 from types_aiobotocore_s3.client import S3Client
 from types_aiobotocore_s3.paginator import (
     ListBucketsPaginator,
@@ -61,11 +59,9 @@ from types_aiobotocore_s3.waiter import (
     ObjectExistsWaiter,
     ObjectNotExistsWaiter,
 )
-from typing_extensions import Unpack
 
 from boto34.aioboto3.client_factory import ClientFactory
-from boto34.aioboto3.service_factory import ServiceFactory
-from boto34.aioboto3.type_defs import ClientKwargs, ResourceKwargs
+from boto34.aioboto3.service_factory import ServiceResourceFactory
 
 
 class S3WaiterFactory(ClientFactory[S3Client]):
@@ -117,7 +113,7 @@ class S3PaginatorFactory(ClientFactory[S3Client]):
 
 
 class S3Service(
-    ServiceFactory[
+    ServiceResourceFactory[
         S3Client,
         S3ServiceResource,
         S3WaiterFactory,
@@ -128,20 +124,6 @@ class S3Service(
     _SERVICE_PROP = "s3"
     _WAITER_FACTORY_CLS = S3WaiterFactory
     _PAGINATOR_FACTORY_CLS = S3PaginatorFactory
-
-    def client(
-        self,
-        service_name: str | None = None,
-        **kwargs: Unpack[ClientKwargs],
-    ) -> ClientCreatorContext[S3Client]:
-        return self._client(**kwargs)
-
-    def resource(
-        self,
-        service_name: str | None = None,
-        **kwargs: Unpack[ResourceKwargs],
-    ) -> ResourceCreatorContext[S3ServiceResource]:
-        return self._resource(**kwargs)
 
     def get_waiters(self, client: S3Client) -> S3WaiterFactory:
         return self._get_waiter_factory(client)

@@ -1,11 +1,22 @@
+"""
+Type definitions.
+
+Copyright 2025 Vlad Emelianov
+"""
+
 from __future__ import annotations
 
-from typing import TypedDict
+from typing import TYPE_CHECKING, TypedDict
 
-from botocore.config import Config
+if TYPE_CHECKING:
+    from botocore.config import Config
 
 
 class ClientKwargs(TypedDict, total=False):
+    """
+    Keyword arguments for boto3.client.
+    """
+
     region_name: str | None
     api_version: str | None
     use_ssl: bool | None
@@ -18,6 +29,10 @@ class ClientKwargs(TypedDict, total=False):
 
 
 class ResourceKwargs(TypedDict, total=False):
+    """
+    Keyword arguments for boto3.resource.
+    """
+
     region_name: str | None
     api_version: str | None
     use_ssl: bool | None

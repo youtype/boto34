@@ -1,3 +1,9 @@
+"""
+Type definitions.
+
+Copyright 2025 Vlad Emelianov
+"""
+
 from __future__ import annotations
 
 from typing import TypedDict
@@ -6,6 +12,10 @@ from aiobotocore.config import AioConfig
 
 
 class ClientKwargs(TypedDict, total=False):
+    """
+    Keyword arguments for aiobotocore.create_client.
+    """
+
     region_name: str | None
     api_version: str | None
     use_ssl: bool | None

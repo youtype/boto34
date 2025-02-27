@@ -1,5 +1,7 @@
 """
 Service session wrapper for aiobotocore.
+
+Copyright 2025 Vlad Emelianov
 """
 
 from __future__ import annotations
@@ -20,14 +22,12 @@ if TYPE_CHECKING:
     from boto34.aioboto3.session import Session
 
 _Client = TypeVar("_Client", bound=AioBaseClient)
-_ServiceResource = TypeVar("_ServiceResource", bound=AIOBoto3ServiceResource | None)
+_ServiceResource = TypeVar("_ServiceResource", bound=AIOBoto3ServiceResource)
 _WaiterFactory = TypeVar("_WaiterFactory", bound=ClientFactory[Any])
 _PaginatorFactory = TypeVar("_PaginatorFactory", bound=ClientFactory[Any])
 
 
-class ServiceFactory(
-    Generic[_Client, _ServiceResource, _WaiterFactory, _PaginatorFactory]
-):
+class ServiceFactory(Generic[_Client, _WaiterFactory, _PaginatorFactory]):
     """
     Service session wrapper for aiobotocore.
     """
@@ -40,27 +40,17 @@ class ServiceFactory(
     def __init__(self, session: Session) -> None:
         self._session = session
 
-    def _client(self, **kwargs: Unpack[ClientKwargs]) -> ClientCreatorContext[_Client]:
-        filtered_kwargs: ClientKwargs = {}
-        for key, value in kwargs.items():
-            if value is not None:
-                filtered_kwargs[key] = value
-        return self._session.client(
-            service_name=self.SERVICE_NAME,
-            **filtered_kwargs,
-        )
+    def client(
+        self,
+        service_name: str | None = None,
+        **kwargs: Unpack[ClientKwargs],
+    ) -> ClientCreatorContext[_Client]:
+        """
+        Proxy method to aioboto3.session.Session.client.
 
-    def _resource(
-        self, **kwargs: Unpack[ResourceKwargs]
-    ) -> ResourceCreatorContext[_ServiceResource]:  # type: ignore[override]
-        filtered_kwargs: ResourceKwargs = {}
-        for key, value in kwargs.items():
-            if value is not None:
-                filtered_kwargs[key] = value
-        return self._session.resource(
-            service_name=self.SERVICE_NAME,
-            **filtered_kwargs,
-        )
+        Arguments are the same, but service_name is ignored.
+        """
+        return self._session.client(service_name=self.SERVICE_NAME, **kwargs)
 
     def get_available_regions(
         self,
@@ -68,6 +58,11 @@ class ServiceFactory(
         partition_name: str = "aws",
         allow_non_regional: bool = False,
     ) -> list[str]:
+        """
+        Proxy method to aioboto3.session.Session.get_available_regions.
+
+        Arguments are the same, but service_name is ignored.
+        """
         return self._session.get_available_regions(
             service_name=self.SERVICE_NAME,
             partition_name=partition_name,
@@ -85,3 +80,20 @@ class ServiceFactory(
             raise Boto34Error(f"Service {self.SERVICE_NAME} does not have paginators.")
 
         return self._PAGINATOR_FACTORY_CLS(client)
+
+
+class ServiceResourceFactory(
+    ServiceFactory[_Client, _WaiterFactory, _PaginatorFactory],
+    Generic[_Client, _ServiceResource, _WaiterFactory, _PaginatorFactory],
+):
+    def resource(
+        self,
+        service_name: str | None = None,
+        **kwargs: Unpack[ResourceKwargs],
+    ) -> ResourceCreatorContext[_ServiceResource]:
+        """
+        Proxy method to aioboto3.session.Session.resource.
+
+        Arguments are the same, but service_name is ignored.
+        """
+        return self._session.resource(service_name=self.SERVICE_NAME, **kwargs)

@@ -15,9 +15,14 @@ repos:
         name: pyright
         language: system
         pass_filenames: false
-        entry: uv run pyright mypy_boto3_builder
-      - id: pytest
-        name: pytest
+        entry: uv run pyright
+      - id: mypy
+        name: mypy
         language: system
         pass_filenames: false
-        entry: uv run pytest
+        entry: uv run mypy src/boto34
+      # - id: pytest
+      #   name: pytest
+      #   language: system
+      #   pass_filenames: false
+      #   entry: uv run pytest

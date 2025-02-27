@@ -1,2 +1,5 @@
-def main() -> None:
-    print("Hello from boto34!")
+"""
+Main module for boto34.
+
+Copyright 2025 Vlad Emelianov
+"""

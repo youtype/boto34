@@ -1,5 +1,7 @@
 """
 Service session wrapper for aiobotocore.
+
+Copyright 2025 Vlad Emelianov
 """
 
 from __future__ import annotations
@@ -36,26 +38,36 @@ class ServiceFactory(Generic[_Client, _WaiterFactory, _PaginatorFactory]):
     def __init__(self, session: Session) -> None:
         self._session = session
 
-    def _create_client(
-        self, **kwargs: Unpack[ClientKwargs]
+    def create_client(
+        self,
+        service_name: str | None = None,
+        **kwargs: Unpack[ClientKwargs],
     ) -> ClientCreatorContext[_Client]:
-        filtered_kwargs: ClientKwargs = {}
-        for key, value in kwargs.items():
-            if value is not None:
-                filtered_kwargs[key] = value
-        return self._session.create_client(
-            service_name=self.SERVICE_NAME,
-            **filtered_kwargs,
-        )
+        """
+        Proxy method to aiobotocore.session.Session.create_client.
 
-    async def get_service_model(  # type: ignore[override]
-        self, service_name: str | None = None, api_version: Any | None = None
+        Arguments are the same, but service_name is ignored.
+        """
+        return self._session.create_client(service_name=self.SERVICE_NAME, **kwargs)
+
+    async def get_service_model(
+        self, service_name: str | None = None, api_version: str | None = None
     ) -> ServiceModel:
+        """
+        Proxy method to aiobotocore.session.Session.get_service_model.
+
+        Arguments are the same, but service_name is ignored.
+        """
         return await self._session.get_service_model(self.SERVICE_NAME, api_version)
 
     async def get_service_data(
-        self, service_name: str | None = None, api_version: Any | None = None
+        self, service_name: str | None = None, api_version: str | None = None
     ) -> dict[str, Any]:
+        """
+        Proxy method to aiobotocore.session.Session.get_service_data.
+
+        Arguments are the same, but service_name is ignored.
+        """
         return await self._session.get_service_data(self.SERVICE_NAME, api_version)
 
     async def get_available_regions(
@@ -64,6 +76,11 @@ class ServiceFactory(Generic[_Client, _WaiterFactory, _PaginatorFactory]):
         partition_name: str = "aws",
         allow_non_regional: bool = False,
     ) -> list[str]:
+        """
+        Proxy method to aiobotocore.session.Session.get_available_regions.
+
+        Arguments are the same, but service_name is ignored.
+        """
         return await self._session.get_available_regions(
             service_name=self.SERVICE_NAME,
             partition_name=partition_name,
