@@ -199,4 +199,17 @@ min-file-size = 200
 notice-rgx = "(?i)Copyright \\d{4}"
 
 [tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [
+    "build",
+    "dist",
+    ".eggs",
+    ".git",
+    ".venv",
+    "src",
+    ".ruff_cache",
+    ".pytest_cache",
+    ".mypy_cache",
+]
+asyncio_default_fixture_loop_scope = "function"
 filterwarnings = ["ignore::DeprecationWarning:botocore"]

@@ -157,6 +157,7 @@ from boto34.aiobotocore.services.ecs import ECSService
 from boto34.aiobotocore.services.efs import EFSService
 from boto34.aiobotocore.services.eks import EKSService
 from boto34.aiobotocore.services.eks_auth import EKSAuthService
+from boto34.aiobotocore.services.elastic_inference import ElasticInferenceService
 from boto34.aiobotocore.services.elasticache import ElastiCacheService
 from boto34.aiobotocore.services.elasticbeanstalk import ElasticBeanstalkService
 from boto34.aiobotocore.services.elastictranscoder import ElasticTranscoderService
@@ -981,6 +982,10 @@ class Session(_Session):
         return EKSAuthService(self)
 
     @property
+    def elastic_inference(self) -> ElasticInferenceService:
+        return ElasticInferenceService(self)
+
+    @property
     def elasticache(self) -> ElastiCacheService:
         return ElastiCacheService(self)
 
@@ -1021,7 +1026,7 @@ class Session(_Session):
         return ElasticsearchServiceService(self)
 
     @property
-    def events_(self) -> EventBridgeService:
+    def eventbridge(self) -> EventBridgeService:
         return EventBridgeService(self)
 
     @property

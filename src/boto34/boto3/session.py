@@ -1001,7 +1001,7 @@ class Session(_Session):
         return ElasticsearchServiceService(self)
 
     @property
-    def events_(self) -> EventBridgeService:
+    def eventbridge(self) -> EventBridgeService:
         return EventBridgeService(self)
 
     @property
