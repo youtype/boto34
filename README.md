@@ -54,12 +54,19 @@ from boto34.boto3 import Session
 # all services are accessible as attributes
 session = Session()
 
-# this is a boto3 Client for s3 service
+# this is botocore.BaseClient for s3 service
 # no wrappers and fully type annotated
 s3_client = session.s3.client(region_name="us-east-1")
+put_object_response = s3_client.put_object(
+  Bucket="bucket", Key="key", Body=b"message"
+)
+url = s3_client.generate_presigned_url(
+    "get_object", {"Bucket": "bucket", "Key": "key"},
+)
 
-# same for ServiceResource
+# same for boto3.ServiceResource
 s3_resource = session.s3.resource(region_name="us-east-1")
+s3_object = resource.Bucket("bucket").put_object(Key="key", Body=b"message")
 ```
 
 Full list of supported AWS services can be found in [services.md](./services.md).
@@ -77,10 +84,15 @@ from boto34.aiobotocore import get_session
 # all services are accessible as attributes
 session = get_session()
 
-# this is a aiobotocore Client for s3 service
+# this is aiobotocore.AioBaseClient for s3 service
 # no wrappers and fully type annotated
 async with session.s3.create_client(region_name="us-east-1") as s3_client:
-    ...
+    put_object_response = await s3_client.put_object(
+      Bucket="bucket", Key="key", Body=b"message"
+    )
+    url = await s3_client.generate_presigned_url(
+        "get_object", {"Bucket": "bucket", "Key": "key"}
+    )
 ```
 
 Full list of supported AWS services can be found in [services.md](./services.md).
@@ -98,14 +110,20 @@ from boto34.aioboto3 import Session
 # all services are accessible as attributes
 session = Session()
 
-# this is a aioboto3 Client for s3 service
+# this is a aiobotocore.AioBaseClient for s3 service
 # no wrappers and fully type annotated
 async with session.s3.client(region_name="us-east-1") as s3_client:
-    ...
+    put_object_response = await s3_client.put_object(
+      Bucket="bucket", Key="key", Body=b"message"
+    )
+    url = await s3_client.generate_presigned_url(
+        "get_object", {"Bucket": "bucket", "Key": "key"}
+    )
 
-# same for ServiceResource
+# same for aioboto3.AIOBoto3ServiceResource
 async with session.s3.resource(region_name="us-east-1") as s3_resource:
-    ...
+    s3_bucket = await s3_resource.Bucket("bucket")
+    s3_object = await s3_bucket.put_object(Key="key", Body=b"message")
 ```
 
 Full list of supported AWS services can be found in [services.md](./services.md).

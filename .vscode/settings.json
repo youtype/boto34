@@ -18,6 +18,7 @@
         "*.egg-info": true,
         "build": true,
         "dist": true,
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "src/boto34/*/services": true
     }
 }
