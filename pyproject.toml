@@ -1,0 +1,39 @@
+[project]
+name = "boto34"
+version = "0.1.0"
+description = "Type annotated wrapper for boto3, aiobotocore, and aioboto3."
+readme = "README.md"
+authors = [{ name = "Vlad Emelianov", email = "vlad.emelianov.nz@gmail.com" }]
+requires-python = ">=3.8"
+dependencies = ["typing-extensions"]
+
+[project.optional-dependencies]
+boto3 = ["boto3", "types-boto3-lite", "types-boto3-full"]
+aioboto3 = ["aioboto3", "types-aioboto3-lite", "types-aiobotocore-full"]
+aiobotocore = [
+    "aiobotocore",
+    "types-aiobotocore-lite",
+    "types-aiobotocore-full",
+]
+
+[dependency-groups]
+dev = [
+    "boto3",
+    "pyright",
+    "pytest",
+    "types-boto3-lite",
+    "types-boto3-full",
+    "types-aiobotocore-lite",
+    "types-aioboto3-lite",
+    "types-aiobotocore-full",
+    "aiobotocore",
+    "aioboto3",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+package = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
