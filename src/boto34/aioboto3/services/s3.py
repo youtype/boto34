@@ -1,59 +1,51 @@
 """
-Wrapper for boto3 S3 1.37.1 service.
+Wrapper for aioboto3 S3 14.0.0 service.
 
-[Documentation](https://youtype.github.io/types_boto3_docs/types_boto3_s3/)
+[Documentation](https://youtype.github.io/types_aioboto3_docs/types_aiobotocore_s3/)
 
 Copyright 2025 Vlad Emelianov
 
 Usage::
 
     ```python
+    from boto34.aioboto3 import Session
 
-    from boto34.boto3 import Session
-
-    # Wrapper for boto3.Session constructor
-    # Returns boto34.Session inherited from boto3.Session
+    # Wrapper for aioboto3.Session constructor
+    # Returns boto34.Session inherited from aioboto3.Session
     session = Session()
-    session: boto34.boto3.session.Session
+    session: boto34.aioboto3.session.Session
 
-
-    # Type annotated boto3.Client
-    # Uses the same arguments as boto3.client method
-    # Returns type annotated boto3 S3 client
+    # Type annotated aioboto3.Client
+    # Uses the same arguments as aioboto3.client method
+    # Returns type annotated aioboto3 S3 client
     s3_client = session.s3.client()
-    s3_client: types_boto3_s3.client.S3Client
+    s3_client: types_aiobotocore_s3.client.S3Client
 
-
-
-    # Type annotated boto3.Resource
-    # Uses the same arguments as boto3.resource method
-    # returns type annotated boto3 S3 resource
+    # Type annotated aioboto3.Resource
+    # Uses the same arguments as aioboto3.resource method
+    # returns type annotated aioboto3 S3 resource
     s3_resource = session.s3.resource()
-    s3_resource: types_boto3_s3.service_resource.S3ServiceResource
+    s3_resource: types_aiobotocore_s3.service_resource.S3ServiceResource
 
-
-
-    # Type annotated shortcuts for boto3.Client.get_waiter
+    # Type annotated shortcuts for aioboto3.Client.get_waiter
     # Initialize client first to use it
 
-    s3_waiter = session.s3.waiter.bucket_exists
-    s3_waiter: types_boto3_s3.waiter.BucketExistsWaiter
+    s3_waiter = session.s3.get_waiters(s3_client).bucket_exists
+    s3_waiter: types_aiobotocore_s3.waiter.BucketExistsWaiter
 
-
-
-
-    # Type annotated shortcuts for boto3.Client.get_paginator
+    # Type annotated shortcuts for aioboto3.Client.get_paginator
     # Initialize client first to use it
 
-    s3_paginator = session.s3.paginator.list_buckets
-    s3_paginator: types_boto3_s3.paginator.ListBucketsPaginator
-```
+    s3_paginator = session.s3.get_paginators(s3_client).list_buckets
+    s3_paginator: types_aiobotocore_s3.paginator.ListBucketsPaginator```
 """
 
-from typing import Final
+from __future__ import annotations
 
-from types_boto3_s3.client import S3Client
-from types_boto3_s3.paginator import (
+from aioboto3.session import ResourceCreatorContext
+from aiobotocore.session import ClientCreatorContext
+from types_aiobotocore_s3.client import S3Client
+from types_aiobotocore_s3.paginator import (
     ListBucketsPaginator,
     ListDirectoryBucketsPaginator,
     ListMultipartUploadsPaginator,
@@ -62,21 +54,21 @@ from types_boto3_s3.paginator import (
     ListObjectVersionsPaginator,
     ListPartsPaginator,
 )
-from types_boto3_s3.service_resource import S3ServiceResource
-from types_boto3_s3.waiter import (
+from types_aiobotocore_s3.service_resource import S3ServiceResource
+from types_aiobotocore_s3.waiter import (
     BucketExistsWaiter,
     BucketNotExistsWaiter,
     ObjectExistsWaiter,
     ObjectNotExistsWaiter,
 )
+from typing_extensions import Unpack
 
-from boto34.boto3.paginator_factory import PaginatorFactory
-from boto34.boto3.service_factory import ServiceFactory
-from boto34.boto3.type_defs import ClientKwargs, ResourceKwargs
-from boto34.boto3.waiter_factory import WaiterFactory
+from boto34.aioboto3.client_factory import ClientFactory
+from boto34.aioboto3.service_factory import ServiceFactory
+from boto34.aioboto3.type_defs import ClientKwargs, ResourceKwargs
 
 
-class S3WaiterFactory(WaiterFactory):
+class S3WaiterFactory(ClientFactory[S3Client]):
     @property
     def bucket_exists(self) -> BucketExistsWaiter:
         return self._client.get_waiter("bucket_exists")
@@ -94,7 +86,7 @@ class S3WaiterFactory(WaiterFactory):
         return self._client.get_waiter("object_not_exists")
 
 
-class S3PaginatorFactory(PaginatorFactory):
+class S3PaginatorFactory(ClientFactory[S3Client]):
     @property
     def list_buckets(self) -> ListBucketsPaginator:
         return self._client.get_paginator("list_buckets")
@@ -132,29 +124,27 @@ class S3Service(
         S3PaginatorFactory,
     ]
 ):
-    SERVICE_NAME: Final = "s3"
-    _SERVICE_PROP: Final = "s3"
-    _WAITER_FACTORY_CLS: Final = S3WaiterFactory
-    _PAGINATOR_FACTORY_CLS: Final = S3PaginatorFactory
+    SERVICE_NAME = "s3"
+    _SERVICE_PROP = "s3"
+    _WAITER_FACTORY_CLS = S3WaiterFactory
+    _PAGINATOR_FACTORY_CLS = S3PaginatorFactory
 
     def client(
         self,
         service_name: str | None = None,
         **kwargs: Unpack[ClientKwargs],
-    ) -> S3Client:
+    ) -> ClientCreatorContext[S3Client]:
         return self._client(**kwargs)
 
     def resource(
         self,
         service_name: str | None = None,
-        **kwargs: Unpack[ClientKwargs],
-    ) -> S3ServiceResource:
+        **kwargs: Unpack[ResourceKwargs],
+    ) -> ResourceCreatorContext[S3ServiceResource]:
         return self._resource(**kwargs)
 
-    @property
-    def waiter(self) -> S3WaiterFactory:
-        return self._get_waiter_factory()
+    def get_waiters(self, client: S3Client) -> S3WaiterFactory:
+        return self._get_waiter_factory(client)
 
-    @property
-    def paginator(self) -> S3PaginatorFactory:
-        return self._get_paginator_factory()
+    def get_paginators(self, client: S3Client) -> S3PaginatorFactory:
+        return self._get_paginator_factory(client)

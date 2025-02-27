@@ -1,20 +1,22 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Generic, TypeVar, Unpack
+from typing import TYPE_CHECKING, Any, Generic, TypeVar
 
-from boto34.boto3.paginator_factory import PaginatorFactory
+from boto3.resources.base import ServiceResource
+from botocore.client import BaseClient
+from typing_extensions import Unpack
+
+from boto34.boto3.client_factory import ClientFactory
 from boto34.boto3.type_defs import ClientKwargs, ResourceKwargs
-from boto34.boto3.waiter_factory import WaiterFactory
 from boto34.exceptions import Boto34Error
-from boto34.kwargs_cache import KwargsCache
 
 if TYPE_CHECKING:
     from boto34.boto3.session import Session
 
-_Client = TypeVar("_Client")
-_ServiceResource = TypeVar("_ServiceResource")
-_WaiterFactory = TypeVar("_WaiterFactory", bound=WaiterFactory | None)
-_PaginatorFactory = TypeVar("_PaginatorFactory", bound=PaginatorFactory | None)
+_Client = TypeVar("_Client", bound=BaseClient | None)
+_ServiceResource = TypeVar("_ServiceResource", bound=ServiceResource | None)
+_WaiterFactory = TypeVar("_WaiterFactory", bound=ClientFactory[Any])
+_PaginatorFactory = TypeVar("_PaginatorFactory", bound=ClientFactory[Any])
 
 
 class ServiceFactory(
@@ -27,32 +29,26 @@ class ServiceFactory(
 
     def __init__(self, session: Session) -> None:
         self._session = session
-        self._client_cache = KwargsCache[_Client]()
-        self._resource_cache = KwargsCache[_ServiceResource]()
 
     def _client(self, **kwargs: Unpack[ClientKwargs]) -> _Client:
-        filtered_kwargs = {k: v for k, v in kwargs.items() if v is not None}
-        cached_client = self._client_cache.get(filtered_kwargs)
-        if cached_client:
-            return cached_client
-        client = self._session.client(
+        filtered_kwargs: ClientKwargs = {}
+        for key, value in kwargs.items():
+            if value is not None:
+                filtered_kwargs[key] = value
+        return self._session.client(
             service_name=self.SERVICE_NAME,
             **filtered_kwargs,
         )
-        self._client_cache.set(filtered_kwargs, client)
-        return client
 
     def _resource(self, **kwargs: Unpack[ResourceKwargs]) -> _ServiceResource:
-        filtered_kwargs = {k: v for k, v in kwargs.items() if v is not None}
-        cached_resource = self._client_cache.get(filtered_kwargs)
-        if cached_resource:
-            return cached_resource
-        resource = self._session.resource(
+        filtered_kwargs: ResourceKwargs = {}
+        for key, value in kwargs.items():
+            if value is not None:
+                filtered_kwargs[key] = value
+        return self._session.resource(
             service_name=self.SERVICE_NAME,
             **filtered_kwargs,
         )
-        self._resource_cache.set(filtered_kwargs, resource)
-        return resource
 
     def get_available_regions(
         self,
@@ -66,30 +62,14 @@ class ServiceFactory(
             allow_non_regional=allow_non_regional,
         )
 
-    def _get_waiter_factory(self) -> _WaiterFactory:
-        if not self._WAITER_FACTORY_CLS:
+    def _get_waiter_factory(self, client: _Client) -> _WaiterFactory:
+        if self._WAITER_FACTORY_CLS is None:
             raise Boto34Error(f"Service {self.SERVICE_NAME} does not have waiters.")
-
-        client = self._client_cache.get_first()
-        if client is None:
-            raise Boto34Error(
-                f"Client not initialized, create it with session.{self._SERVICE_PROP}.client()"
-            )
 
         return self._WAITER_FACTORY_CLS(client)
 
-    def _get_paginator_factory(self) -> _PaginatorFactory:
-        if not self._WAITER_FACTORY_CLS:
+    def _get_paginator_factory(self, client: _Client) -> _PaginatorFactory:
+        if self._PAGINATOR_FACTORY_CLS is None:
             raise Boto34Error(f"Service {self.SERVICE_NAME} does not have paginators.")
 
-        client = self._client_cache.get_first()
-        if client is None:
-            raise Boto34Error(
-                f"Client not initialized, create it with session.{self._SERVICE_PROP}.client()"
-            )
-
         return self._PAGINATOR_FACTORY_CLS(client)
-
-    def clear_cache(self) -> None:
-        self._client_cache.clear()
-        self._resource_cache.clear()

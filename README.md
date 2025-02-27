@@ -40,8 +40,8 @@ s3_client = session.s3.client(region_name="us-west-1")
 s3_resource = session.s3.resource(region_name="us-west-1")
 
 # oh, I almost forgot about waiters and paginators
-object_exists_waiter = session.s3.waiter.object_exists
-list_objects_paginator = session.s3.paginator.list_objects_v2
+object_exists_waiter = session.s3.get_waiters(s3_client).object_exists
+list_objects_paginator = session.s3.get_paginators(s3_client).list_objects_v2
 ```
 
 ### aiobotocore

@@ -1,4 +1,23 @@
-from collections.abc import Mapping
+"""
+Type annotated wrapper for aiobotocore Session.
+
+Copyright 2025 Vlad Emelianov
+
+Usage::
+
+    ```python
+    from boto34.aiobotocore import get_session
+
+    # Wrapper for aiobotocore.Session constructor
+    # Returns boto34.Session inherited from aiobotocore.Session
+    session = get_session()
+    session: boto34.aiobotocore.session.Session
+    ```
+"""
+
+from __future__ import annotations
+
+from typing import Mapping
 
 from aiobotocore.session import AioSession as _Session
 
@@ -12,4 +31,4 @@ class Session(_Session):
 
 
 def get_session(env_vars: Mapping[str, str] | None = None) -> Session:
-    return Session(env_vars=env_vars)
+    return Session(session_vars=env_vars)

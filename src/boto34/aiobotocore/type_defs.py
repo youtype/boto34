@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TypedDict
 
 from aiobotocore.config import AioConfig

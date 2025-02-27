@@ -37,3 +37,24 @@ package = true
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.pyright]
+include = ["src"]
+exclude = ["tests"]
+ignore = [
+    ".venv",
+    "**/__pycache__",
+    "**/build",
+    "typestubs",
+    "examples",
+    "integration",
+    "**/test_*.py",
+]
+typeCheckingMode = "strict"
+reportMissingImports = "error"
+reportMissingTypeStubs = "error"
+reportMissingTypeArgument = "error"
+reportIncompatibleMethodOverride = "error"
+reportIncompatibleVariableOverride = "error"
+reportUnknownParameterType = "error"
+pythonVersion = "3.8"
