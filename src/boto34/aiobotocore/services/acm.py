@@ -1,5 +1,5 @@
 """
-Wrapper for aiobotocore ACM 2.20.1 service.
+Wrapper for aiobotocore ACM service.
 
 [Documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_acm/)
 

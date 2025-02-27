@@ -2,7 +2,12 @@
 
 > There are type annotations for it. No exceptions.
 
-Type annotated AWS SDK for Python. `boto3`, `aiobotocore`, and `aioboto3` included.
+Type annotated AWS SDK for Python.
+Adds static type checking and code completions for your
+[boto3](https://pypi.org/project/boto3/),
+[aiobotocore](https://pypi.org/project/aiobotocore/),
+and [aioboto3](https://pypi.org/project/aioboto3/)
+code without affecting runtime.
 
 This package is part of [mypy_boto3_builder](https://github.com/youtype/mypy_boto3_builder) project.
 
@@ -21,8 +26,8 @@ This package is part of [mypy_boto3_builder](https://github.com/youtype/mypy_bot
 
 ## Features
 
-- Type safety for all 400+ AWS services
-- Auto-completion for every client, resource, waiter, and paginator
+- Type safety for all [400+ AWS services](./services.md)
+- Auto-completion for every client, resource, request, response, waiter, and paginator
 - Support for `boto3`, `aiobotocore` and `aioboto3`
 
 ## What is not included
@@ -54,6 +59,8 @@ s3_client = session.s3.client(region_name="us-east-1")
 s3_resource = session.s3.resource(region_name="us-east-1")
 ```
 
+Full list of supported AWS services can be found in [services.md](./services.md).
+
 ### aiobotocore
 
 Install `boto34` for `aiobotocore`: `pip install 'boto34[aiobotocore]'`
@@ -72,6 +79,8 @@ session = get_session()
 async with session.s3.create_client(region_name="us-east-1") as s3_client:
     ...
 ```
+
+Full list of supported AWS services can be found in [services.md](./services.md).
 
 ### aioboto3
 
@@ -95,6 +104,8 @@ async with session.s3.client(region_name="us-east-1") as s3_client:
 async with session.s3.resource(region_name="us-east-1") as s3_resource:
     ...
 ```
+
+Full list of supported AWS services can be found in [services.md](./services.md).
 
 ## How it works
 

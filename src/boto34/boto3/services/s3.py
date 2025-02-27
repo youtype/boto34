@@ -1,5 +1,5 @@
 """
-Wrapper for boto3 S3 1.37.1 service.
+Wrapper for boto3 S3 service.
 
 [Documentation](https://youtype.github.io/types_boto3_docs/types_boto3_s3/)
 

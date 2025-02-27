@@ -1,5 +1,5 @@
 """
-Wrapper for aioboto3 S3 14.0.0 service.
+Wrapper for aioboto3 S3 service.
 
 [Documentation](https://youtype.github.io/types_aioboto3_docs/types_aiobotocore_s3/)
 
