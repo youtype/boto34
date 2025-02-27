@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_lookoutmetrics.client import LookoutMetricsClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_lookoutmetrics.client import LookoutMetricsClient
-except ImportError:
-    LookoutMetricsClient = object  # type: ignore[misc,assignment]
 
-
-class LookoutMetricsService(
-    ServiceFactory[LookoutMetricsClient]  # type: ignore[misc,assignment]
-):
+class LookoutMetricsService(ServiceFactory[LookoutMetricsClient]):
     SERVICE_NAME = "lookoutmetrics"
     _SERVICE_PROP = "lookoutmetrics"

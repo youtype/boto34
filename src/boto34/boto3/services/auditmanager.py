@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_auditmanager.client import AuditManagerClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_auditmanager.client import AuditManagerClient
-except ImportError:
-    AuditManagerClient = object  # type: ignore[misc,assignment]
 
-
-class AuditManagerService(
-    ServiceFactory[AuditManagerClient]  # type: ignore[misc,assignment]
-):
+class AuditManagerService(ServiceFactory[AuditManagerClient]):
     SERVICE_NAME = "auditmanager"
     _SERVICE_PROP = "auditmanager"

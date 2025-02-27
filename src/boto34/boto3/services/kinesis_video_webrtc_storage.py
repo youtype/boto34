@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_kinesis_video_webrtc_storage.client import KinesisVideoWebRTCStorageClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_kinesis_video_webrtc_storage.client import KinesisVideoWebRTCStorageClient
-except ImportError:
-    KinesisVideoWebRTCStorageClient = object  # type: ignore[misc,assignment]
 
-
-class KinesisVideoWebRTCStorageService(
-    ServiceFactory[KinesisVideoWebRTCStorageClient]  # type: ignore[misc,assignment]
-):
+class KinesisVideoWebRTCStorageService(ServiceFactory[KinesisVideoWebRTCStorageClient]):
     SERVICE_NAME = "kinesis-video-webrtc-storage"
     _SERVICE_PROP = "kinesis_video_webrtc_storage"

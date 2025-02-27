@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_clouddirectory.client import CloudDirectoryClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_clouddirectory.client import CloudDirectoryClient
-except ImportError:
-    CloudDirectoryClient = object  # type: ignore[misc,assignment]
 
-
-class CloudDirectoryService(
-    ServiceFactory[CloudDirectoryClient]  # type: ignore[misc,assignment]
-):
+class CloudDirectoryService(ServiceFactory[CloudDirectoryClient]):
     SERVICE_NAME = "clouddirectory"
     _SERVICE_PROP = "clouddirectory"

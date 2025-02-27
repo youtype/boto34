@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_finspace.client import FinspaceClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_finspace.client import FinspaceClient
-except ImportError:
-    FinspaceClient = object  # type: ignore[misc,assignment]
 
-
-class FinspaceService(
-    ServiceFactory[FinspaceClient]  # type: ignore[misc,assignment]
-):
+class FinspaceService(ServiceFactory[FinspaceClient]):
     SERVICE_NAME = "finspace"
     _SERVICE_PROP = "finspace"

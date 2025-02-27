@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_timestream_query.client import TimestreamQueryClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_timestream_query.client import TimestreamQueryClient
-except ImportError:
-    TimestreamQueryClient = object  # type: ignore[misc,assignment]
 
-
-class TimestreamQueryService(
-    ServiceFactory[TimestreamQueryClient]  # type: ignore[misc,assignment]
-):
+class TimestreamQueryService(ServiceFactory[TimestreamQueryClient]):
     SERVICE_NAME = "timestream-query"
     _SERVICE_PROP = "timestream_query"

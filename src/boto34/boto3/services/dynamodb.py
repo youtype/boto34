@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_dynamodb.client import DynamoDBClient
+from types_boto3_dynamodb.service_resource import DynamoDBServiceResource
+
 from boto34.boto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_boto3_dynamodb.client import DynamoDBClient
-    from types_boto3_dynamodb.service_resource import DynamoDBServiceResource
-except ImportError:
-    DynamoDBClient = object  # type: ignore[misc,assignment]
-    DynamoDBServiceResource = object  # type: ignore[misc,assignment]
 
-
-class DynamoDBService(
-    ServiceResourceFactory[DynamoDBClient, DynamoDBServiceResource]  # type: ignore[misc,assignment]
-):
+class DynamoDBService(ServiceResourceFactory[DynamoDBClient, DynamoDBServiceResource]):
     SERVICE_NAME = "dynamodb"
     _SERVICE_PROP = "dynamodb"

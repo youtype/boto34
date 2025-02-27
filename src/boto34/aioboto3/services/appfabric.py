@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_appfabric.client import AppFabricClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_appfabric.client import AppFabricClient
-except ImportError:
-    AppFabricClient = object  # type: ignore[misc,assignment]
 
-
-class AppFabricService(
-    ServiceFactory[AppFabricClient]  # type: ignore[misc,assignment]
-):
+class AppFabricService(ServiceFactory[AppFabricClient]):
     SERVICE_NAME = "appfabric"
     _SERVICE_PROP = "appfabric"

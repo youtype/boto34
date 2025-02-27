@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_polly.client import PollyClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_polly.client import PollyClient
-except ImportError:
-    PollyClient = object  # type: ignore[misc,assignment]
 
-
-class PollyService(
-    ServiceFactory[PollyClient]  # type: ignore[misc,assignment]
-):
+class PollyService(ServiceFactory[PollyClient]):
     SERVICE_NAME = "polly"
     _SERVICE_PROP = "polly"

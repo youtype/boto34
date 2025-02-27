@@ -27,16 +27,13 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.boto3.service_factory import ServiceFactory
+from types_boto3_migrationhubstrategy.client import MigrationHubStrategyRecommendationsClient
 
-try:
-    from types_boto3_migrationhubstrategy.client import MigrationHubStrategyRecommendationsClient
-except ImportError:
-    MigrationHubStrategyRecommendationsClient = object  # type: ignore[misc,assignment]
+from boto34.boto3.service_factory import ServiceFactory
 
 
 class MigrationHubStrategyRecommendationsService(
-    ServiceFactory[MigrationHubStrategyRecommendationsClient]  # type: ignore[misc,assignment]
+    ServiceFactory[MigrationHubStrategyRecommendationsClient]
 ):
     SERVICE_NAME = "migrationhubstrategy"
     _SERVICE_PROP = "migrationhubstrategy"

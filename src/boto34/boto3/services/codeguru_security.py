@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_codeguru_security.client import CodeGuruSecurityClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_codeguru_security.client import CodeGuruSecurityClient
-except ImportError:
-    CodeGuruSecurityClient = object  # type: ignore[misc,assignment]
 
-
-class CodeGuruSecurityService(
-    ServiceFactory[CodeGuruSecurityClient]  # type: ignore[misc,assignment]
-):
+class CodeGuruSecurityService(ServiceFactory[CodeGuruSecurityClient]):
     SERVICE_NAME = "codeguru-security"
     _SERVICE_PROP = "codeguru_security"

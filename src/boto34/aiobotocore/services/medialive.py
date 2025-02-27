@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_medialive.client import MediaLiveClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_medialive.client import MediaLiveClient
-except ImportError:
-    MediaLiveClient = object  # type: ignore[misc,assignment]
 
-
-class MediaLiveService(
-    ServiceFactory[MediaLiveClient]  # type: ignore[misc,assignment]
-):
+class MediaLiveService(ServiceFactory[MediaLiveClient]):
     SERVICE_NAME = "medialive"
     _SERVICE_PROP = "medialive"

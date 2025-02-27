@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_timestream_influxdb.client import TimestreamInfluxDBClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_timestream_influxdb.client import TimestreamInfluxDBClient
-except ImportError:
-    TimestreamInfluxDBClient = object  # type: ignore[misc,assignment]
 
-
-class TimestreamInfluxDBService(
-    ServiceFactory[TimestreamInfluxDBClient]  # type: ignore[misc,assignment]
-):
+class TimestreamInfluxDBService(ServiceFactory[TimestreamInfluxDBClient]):
     SERVICE_NAME = "timestream-influxdb"
     _SERVICE_PROP = "timestream_influxdb"

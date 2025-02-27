@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_mturk.client import MTurkClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_mturk.client import MTurkClient
-except ImportError:
-    MTurkClient = object  # type: ignore[misc,assignment]
 
-
-class MTurkService(
-    ServiceFactory[MTurkClient]  # type: ignore[misc,assignment]
-):
+class MTurkService(ServiceFactory[MTurkClient]):
     SERVICE_NAME = "mturk"
     _SERVICE_PROP = "mturk"

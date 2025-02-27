@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_xray.client import XRayClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_xray.client import XRayClient
-except ImportError:
-    XRayClient = object  # type: ignore[misc,assignment]
 
-
-class XRayService(
-    ServiceFactory[XRayClient]  # type: ignore[misc,assignment]
-):
+class XRayService(ServiceFactory[XRayClient]):
     SERVICE_NAME = "xray"
     _SERVICE_PROP = "xray"

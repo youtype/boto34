@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_support_app.client import SupportAppClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_support_app.client import SupportAppClient
-except ImportError:
-    SupportAppClient = object  # type: ignore[misc,assignment]
 
-
-class SupportAppService(
-    ServiceFactory[SupportAppClient]  # type: ignore[misc,assignment]
-):
+class SupportAppService(ServiceFactory[SupportAppClient]):
     SERVICE_NAME = "support-app"
     _SERVICE_PROP = "support_app"

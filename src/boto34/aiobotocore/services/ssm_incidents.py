@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ssm_incidents.client import SSMIncidentsClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ssm_incidents.client import SSMIncidentsClient
-except ImportError:
-    SSMIncidentsClient = object  # type: ignore[misc,assignment]
 
-
-class SSMIncidentsService(
-    ServiceFactory[SSMIncidentsClient]  # type: ignore[misc,assignment]
-):
+class SSMIncidentsService(ServiceFactory[SSMIncidentsClient]):
     SERVICE_NAME = "ssm-incidents"
     _SERVICE_PROP = "ssm_incidents"

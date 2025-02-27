@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_personalize.client import PersonalizeClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_personalize.client import PersonalizeClient
-except ImportError:
-    PersonalizeClient = object  # type: ignore[misc,assignment]
 
-
-class PersonalizeService(
-    ServiceFactory[PersonalizeClient]  # type: ignore[misc,assignment]
-):
+class PersonalizeService(ServiceFactory[PersonalizeClient]):
     SERVICE_NAME = "personalize"
     _SERVICE_PROP = "personalize"

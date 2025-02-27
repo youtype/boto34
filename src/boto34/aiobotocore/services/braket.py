@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_braket.client import BraketClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_braket.client import BraketClient
-except ImportError:
-    BraketClient = object  # type: ignore[misc,assignment]
 
-
-class BraketService(
-    ServiceFactory[BraketClient]  # type: ignore[misc,assignment]
-):
+class BraketService(ServiceFactory[BraketClient]):
     SERVICE_NAME = "braket"
     _SERVICE_PROP = "braket"

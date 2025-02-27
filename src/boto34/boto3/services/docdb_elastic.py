@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_docdb_elastic.client import DocDBElasticClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_docdb_elastic.client import DocDBElasticClient
-except ImportError:
-    DocDBElasticClient = object  # type: ignore[misc,assignment]
 
-
-class DocDBElasticService(
-    ServiceFactory[DocDBElasticClient]  # type: ignore[misc,assignment]
-):
+class DocDBElasticService(ServiceFactory[DocDBElasticClient]):
     SERVICE_NAME = "docdb-elastic"
     _SERVICE_PROP = "docdb_elastic"

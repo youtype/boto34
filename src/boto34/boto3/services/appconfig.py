@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_appconfig.client import AppConfigClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_appconfig.client import AppConfigClient
-except ImportError:
-    AppConfigClient = object  # type: ignore[misc,assignment]
 
-
-class AppConfigService(
-    ServiceFactory[AppConfigClient]  # type: ignore[misc,assignment]
-):
+class AppConfigService(ServiceFactory[AppConfigClient]):
     SERVICE_NAME = "appconfig"
     _SERVICE_PROP = "appconfig"

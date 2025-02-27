@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_codecatalyst.client import CodeCatalystClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_codecatalyst.client import CodeCatalystClient
-except ImportError:
-    CodeCatalystClient = object  # type: ignore[misc,assignment]
 
-
-class CodeCatalystService(
-    ServiceFactory[CodeCatalystClient]  # type: ignore[misc,assignment]
-):
+class CodeCatalystService(ServiceFactory[CodeCatalystClient]):
     SERVICE_NAME = "codecatalyst"
     _SERVICE_PROP = "codecatalyst"

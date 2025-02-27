@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_kinesisanalyticsv2.client import KinesisAnalyticsV2Client
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_kinesisanalyticsv2.client import KinesisAnalyticsV2Client
-except ImportError:
-    KinesisAnalyticsV2Client = object  # type: ignore[misc,assignment]
 
-
-class KinesisAnalyticsV2Service(
-    ServiceFactory[KinesisAnalyticsV2Client]  # type: ignore[misc,assignment]
-):
+class KinesisAnalyticsV2Service(ServiceFactory[KinesisAnalyticsV2Client]):
     SERVICE_NAME = "kinesisanalyticsv2"
     _SERVICE_PROP = "kinesisanalyticsv2"

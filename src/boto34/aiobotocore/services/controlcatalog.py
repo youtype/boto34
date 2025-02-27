@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_controlcatalog.client import ControlCatalogClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_controlcatalog.client import ControlCatalogClient
-except ImportError:
-    ControlCatalogClient = object  # type: ignore[misc,assignment]
 
-
-class ControlCatalogService(
-    ServiceFactory[ControlCatalogClient]  # type: ignore[misc,assignment]
-):
+class ControlCatalogService(ServiceFactory[ControlCatalogClient]):
     SERVICE_NAME = "controlcatalog"
     _SERVICE_PROP = "controlcatalog"

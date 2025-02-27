@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_artifact.client import ArtifactClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_artifact.client import ArtifactClient
-except ImportError:
-    ArtifactClient = object  # type: ignore[misc,assignment]
 
-
-class ArtifactService(
-    ServiceFactory[ArtifactClient]  # type: ignore[misc,assignment]
-):
+class ArtifactService(ServiceFactory[ArtifactClient]):
     SERVICE_NAME = "artifact"
     _SERVICE_PROP = "artifact"

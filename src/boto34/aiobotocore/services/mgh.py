@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_mgh.client import MigrationHubClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_mgh.client import MigrationHubClient
-except ImportError:
-    MigrationHubClient = object  # type: ignore[misc,assignment]
 
-
-class MigrationHubService(
-    ServiceFactory[MigrationHubClient]  # type: ignore[misc,assignment]
-):
+class MigrationHubService(ServiceFactory[MigrationHubClient]):
     SERVICE_NAME = "mgh"
     _SERVICE_PROP = "mgh"

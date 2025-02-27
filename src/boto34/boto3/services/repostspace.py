@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_repostspace.client import RePostPrivateClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_repostspace.client import RePostPrivateClient
-except ImportError:
-    RePostPrivateClient = object  # type: ignore[misc,assignment]
 
-
-class RePostPrivateService(
-    ServiceFactory[RePostPrivateClient]  # type: ignore[misc,assignment]
-):
+class RePostPrivateService(ServiceFactory[RePostPrivateClient]):
     SERVICE_NAME = "repostspace"
     _SERVICE_PROP = "repostspace"

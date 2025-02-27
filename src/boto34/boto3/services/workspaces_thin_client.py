@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_workspaces_thin_client.client import WorkSpacesThinClientClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_workspaces_thin_client.client import WorkSpacesThinClientClient
-except ImportError:
-    WorkSpacesThinClientClient = object  # type: ignore[misc,assignment]
 
-
-class WorkSpacesThinClientService(
-    ServiceFactory[WorkSpacesThinClientClient]  # type: ignore[misc,assignment]
-):
+class WorkSpacesThinClientService(ServiceFactory[WorkSpacesThinClientClient]):
     SERVICE_NAME = "workspaces-thin-client"
     _SERVICE_PROP = "workspaces_thin_client"

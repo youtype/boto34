@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_rum.client import CloudWatchRUMClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_rum.client import CloudWatchRUMClient
-except ImportError:
-    CloudWatchRUMClient = object  # type: ignore[misc,assignment]
 
-
-class CloudWatchRUMService(
-    ServiceFactory[CloudWatchRUMClient]  # type: ignore[misc,assignment]
-):
+class CloudWatchRUMService(ServiceFactory[CloudWatchRUMClient]):
     SERVICE_NAME = "rum"
     _SERVICE_PROP = "rum"

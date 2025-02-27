@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_apigatewaymanagementapi.client import ApiGatewayManagementApiClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_apigatewaymanagementapi.client import ApiGatewayManagementApiClient
-except ImportError:
-    ApiGatewayManagementApiClient = object  # type: ignore[misc,assignment]
 
-
-class ApiGatewayManagementApiService(
-    ServiceFactory[ApiGatewayManagementApiClient]  # type: ignore[misc,assignment]
-):
+class ApiGatewayManagementApiService(ServiceFactory[ApiGatewayManagementApiClient]):
     SERVICE_NAME = "apigatewaymanagementapi"
     _SERVICE_PROP = "apigatewaymanagementapi"

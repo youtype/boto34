@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_simspaceweaver.client import SimSpaceWeaverClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_simspaceweaver.client import SimSpaceWeaverClient
-except ImportError:
-    SimSpaceWeaverClient = object  # type: ignore[misc,assignment]
 
-
-class SimSpaceWeaverService(
-    ServiceFactory[SimSpaceWeaverClient]  # type: ignore[misc,assignment]
-):
+class SimSpaceWeaverService(ServiceFactory[SimSpaceWeaverClient]):
     SERVICE_NAME = "simspaceweaver"
     _SERVICE_PROP = "simspaceweaver"

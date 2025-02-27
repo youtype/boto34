@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_pipes.client import EventBridgePipesClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_pipes.client import EventBridgePipesClient
-except ImportError:
-    EventBridgePipesClient = object  # type: ignore[misc,assignment]
 
-
-class EventBridgePipesService(
-    ServiceFactory[EventBridgePipesClient]  # type: ignore[misc,assignment]
-):
+class EventBridgePipesService(ServiceFactory[EventBridgePipesClient]):
     SERVICE_NAME = "pipes"
     _SERVICE_PROP = "pipes"

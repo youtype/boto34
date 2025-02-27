@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_health.client import HealthClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_health.client import HealthClient
-except ImportError:
-    HealthClient = object  # type: ignore[misc,assignment]
 
-
-class HealthService(
-    ServiceFactory[HealthClient]  # type: ignore[misc,assignment]
-):
+class HealthService(ServiceFactory[HealthClient]):
     SERVICE_NAME = "health"
     _SERVICE_PROP = "health"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_chime.client import ChimeClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_chime.client import ChimeClient
-except ImportError:
-    ChimeClient = object  # type: ignore[misc,assignment]
 
-
-class ChimeService(
-    ServiceFactory[ChimeClient]  # type: ignore[misc,assignment]
-):
+class ChimeService(ServiceFactory[ChimeClient]):
     SERVICE_NAME = "chime"
     _SERVICE_PROP = "chime"

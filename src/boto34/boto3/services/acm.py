@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_acm.client import ACMClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_acm.client import ACMClient
-except ImportError:
-    ACMClient = object  # type: ignore[misc,assignment]
 
-
-class ACMService(
-    ServiceFactory[ACMClient]  # type: ignore[misc,assignment]
-):
+class ACMService(ServiceFactory[ACMClient]):
     SERVICE_NAME = "acm"
     _SERVICE_PROP = "acm"

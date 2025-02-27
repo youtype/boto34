@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_sqs.client import SQSClient
+from types_boto3_sqs.service_resource import SQSServiceResource
+
 from boto34.boto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_boto3_sqs.client import SQSClient
-    from types_boto3_sqs.service_resource import SQSServiceResource
-except ImportError:
-    SQSClient = object  # type: ignore[misc,assignment]
-    SQSServiceResource = object  # type: ignore[misc,assignment]
 
-
-class SQSService(
-    ServiceResourceFactory[SQSClient, SQSServiceResource]  # type: ignore[misc,assignment]
-):
+class SQSService(ServiceResourceFactory[SQSClient, SQSServiceResource]):
     SERVICE_NAME = "sqs"
     _SERVICE_PROP = "sqs"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ssm_quicksetup.client import SystemsManagerQuickSetupClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ssm_quicksetup.client import SystemsManagerQuickSetupClient
-except ImportError:
-    SystemsManagerQuickSetupClient = object  # type: ignore[misc,assignment]
 
-
-class SystemsManagerQuickSetupService(
-    ServiceFactory[SystemsManagerQuickSetupClient]  # type: ignore[misc,assignment]
-):
+class SystemsManagerQuickSetupService(ServiceFactory[SystemsManagerQuickSetupClient]):
     SERVICE_NAME = "ssm-quicksetup"
     _SERVICE_PROP = "ssm_quicksetup"

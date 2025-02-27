@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cost_optimization_hub.client import CostOptimizationHubClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cost_optimization_hub.client import CostOptimizationHubClient
-except ImportError:
-    CostOptimizationHubClient = object  # type: ignore[misc,assignment]
 
-
-class CostOptimizationHubService(
-    ServiceFactory[CostOptimizationHubClient]  # type: ignore[misc,assignment]
-):
+class CostOptimizationHubService(ServiceFactory[CostOptimizationHubClient]):
     SERVICE_NAME = "cost-optimization-hub"
     _SERVICE_PROP = "cost_optimization_hub"

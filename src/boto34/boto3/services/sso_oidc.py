@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_sso_oidc.client import SSOOIDCClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_sso_oidc.client import SSOOIDCClient
-except ImportError:
-    SSOOIDCClient = object  # type: ignore[misc,assignment]
 
-
-class SSOOIDCService(
-    ServiceFactory[SSOOIDCClient]  # type: ignore[misc,assignment]
-):
+class SSOOIDCService(ServiceFactory[SSOOIDCClient]):
     SERVICE_NAME = "sso-oidc"
     _SERVICE_PROP = "sso_oidc"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ecr.client import ECRClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ecr.client import ECRClient
-except ImportError:
-    ECRClient = object  # type: ignore[misc,assignment]
 
-
-class ECRService(
-    ServiceFactory[ECRClient]  # type: ignore[misc,assignment]
-):
+class ECRService(ServiceFactory[ECRClient]):
     SERVICE_NAME = "ecr"
     _SERVICE_PROP = "ecr"

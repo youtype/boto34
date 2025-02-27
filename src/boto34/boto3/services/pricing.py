@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_pricing.client import PricingClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_pricing.client import PricingClient
-except ImportError:
-    PricingClient = object  # type: ignore[misc,assignment]
 
-
-class PricingService(
-    ServiceFactory[PricingClient]  # type: ignore[misc,assignment]
-):
+class PricingService(ServiceFactory[PricingClient]):
     SERVICE_NAME = "pricing"
     _SERVICE_PROP = "pricing"

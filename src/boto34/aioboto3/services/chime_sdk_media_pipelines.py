@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_chime_sdk_media_pipelines.client import ChimeSDKMediaPipelinesClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_chime_sdk_media_pipelines.client import ChimeSDKMediaPipelinesClient
-except ImportError:
-    ChimeSDKMediaPipelinesClient = object  # type: ignore[misc,assignment]
 
-
-class ChimeSDKMediaPipelinesService(
-    ServiceFactory[ChimeSDKMediaPipelinesClient]  # type: ignore[misc,assignment]
-):
+class ChimeSDKMediaPipelinesService(ServiceFactory[ChimeSDKMediaPipelinesClient]):
     SERVICE_NAME = "chime-sdk-media-pipelines"
     _SERVICE_PROP = "chime_sdk_media_pipelines"

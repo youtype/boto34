@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sns.client import SNSClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sns.client import SNSClient
-except ImportError:
-    SNSClient = object  # type: ignore[misc,assignment]
 
-
-class SNSService(
-    ServiceFactory[SNSClient]  # type: ignore[misc,assignment]
-):
+class SNSService(ServiceFactory[SNSClient]):
     SERVICE_NAME = "sns"
     _SERVICE_PROP = "sns"

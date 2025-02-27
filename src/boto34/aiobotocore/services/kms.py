@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_kms.client import KMSClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_kms.client import KMSClient
-except ImportError:
-    KMSClient = object  # type: ignore[misc,assignment]
 
-
-class KMSService(
-    ServiceFactory[KMSClient]  # type: ignore[misc,assignment]
-):
+class KMSService(ServiceFactory[KMSClient]):
     SERVICE_NAME = "kms"
     _SERVICE_PROP = "kms"

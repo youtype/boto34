@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_servicediscovery.client import ServiceDiscoveryClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_servicediscovery.client import ServiceDiscoveryClient
-except ImportError:
-    ServiceDiscoveryClient = object  # type: ignore[misc,assignment]
 
-
-class ServiceDiscoveryService(
-    ServiceFactory[ServiceDiscoveryClient]  # type: ignore[misc,assignment]
-):
+class ServiceDiscoveryService(ServiceFactory[ServiceDiscoveryClient]):
     SERVICE_NAME = "servicediscovery"
     _SERVICE_PROP = "servicediscovery"

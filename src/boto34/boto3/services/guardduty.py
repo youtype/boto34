@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_guardduty.client import GuardDutyClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_guardduty.client import GuardDutyClient
-except ImportError:
-    GuardDutyClient = object  # type: ignore[misc,assignment]
 
-
-class GuardDutyService(
-    ServiceFactory[GuardDutyClient]  # type: ignore[misc,assignment]
-):
+class GuardDutyService(ServiceFactory[GuardDutyClient]):
     SERVICE_NAME = "guardduty"
     _SERVICE_PROP = "guardduty"

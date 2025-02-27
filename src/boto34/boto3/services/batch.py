@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_batch.client import BatchClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_batch.client import BatchClient
-except ImportError:
-    BatchClient = object  # type: ignore[misc,assignment]
 
-
-class BatchService(
-    ServiceFactory[BatchClient]  # type: ignore[misc,assignment]
-):
+class BatchService(ServiceFactory[BatchClient]):
     SERVICE_NAME = "batch"
     _SERVICE_PROP = "batch"

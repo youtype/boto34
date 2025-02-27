@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_controltower.client import ControlTowerClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_controltower.client import ControlTowerClient
-except ImportError:
-    ControlTowerClient = object  # type: ignore[misc,assignment]
 
-
-class ControlTowerService(
-    ServiceFactory[ControlTowerClient]  # type: ignore[misc,assignment]
-):
+class ControlTowerService(ServiceFactory[ControlTowerClient]):
     SERVICE_NAME = "controltower"
     _SERVICE_PROP = "controltower"

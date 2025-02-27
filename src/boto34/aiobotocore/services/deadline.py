@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_deadline.client import DeadlineCloudClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_deadline.client import DeadlineCloudClient
-except ImportError:
-    DeadlineCloudClient = object  # type: ignore[misc,assignment]
 
-
-class DeadlineCloudService(
-    ServiceFactory[DeadlineCloudClient]  # type: ignore[misc,assignment]
-):
+class DeadlineCloudService(ServiceFactory[DeadlineCloudClient]):
     SERVICE_NAME = "deadline"
     _SERVICE_PROP = "deadline"

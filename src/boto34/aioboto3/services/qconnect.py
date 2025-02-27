@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_qconnect.client import QConnectClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_qconnect.client import QConnectClient
-except ImportError:
-    QConnectClient = object  # type: ignore[misc,assignment]
 
-
-class QConnectService(
-    ServiceFactory[QConnectClient]  # type: ignore[misc,assignment]
-):
+class QConnectService(ServiceFactory[QConnectClient]):
     SERVICE_NAME = "qconnect"
     _SERVICE_PROP = "qconnect"

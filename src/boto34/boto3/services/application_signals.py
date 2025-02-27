@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_application_signals.client import CloudWatchApplicationSignalsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_application_signals.client import CloudWatchApplicationSignalsClient
-except ImportError:
-    CloudWatchApplicationSignalsClient = object  # type: ignore[misc,assignment]
 
-
-class CloudWatchApplicationSignalsService(
-    ServiceFactory[CloudWatchApplicationSignalsClient]  # type: ignore[misc,assignment]
-):
+class CloudWatchApplicationSignalsService(ServiceFactory[CloudWatchApplicationSignalsClient]):
     SERVICE_NAME = "application-signals"
     _SERVICE_PROP = "application_signals"

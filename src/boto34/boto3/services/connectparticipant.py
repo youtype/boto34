@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_connectparticipant.client import ConnectParticipantClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_connectparticipant.client import ConnectParticipantClient
-except ImportError:
-    ConnectParticipantClient = object  # type: ignore[misc,assignment]
 
-
-class ConnectParticipantService(
-    ServiceFactory[ConnectParticipantClient]  # type: ignore[misc,assignment]
-):
+class ConnectParticipantService(ServiceFactory[ConnectParticipantClient]):
     SERVICE_NAME = "connectparticipant"
     _SERVICE_PROP = "connectparticipant"

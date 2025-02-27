@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_appflow.client import AppflowClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_appflow.client import AppflowClient
-except ImportError:
-    AppflowClient = object  # type: ignore[misc,assignment]
 
-
-class AppflowService(
-    ServiceFactory[AppflowClient]  # type: ignore[misc,assignment]
-):
+class AppflowService(ServiceFactory[AppflowClient]):
     SERVICE_NAME = "appflow"
     _SERVICE_PROP = "appflow"

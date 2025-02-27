@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_codedeploy.client import CodeDeployClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_codedeploy.client import CodeDeployClient
-except ImportError:
-    CodeDeployClient = object  # type: ignore[misc,assignment]
 
-
-class CodeDeployService(
-    ServiceFactory[CodeDeployClient]  # type: ignore[misc,assignment]
-):
+class CodeDeployService(ServiceFactory[CodeDeployClient]):
     SERVICE_NAME = "codedeploy"
     _SERVICE_PROP = "codedeploy"

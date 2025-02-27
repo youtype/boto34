@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudsearchdomain.client import CloudSearchDomainClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudsearchdomain.client import CloudSearchDomainClient
-except ImportError:
-    CloudSearchDomainClient = object  # type: ignore[misc,assignment]
 
-
-class CloudSearchDomainService(
-    ServiceFactory[CloudSearchDomainClient]  # type: ignore[misc,assignment]
-):
+class CloudSearchDomainService(ServiceFactory[CloudSearchDomainClient]):
     SERVICE_NAME = "cloudsearchdomain"
     _SERVICE_PROP = "cloudsearchdomain"

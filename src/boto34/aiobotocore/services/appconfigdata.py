@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_appconfigdata.client import AppConfigDataClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_appconfigdata.client import AppConfigDataClient
-except ImportError:
-    AppConfigDataClient = object  # type: ignore[misc,assignment]
 
-
-class AppConfigDataService(
-    ServiceFactory[AppConfigDataClient]  # type: ignore[misc,assignment]
-):
+class AppConfigDataService(ServiceFactory[AppConfigDataClient]):
     SERVICE_NAME = "appconfigdata"
     _SERVICE_PROP = "appconfigdata"

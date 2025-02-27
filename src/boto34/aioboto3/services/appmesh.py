@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_appmesh.client import AppMeshClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_appmesh.client import AppMeshClient
-except ImportError:
-    AppMeshClient = object  # type: ignore[misc,assignment]
 
-
-class AppMeshService(
-    ServiceFactory[AppMeshClient]  # type: ignore[misc,assignment]
-):
+class AppMeshService(ServiceFactory[AppMeshClient]):
     SERVICE_NAME = "appmesh"
     _SERVICE_PROP = "appmesh"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_compute_optimizer.client import ComputeOptimizerClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_compute_optimizer.client import ComputeOptimizerClient
-except ImportError:
-    ComputeOptimizerClient = object  # type: ignore[misc,assignment]
 
-
-class ComputeOptimizerService(
-    ServiceFactory[ComputeOptimizerClient]  # type: ignore[misc,assignment]
-):
+class ComputeOptimizerService(ServiceFactory[ComputeOptimizerClient]):
     SERVICE_NAME = "compute-optimizer"
     _SERVICE_PROP = "compute_optimizer"

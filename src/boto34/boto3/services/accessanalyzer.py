@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_accessanalyzer.client import AccessAnalyzerClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_accessanalyzer.client import AccessAnalyzerClient
-except ImportError:
-    AccessAnalyzerClient = object  # type: ignore[misc,assignment]
 
-
-class AccessAnalyzerService(
-    ServiceFactory[AccessAnalyzerClient]  # type: ignore[misc,assignment]
-):
+class AccessAnalyzerService(ServiceFactory[AccessAnalyzerClient]):
     SERVICE_NAME = "accessanalyzer"
     _SERVICE_PROP = "accessanalyzer"

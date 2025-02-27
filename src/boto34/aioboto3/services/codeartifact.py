@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_codeartifact.client import CodeArtifactClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_codeartifact.client import CodeArtifactClient
-except ImportError:
-    CodeArtifactClient = object  # type: ignore[misc,assignment]
 
-
-class CodeArtifactService(
-    ServiceFactory[CodeArtifactClient]  # type: ignore[misc,assignment]
-):
+class CodeArtifactService(ServiceFactory[CodeArtifactClient]):
     SERVICE_NAME = "codeartifact"
     _SERVICE_PROP = "codeartifact"

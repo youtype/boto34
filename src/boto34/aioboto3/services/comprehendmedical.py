@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_comprehendmedical.client import ComprehendMedicalClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_comprehendmedical.client import ComprehendMedicalClient
-except ImportError:
-    ComprehendMedicalClient = object  # type: ignore[misc,assignment]
 
-
-class ComprehendMedicalService(
-    ServiceFactory[ComprehendMedicalClient]  # type: ignore[misc,assignment]
-):
+class ComprehendMedicalService(ServiceFactory[ComprehendMedicalClient]):
     SERVICE_NAME = "comprehendmedical"
     _SERVICE_PROP = "comprehendmedical"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_osis.client import OpenSearchIngestionClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_osis.client import OpenSearchIngestionClient
-except ImportError:
-    OpenSearchIngestionClient = object  # type: ignore[misc,assignment]
 
-
-class OpenSearchIngestionService(
-    ServiceFactory[OpenSearchIngestionClient]  # type: ignore[misc,assignment]
-):
+class OpenSearchIngestionService(ServiceFactory[OpenSearchIngestionClient]):
     SERVICE_NAME = "osis"
     _SERVICE_PROP = "osis"

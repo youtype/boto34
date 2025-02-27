@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_bedrock_data_automation.client import DataAutomationforBedrockClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_bedrock_data_automation.client import DataAutomationforBedrockClient
-except ImportError:
-    DataAutomationforBedrockClient = object  # type: ignore[misc,assignment]
 
-
-class DataAutomationforBedrockService(
-    ServiceFactory[DataAutomationforBedrockClient]  # type: ignore[misc,assignment]
-):
+class DataAutomationforBedrockService(ServiceFactory[DataAutomationforBedrockClient]):
     SERVICE_NAME = "bedrock-data-automation"
     _SERVICE_PROP = "bedrock_data_automation"

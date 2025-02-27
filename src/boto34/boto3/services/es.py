@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_es.client import ElasticsearchServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_es.client import ElasticsearchServiceClient
-except ImportError:
-    ElasticsearchServiceClient = object  # type: ignore[misc,assignment]
 
-
-class ElasticsearchServiceService(
-    ServiceFactory[ElasticsearchServiceClient]  # type: ignore[misc,assignment]
-):
+class ElasticsearchServiceService(ServiceFactory[ElasticsearchServiceClient]):
     SERVICE_NAME = "es"
     _SERVICE_PROP = "es"

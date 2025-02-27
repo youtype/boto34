@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_managedblockchain_query.client import ManagedBlockchainQueryClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_managedblockchain_query.client import ManagedBlockchainQueryClient
-except ImportError:
-    ManagedBlockchainQueryClient = object  # type: ignore[misc,assignment]
 
-
-class ManagedBlockchainQueryService(
-    ServiceFactory[ManagedBlockchainQueryClient]  # type: ignore[misc,assignment]
-):
+class ManagedBlockchainQueryService(ServiceFactory[ManagedBlockchainQueryClient]):
     SERVICE_NAME = "managedblockchain-query"
     _SERVICE_PROP = "managedblockchain_query"

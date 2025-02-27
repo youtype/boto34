@@ -153,7 +153,6 @@ from boto34.aioboto3.services.ecs import ECSService
 from boto34.aioboto3.services.efs import EFSService
 from boto34.aioboto3.services.eks import EKSService
 from boto34.aioboto3.services.eks_auth import EKSAuthService
-from boto34.aioboto3.services.elastic_inference import ElasticInferenceService
 from boto34.aioboto3.services.elasticache import ElastiCacheService
 from boto34.aioboto3.services.elasticbeanstalk import ElasticBeanstalkService
 from boto34.aioboto3.services.elastictranscoder import ElasticTranscoderService
@@ -964,10 +963,6 @@ class Session(_Session):
     @property
     def eks_auth(self) -> EKSAuthService:
         return EKSAuthService(self)
-
-    @property
-    def elastic_inference(self) -> ElasticInferenceService:
-        return ElasticInferenceService(self)
 
     @property
     def elasticache(self) -> ElastiCacheService:

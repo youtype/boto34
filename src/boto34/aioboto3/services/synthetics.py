@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_synthetics.client import SyntheticsClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_synthetics.client import SyntheticsClient
-except ImportError:
-    SyntheticsClient = object  # type: ignore[misc,assignment]
 
-
-class SyntheticsService(
-    ServiceFactory[SyntheticsClient]  # type: ignore[misc,assignment]
-):
+class SyntheticsService(ServiceFactory[SyntheticsClient]):
     SERVICE_NAME = "synthetics"
     _SERVICE_PROP = "synthetics"

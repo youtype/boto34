@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_textract.client import TextractClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_textract.client import TextractClient
-except ImportError:
-    TextractClient = object  # type: ignore[misc,assignment]
 
-
-class TextractService(
-    ServiceFactory[TextractClient]  # type: ignore[misc,assignment]
-):
+class TextractService(ServiceFactory[TextractClient]):
     SERVICE_NAME = "textract"
     _SERVICE_PROP = "textract"

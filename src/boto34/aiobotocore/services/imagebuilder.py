@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_imagebuilder.client import ImagebuilderClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_imagebuilder.client import ImagebuilderClient
-except ImportError:
-    ImagebuilderClient = object  # type: ignore[misc,assignment]
 
-
-class ImagebuilderService(
-    ServiceFactory[ImagebuilderClient]  # type: ignore[misc,assignment]
-):
+class ImagebuilderService(ServiceFactory[ImagebuilderClient]):
     SERVICE_NAME = "imagebuilder"
     _SERVICE_PROP = "imagebuilder"

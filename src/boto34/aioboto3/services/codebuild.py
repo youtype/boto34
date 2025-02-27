@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_codebuild.client import CodeBuildClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_codebuild.client import CodeBuildClient
-except ImportError:
-    CodeBuildClient = object  # type: ignore[misc,assignment]
 
-
-class CodeBuildService(
-    ServiceFactory[CodeBuildClient]  # type: ignore[misc,assignment]
-):
+class CodeBuildService(ServiceFactory[CodeBuildClient]):
     SERVICE_NAME = "codebuild"
     _SERVICE_PROP = "codebuild"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_evidently.client import CloudWatchEvidentlyClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_evidently.client import CloudWatchEvidentlyClient
-except ImportError:
-    CloudWatchEvidentlyClient = object  # type: ignore[misc,assignment]
 
-
-class CloudWatchEvidentlyService(
-    ServiceFactory[CloudWatchEvidentlyClient]  # type: ignore[misc,assignment]
-):
+class CloudWatchEvidentlyService(ServiceFactory[CloudWatchEvidentlyClient]):
     SERVICE_NAME = "evidently"
     _SERVICE_PROP = "evidently"

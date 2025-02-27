@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cognito_sync.client import CognitoSyncClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cognito_sync.client import CognitoSyncClient
-except ImportError:
-    CognitoSyncClient = object  # type: ignore[misc,assignment]
 
-
-class CognitoSyncService(
-    ServiceFactory[CognitoSyncClient]  # type: ignore[misc,assignment]
-):
+class CognitoSyncService(ServiceFactory[CognitoSyncClient]):
     SERVICE_NAME = "cognito-sync"
     _SERVICE_PROP = "cognito_sync"

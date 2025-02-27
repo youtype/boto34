@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_geo_places.client import LocationServicePlacesV2Client
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_geo_places.client import LocationServicePlacesV2Client
-except ImportError:
-    LocationServicePlacesV2Client = object  # type: ignore[misc,assignment]
 
-
-class LocationServicePlacesV2Service(
-    ServiceFactory[LocationServicePlacesV2Client]  # type: ignore[misc,assignment]
-):
+class LocationServicePlacesV2Service(ServiceFactory[LocationServicePlacesV2Client]):
     SERVICE_NAME = "geo-places"
     _SERVICE_PROP = "geo_places"

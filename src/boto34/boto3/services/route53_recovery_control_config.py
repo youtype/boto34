@@ -27,18 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_route53_recovery_control_config.client import Route53RecoveryControlConfigClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_route53_recovery_control_config.client import (
-        Route53RecoveryControlConfigClient,
-    )
-except ImportError:
-    Route53RecoveryControlConfigClient = object  # type: ignore[misc,assignment]
 
-
-class Route53RecoveryControlConfigService(
-    ServiceFactory[Route53RecoveryControlConfigClient]  # type: ignore[misc,assignment]
-):
+class Route53RecoveryControlConfigService(ServiceFactory[Route53RecoveryControlConfigClient]):
     SERVICE_NAME = "route53-recovery-control-config"
     _SERVICE_PROP = "route53_recovery_control_config"

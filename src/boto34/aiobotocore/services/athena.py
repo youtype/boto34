@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_athena.client import AthenaClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_athena.client import AthenaClient
-except ImportError:
-    AthenaClient = object  # type: ignore[misc,assignment]
 
-
-class AthenaService(
-    ServiceFactory[AthenaClient]  # type: ignore[misc,assignment]
-):
+class AthenaService(ServiceFactory[AthenaClient]):
     SERVICE_NAME = "athena"
     _SERVICE_PROP = "athena"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_m2.client import MainframeModernizationClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_m2.client import MainframeModernizationClient
-except ImportError:
-    MainframeModernizationClient = object  # type: ignore[misc,assignment]
 
-
-class MainframeModernizationService(
-    ServiceFactory[MainframeModernizationClient]  # type: ignore[misc,assignment]
-):
+class MainframeModernizationService(ServiceFactory[MainframeModernizationClient]):
     SERVICE_NAME = "m2"
     _SERVICE_PROP = "m2"

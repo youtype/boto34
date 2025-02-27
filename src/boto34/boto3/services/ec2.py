@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_ec2.client import EC2Client
+from types_boto3_ec2.service_resource import EC2ServiceResource
+
 from boto34.boto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_boto3_ec2.client import EC2Client
-    from types_boto3_ec2.service_resource import EC2ServiceResource
-except ImportError:
-    EC2Client = object  # type: ignore[misc,assignment]
-    EC2ServiceResource = object  # type: ignore[misc,assignment]
 
-
-class EC2Service(
-    ServiceResourceFactory[EC2Client, EC2ServiceResource]  # type: ignore[misc,assignment]
-):
+class EC2Service(ServiceResourceFactory[EC2Client, EC2ServiceResource]):
     SERVICE_NAME = "ec2"
     _SERVICE_PROP = "ec2"

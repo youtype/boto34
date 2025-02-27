@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_s3tables.client import S3TablesClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_s3tables.client import S3TablesClient
-except ImportError:
-    S3TablesClient = object  # type: ignore[misc,assignment]
 
-
-class S3TablesService(
-    ServiceFactory[S3TablesClient]  # type: ignore[misc,assignment]
-):
+class S3TablesService(ServiceFactory[S3TablesClient]):
     SERVICE_NAME = "s3tables"
     _SERVICE_PROP = "s3tables"

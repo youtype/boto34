@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_glacier.client import GlacierClient
+from types_boto3_glacier.service_resource import GlacierServiceResource
+
 from boto34.boto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_boto3_glacier.client import GlacierClient
-    from types_boto3_glacier.service_resource import GlacierServiceResource
-except ImportError:
-    GlacierClient = object  # type: ignore[misc,assignment]
-    GlacierServiceResource = object  # type: ignore[misc,assignment]
 
-
-class GlacierService(
-    ServiceResourceFactory[GlacierClient, GlacierServiceResource]  # type: ignore[misc,assignment]
-):
+class GlacierService(ServiceResourceFactory[GlacierClient, GlacierServiceResource]):
     SERVICE_NAME = "glacier"
     _SERVICE_PROP = "glacier"

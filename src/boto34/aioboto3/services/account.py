@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_account.client import AccountClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_account.client import AccountClient
-except ImportError:
-    AccountClient = object  # type: ignore[misc,assignment]
 
-
-class AccountService(
-    ServiceFactory[AccountClient]  # type: ignore[misc,assignment]
-):
+class AccountService(ServiceFactory[AccountClient]):
     SERVICE_NAME = "account"
     _SERVICE_PROP = "account"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_waf.client import WAFClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_waf.client import WAFClient
-except ImportError:
-    WAFClient = object  # type: ignore[misc,assignment]
 
-
-class WAFService(
-    ServiceFactory[WAFClient]  # type: ignore[misc,assignment]
-):
+class WAFService(ServiceFactory[WAFClient]):
     SERVICE_NAME = "waf"
     _SERVICE_PROP = "waf"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_ecr_public.client import ECRPublicClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_ecr_public.client import ECRPublicClient
-except ImportError:
-    ECRPublicClient = object  # type: ignore[misc,assignment]
 
-
-class ECRPublicService(
-    ServiceFactory[ECRPublicClient]  # type: ignore[misc,assignment]
-):
+class ECRPublicService(ServiceFactory[ECRPublicClient]):
     SERVICE_NAME = "ecr-public"
     _SERVICE_PROP = "ecr_public"

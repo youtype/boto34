@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_mgn.client import MgnClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_mgn.client import MgnClient
-except ImportError:
-    MgnClient = object  # type: ignore[misc,assignment]
 
-
-class MgnService(
-    ServiceFactory[MgnClient]  # type: ignore[misc,assignment]
-):
+class MgnService(ServiceFactory[MgnClient]):
     SERVICE_NAME = "mgn"
     _SERVICE_PROP = "mgn"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_qbusiness.client import QBusinessClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_qbusiness.client import QBusinessClient
-except ImportError:
-    QBusinessClient = object  # type: ignore[misc,assignment]
 
-
-class QBusinessService(
-    ServiceFactory[QBusinessClient]  # type: ignore[misc,assignment]
-):
+class QBusinessService(ServiceFactory[QBusinessClient]):
     SERVICE_NAME = "qbusiness"
     _SERVICE_PROP = "qbusiness"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_quicksight.client import QuickSightClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_quicksight.client import QuickSightClient
-except ImportError:
-    QuickSightClient = object  # type: ignore[misc,assignment]
 
-
-class QuickSightService(
-    ServiceFactory[QuickSightClient]  # type: ignore[misc,assignment]
-):
+class QuickSightService(ServiceFactory[QuickSightClient]):
     SERVICE_NAME = "quicksight"
     _SERVICE_PROP = "quicksight"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_neptune_graph.client import NeptuneGraphClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_neptune_graph.client import NeptuneGraphClient
-except ImportError:
-    NeptuneGraphClient = object  # type: ignore[misc,assignment]
 
-
-class NeptuneGraphService(
-    ServiceFactory[NeptuneGraphClient]  # type: ignore[misc,assignment]
-):
+class NeptuneGraphService(ServiceFactory[NeptuneGraphClient]):
     SERVICE_NAME = "neptune-graph"
     _SERVICE_PROP = "neptune_graph"

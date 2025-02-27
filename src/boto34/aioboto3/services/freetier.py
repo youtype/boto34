@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_freetier.client import FreeTierClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_freetier.client import FreeTierClient
-except ImportError:
-    FreeTierClient = object  # type: ignore[misc,assignment]
 
-
-class FreeTierService(
-    ServiceFactory[FreeTierClient]  # type: ignore[misc,assignment]
-):
+class FreeTierService(ServiceFactory[FreeTierClient]):
     SERVICE_NAME = "freetier"
     _SERVICE_PROP = "freetier"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_socialmessaging.client import EndUserMessagingSocialClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_socialmessaging.client import EndUserMessagingSocialClient
-except ImportError:
-    EndUserMessagingSocialClient = object  # type: ignore[misc,assignment]
 
-
-class EndUserMessagingSocialService(
-    ServiceFactory[EndUserMessagingSocialClient]  # type: ignore[misc,assignment]
-):
+class EndUserMessagingSocialService(ServiceFactory[EndUserMessagingSocialClient]):
     SERVICE_NAME = "socialmessaging"
     _SERVICE_PROP = "socialmessaging"

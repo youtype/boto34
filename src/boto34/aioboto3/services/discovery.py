@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_discovery.client import ApplicationDiscoveryServiceClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_discovery.client import ApplicationDiscoveryServiceClient
-except ImportError:
-    ApplicationDiscoveryServiceClient = object  # type: ignore[misc,assignment]
 
-
-class ApplicationDiscoveryServiceService(
-    ServiceFactory[ApplicationDiscoveryServiceClient]  # type: ignore[misc,assignment]
-):
+class ApplicationDiscoveryServiceService(ServiceFactory[ApplicationDiscoveryServiceClient]):
     SERVICE_NAME = "discovery"
     _SERVICE_PROP = "discovery"

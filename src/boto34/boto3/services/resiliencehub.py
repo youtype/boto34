@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_resiliencehub.client import ResilienceHubClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_resiliencehub.client import ResilienceHubClient
-except ImportError:
-    ResilienceHubClient = object  # type: ignore[misc,assignment]
 
-
-class ResilienceHubService(
-    ServiceFactory[ResilienceHubClient]  # type: ignore[misc,assignment]
-):
+class ResilienceHubService(ServiceFactory[ResilienceHubClient]):
     SERVICE_NAME = "resiliencehub"
     _SERVICE_PROP = "resiliencehub"

@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iam.client import IAMClient
+from types_aiobotocore_iam.service_resource import IAMServiceResource
+
 from boto34.aioboto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_aiobotocore_iam.client import IAMClient
-    from types_aiobotocore_iam.service_resource import IAMServiceResource
-except ImportError:
-    IAMClient = object  # type: ignore[misc,assignment]
-    IAMServiceResource = object  # type: ignore[misc,assignment]
 
-
-class IAMService(
-    ServiceResourceFactory[IAMClient, IAMServiceResource]  # type: ignore[misc,assignment]
-):
+class IAMService(ServiceResourceFactory[IAMClient, IAMServiceResource]):
     SERVICE_NAME = "iam"
     _SERVICE_PROP = "iam"

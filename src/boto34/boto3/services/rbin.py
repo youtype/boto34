@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_rbin.client import RecycleBinClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_rbin.client import RecycleBinClient
-except ImportError:
-    RecycleBinClient = object  # type: ignore[misc,assignment]
 
-
-class RecycleBinService(
-    ServiceFactory[RecycleBinClient]  # type: ignore[misc,assignment]
-):
+class RecycleBinService(ServiceFactory[RecycleBinClient]):
     SERVICE_NAME = "rbin"
     _SERVICE_PROP = "rbin"

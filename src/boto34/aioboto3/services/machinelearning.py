@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_machinelearning.client import MachineLearningClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_machinelearning.client import MachineLearningClient
-except ImportError:
-    MachineLearningClient = object  # type: ignore[misc,assignment]
 
-
-class MachineLearningService(
-    ServiceFactory[MachineLearningClient]  # type: ignore[misc,assignment]
-):
+class MachineLearningService(ServiceFactory[MachineLearningClient]):
     SERVICE_NAME = "machinelearning"
     _SERVICE_PROP = "machinelearning"

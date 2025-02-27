@@ -25,16 +25,13 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.boto3.service_factory import ServiceFactory
+from types_boto3_oam.client import CloudWatchObservabilityAccessManagerClient
 
-try:
-    from types_boto3_oam.client import CloudWatchObservabilityAccessManagerClient
-except ImportError:
-    CloudWatchObservabilityAccessManagerClient = object  # type: ignore[misc,assignment]
+from boto34.boto3.service_factory import ServiceFactory
 
 
 class CloudWatchObservabilityAccessManagerService(
-    ServiceFactory[CloudWatchObservabilityAccessManagerClient]  # type: ignore[misc,assignment]
+    ServiceFactory[CloudWatchObservabilityAccessManagerClient]
 ):
     SERVICE_NAME = "oam"
     _SERVICE_PROP = "oam"

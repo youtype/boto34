@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_ses.client import SESClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_ses.client import SESClient
-except ImportError:
-    SESClient = object  # type: ignore[misc,assignment]
 
-
-class SESService(
-    ServiceFactory[SESClient]  # type: ignore[misc,assignment]
-):
+class SESService(ServiceFactory[SESClient]):
     SERVICE_NAME = "ses"
     _SERVICE_PROP = "ses"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_omics.client import OmicsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_omics.client import OmicsClient
-except ImportError:
-    OmicsClient = object  # type: ignore[misc,assignment]
 
-
-class OmicsService(
-    ServiceFactory[OmicsClient]  # type: ignore[misc,assignment]
-):
+class OmicsService(ServiceFactory[OmicsClient]):
     SERVICE_NAME = "omics"
     _SERVICE_PROP = "omics"

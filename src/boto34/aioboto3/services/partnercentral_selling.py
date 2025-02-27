@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_partnercentral_selling.client import PartnerCentralSellingAPIClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_partnercentral_selling.client import PartnerCentralSellingAPIClient
-except ImportError:
-    PartnerCentralSellingAPIClient = object  # type: ignore[misc,assignment]
 
-
-class PartnerCentralSellingAPIService(
-    ServiceFactory[PartnerCentralSellingAPIClient]  # type: ignore[misc,assignment]
-):
+class PartnerCentralSellingAPIService(ServiceFactory[PartnerCentralSellingAPIClient]):
     SERVICE_NAME = "partnercentral-selling"
     _SERVICE_PROP = "partnercentral_selling"

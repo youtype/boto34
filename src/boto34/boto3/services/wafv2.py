@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_wafv2.client import WAFV2Client
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_wafv2.client import WAFV2Client
-except ImportError:
-    WAFV2Client = object  # type: ignore[misc,assignment]
 
-
-class WAFV2Service(
-    ServiceFactory[WAFV2Client]  # type: ignore[misc,assignment]
-):
+class WAFV2Service(ServiceFactory[WAFV2Client]):
     SERVICE_NAME = "wafv2"
     _SERVICE_PROP = "wafv2"

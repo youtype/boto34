@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_rds_data.client import RDSDataServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_rds_data.client import RDSDataServiceClient
-except ImportError:
-    RDSDataServiceClient = object  # type: ignore[misc,assignment]
 
-
-class RDSDataServiceService(
-    ServiceFactory[RDSDataServiceClient]  # type: ignore[misc,assignment]
-):
+class RDSDataServiceService(ServiceFactory[RDSDataServiceClient]):
     SERVICE_NAME = "rds-data"
     _SERVICE_PROP = "rds_data"

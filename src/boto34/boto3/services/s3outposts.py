@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_s3outposts.client import S3OutpostsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_s3outposts.client import S3OutpostsClient
-except ImportError:
-    S3OutpostsClient = object  # type: ignore[misc,assignment]
 
-
-class S3OutpostsService(
-    ServiceFactory[S3OutpostsClient]  # type: ignore[misc,assignment]
-):
+class S3OutpostsService(ServiceFactory[S3OutpostsClient]):
     SERVICE_NAME = "s3outposts"
     _SERVICE_PROP = "s3outposts"

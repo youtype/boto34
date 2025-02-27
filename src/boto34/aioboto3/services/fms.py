@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_fms.client import FMSClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_fms.client import FMSClient
-except ImportError:
-    FMSClient = object  # type: ignore[misc,assignment]
 
-
-class FMSService(
-    ServiceFactory[FMSClient]  # type: ignore[misc,assignment]
-):
+class FMSService(ServiceFactory[FMSClient]):
     SERVICE_NAME = "fms"
     _SERVICE_PROP = "fms"

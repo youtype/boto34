@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_marketplace_catalog.client import MarketplaceCatalogClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_marketplace_catalog.client import MarketplaceCatalogClient
-except ImportError:
-    MarketplaceCatalogClient = object  # type: ignore[misc,assignment]
 
-
-class MarketplaceCatalogService(
-    ServiceFactory[MarketplaceCatalogClient]  # type: ignore[misc,assignment]
-):
+class MarketplaceCatalogService(ServiceFactory[MarketplaceCatalogClient]):
     SERVICE_NAME = "marketplace-catalog"
     _SERVICE_PROP = "marketplace_catalog"

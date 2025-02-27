@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_route53domains.client import Route53DomainsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_route53domains.client import Route53DomainsClient
-except ImportError:
-    Route53DomainsClient = object  # type: ignore[misc,assignment]
 
-
-class Route53DomainsService(
-    ServiceFactory[Route53DomainsClient]  # type: ignore[misc,assignment]
-):
+class Route53DomainsService(ServiceFactory[Route53DomainsClient]):
     SERVICE_NAME = "route53domains"
     _SERVICE_PROP = "route53domains"

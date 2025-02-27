@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_rds.client import RDSClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_rds.client import RDSClient
-except ImportError:
-    RDSClient = object  # type: ignore[misc,assignment]
 
-
-class RDSService(
-    ServiceFactory[RDSClient]  # type: ignore[misc,assignment]
-):
+class RDSService(ServiceFactory[RDSClient]):
     SERVICE_NAME = "rds"
     _SERVICE_PROP = "rds"

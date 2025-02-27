@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_verifiedpermissions.client import VerifiedPermissionsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_verifiedpermissions.client import VerifiedPermissionsClient
-except ImportError:
-    VerifiedPermissionsClient = object  # type: ignore[misc,assignment]
 
-
-class VerifiedPermissionsService(
-    ServiceFactory[VerifiedPermissionsClient]  # type: ignore[misc,assignment]
-):
+class VerifiedPermissionsService(ServiceFactory[VerifiedPermissionsClient]):
     SERVICE_NAME = "verifiedpermissions"
     _SERVICE_PROP = "verifiedpermissions"

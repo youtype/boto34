@@ -27,18 +27,15 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.aiobotocore.service_factory import ServiceFactory
+from types_aiobotocore_license_manager_linux_subscriptions.client import (
+    LicenseManagerLinuxSubscriptionsClient,
+)
 
-try:
-    from types_aiobotocore_license_manager_linux_subscriptions.client import (
-        LicenseManagerLinuxSubscriptionsClient,
-    )
-except ImportError:
-    LicenseManagerLinuxSubscriptionsClient = object  # type: ignore[misc,assignment]
+from boto34.aiobotocore.service_factory import ServiceFactory
 
 
 class LicenseManagerLinuxSubscriptionsService(
-    ServiceFactory[LicenseManagerLinuxSubscriptionsClient]  # type: ignore[misc,assignment]
+    ServiceFactory[LicenseManagerLinuxSubscriptionsClient]
 ):
     SERVICE_NAME = "license-manager-linux-subscriptions"
     _SERVICE_PROP = "license_manager_linux_subscriptions"

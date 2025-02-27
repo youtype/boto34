@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_panorama.client import PanoramaClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_panorama.client import PanoramaClient
-except ImportError:
-    PanoramaClient = object  # type: ignore[misc,assignment]
 
-
-class PanoramaService(
-    ServiceFactory[PanoramaClient]  # type: ignore[misc,assignment]
-):
+class PanoramaService(ServiceFactory[PanoramaClient]):
     SERVICE_NAME = "panorama"
     _SERVICE_PROP = "panorama"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_dax.client import DAXClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_dax.client import DAXClient
-except ImportError:
-    DAXClient = object  # type: ignore[misc,assignment]
 
-
-class DAXService(
-    ServiceFactory[DAXClient]  # type: ignore[misc,assignment]
-):
+class DAXService(ServiceFactory[DAXClient]):
     SERVICE_NAME = "dax"
     _SERVICE_PROP = "dax"

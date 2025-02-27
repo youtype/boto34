@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_mwaa.client import MWAAClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_mwaa.client import MWAAClient
-except ImportError:
-    MWAAClient = object  # type: ignore[misc,assignment]
 
-
-class MWAAService(
-    ServiceFactory[MWAAClient]  # type: ignore[misc,assignment]
-):
+class MWAAService(ServiceFactory[MWAAClient]):
     SERVICE_NAME = "mwaa"
     _SERVICE_PROP = "mwaa"

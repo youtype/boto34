@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_resourcegroupstaggingapi.client import ResourceGroupsTaggingAPIClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_resourcegroupstaggingapi.client import ResourceGroupsTaggingAPIClient
-except ImportError:
-    ResourceGroupsTaggingAPIClient = object  # type: ignore[misc,assignment]
 
-
-class ResourceGroupsTaggingAPIService(
-    ServiceFactory[ResourceGroupsTaggingAPIClient]  # type: ignore[misc,assignment]
-):
+class ResourceGroupsTaggingAPIService(ServiceFactory[ResourceGroupsTaggingAPIClient]):
     SERVICE_NAME = "resourcegroupstaggingapi"
     _SERVICE_PROP = "resourcegroupstaggingapi"

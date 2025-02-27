@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudfront_keyvaluestore.client import CloudFrontKeyValueStoreClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudfront_keyvaluestore.client import CloudFrontKeyValueStoreClient
-except ImportError:
-    CloudFrontKeyValueStoreClient = object  # type: ignore[misc,assignment]
 
-
-class CloudFrontKeyValueStoreService(
-    ServiceFactory[CloudFrontKeyValueStoreClient]  # type: ignore[misc,assignment]
-):
+class CloudFrontKeyValueStoreService(ServiceFactory[CloudFrontKeyValueStoreClient]):
     SERVICE_NAME = "cloudfront-keyvaluestore"
     _SERVICE_PROP = "cloudfront_keyvaluestore"

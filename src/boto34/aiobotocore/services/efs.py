@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_efs.client import EFSClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_efs.client import EFSClient
-except ImportError:
-    EFSClient = object  # type: ignore[misc,assignment]
 
-
-class EFSService(
-    ServiceFactory[EFSClient]  # type: ignore[misc,assignment]
-):
+class EFSService(ServiceFactory[EFSClient]):
     SERVICE_NAME = "efs"
     _SERVICE_PROP = "efs"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_memorydb.client import MemoryDBClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_memorydb.client import MemoryDBClient
-except ImportError:
-    MemoryDBClient = object  # type: ignore[misc,assignment]
 
-
-class MemoryDBService(
-    ServiceFactory[MemoryDBClient]  # type: ignore[misc,assignment]
-):
+class MemoryDBService(ServiceFactory[MemoryDBClient]):
     SERVICE_NAME = "memorydb"
     _SERVICE_PROP = "memorydb"

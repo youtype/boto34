@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_storagegateway.client import StorageGatewayClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_storagegateway.client import StorageGatewayClient
-except ImportError:
-    StorageGatewayClient = object  # type: ignore[misc,assignment]
 
-
-class StorageGatewayService(
-    ServiceFactory[StorageGatewayClient]  # type: ignore[misc,assignment]
-):
+class StorageGatewayService(ServiceFactory[StorageGatewayClient]):
     SERVICE_NAME = "storagegateway"
     _SERVICE_PROP = "storagegateway"

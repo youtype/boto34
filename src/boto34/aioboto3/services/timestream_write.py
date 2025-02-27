@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_timestream_write.client import TimestreamWriteClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_timestream_write.client import TimestreamWriteClient
-except ImportError:
-    TimestreamWriteClient = object  # type: ignore[misc,assignment]
 
-
-class TimestreamWriteService(
-    ServiceFactory[TimestreamWriteClient]  # type: ignore[misc,assignment]
-):
+class TimestreamWriteService(ServiceFactory[TimestreamWriteClient]):
     SERVICE_NAME = "timestream-write"
     _SERVICE_PROP = "timestream_write"

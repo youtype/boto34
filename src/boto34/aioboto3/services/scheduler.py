@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_scheduler.client import EventBridgeSchedulerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_scheduler.client import EventBridgeSchedulerClient
-except ImportError:
-    EventBridgeSchedulerClient = object  # type: ignore[misc,assignment]
 
-
-class EventBridgeSchedulerService(
-    ServiceFactory[EventBridgeSchedulerClient]  # type: ignore[misc,assignment]
-):
+class EventBridgeSchedulerService(ServiceFactory[EventBridgeSchedulerClient]):
     SERVICE_NAME = "scheduler"
     _SERVICE_PROP = "scheduler"

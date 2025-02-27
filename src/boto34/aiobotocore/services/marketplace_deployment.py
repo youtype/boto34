@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_marketplace_deployment.client import MarketplaceDeploymentServiceClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_marketplace_deployment.client import MarketplaceDeploymentServiceClient
-except ImportError:
-    MarketplaceDeploymentServiceClient = object  # type: ignore[misc,assignment]
 
-
-class MarketplaceDeploymentServiceService(
-    ServiceFactory[MarketplaceDeploymentServiceClient]  # type: ignore[misc,assignment]
-):
+class MarketplaceDeploymentServiceService(ServiceFactory[MarketplaceDeploymentServiceClient]):
     SERVICE_NAME = "marketplace-deployment"
     _SERVICE_PROP = "marketplace_deployment"

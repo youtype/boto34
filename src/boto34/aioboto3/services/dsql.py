@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_dsql.client import AuroraDSQLClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_dsql.client import AuroraDSQLClient
-except ImportError:
-    AuroraDSQLClient = object  # type: ignore[misc,assignment]
 
-
-class AuroraDSQLService(
-    ServiceFactory[AuroraDSQLClient]  # type: ignore[misc,assignment]
-):
+class AuroraDSQLService(ServiceFactory[AuroraDSQLClient]):
     SERVICE_NAME = "dsql"
     _SERVICE_PROP = "dsql"

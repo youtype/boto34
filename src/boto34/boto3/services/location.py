@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_location.client import LocationServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_location.client import LocationServiceClient
-except ImportError:
-    LocationServiceClient = object  # type: ignore[misc,assignment]
 
-
-class LocationServiceService(
-    ServiceFactory[LocationServiceClient]  # type: ignore[misc,assignment]
-):
+class LocationServiceService(ServiceFactory[LocationServiceClient]):
     SERVICE_NAME = "location"
     _SERVICE_PROP = "location"

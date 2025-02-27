@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_groundstation.client import GroundStationClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_groundstation.client import GroundStationClient
-except ImportError:
-    GroundStationClient = object  # type: ignore[misc,assignment]
 
-
-class GroundStationService(
-    ServiceFactory[GroundStationClient]  # type: ignore[misc,assignment]
-):
+class GroundStationService(ServiceFactory[GroundStationClient]):
     SERVICE_NAME = "groundstation"
     _SERVICE_PROP = "groundstation"

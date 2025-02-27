@@ -27,18 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_kinesis_video_archived_media.client import KinesisVideoArchivedMediaClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_kinesis_video_archived_media.client import (
-        KinesisVideoArchivedMediaClient,
-    )
-except ImportError:
-    KinesisVideoArchivedMediaClient = object  # type: ignore[misc,assignment]
 
-
-class KinesisVideoArchivedMediaService(
-    ServiceFactory[KinesisVideoArchivedMediaClient]  # type: ignore[misc,assignment]
-):
+class KinesisVideoArchivedMediaService(ServiceFactory[KinesisVideoArchivedMediaClient]):
     SERVICE_NAME = "kinesis-video-archived-media"
     _SERVICE_PROP = "kinesis_video_archived_media"

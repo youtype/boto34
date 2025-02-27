@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_notifications.client import UserNotificationsClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_notifications.client import UserNotificationsClient
-except ImportError:
-    UserNotificationsClient = object  # type: ignore[misc,assignment]
 
-
-class UserNotificationsService(
-    ServiceFactory[UserNotificationsClient]  # type: ignore[misc,assignment]
-):
+class UserNotificationsService(ServiceFactory[UserNotificationsClient]):
     SERVICE_NAME = "notifications"
     _SERVICE_PROP = "notifications"

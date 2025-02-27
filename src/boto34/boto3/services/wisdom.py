@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_wisdom.client import ConnectWisdomServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_wisdom.client import ConnectWisdomServiceClient
-except ImportError:
-    ConnectWisdomServiceClient = object  # type: ignore[misc,assignment]
 
-
-class ConnectWisdomServiceService(
-    ServiceFactory[ConnectWisdomServiceClient]  # type: ignore[misc,assignment]
-):
+class ConnectWisdomServiceService(ServiceFactory[ConnectWisdomServiceClient]):
     SERVICE_NAME = "wisdom"
     _SERVICE_PROP = "wisdom"

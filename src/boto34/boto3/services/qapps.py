@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_qapps.client import QAppsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_qapps.client import QAppsClient
-except ImportError:
-    QAppsClient = object  # type: ignore[misc,assignment]
 
-
-class QAppsService(
-    ServiceFactory[QAppsClient]  # type: ignore[misc,assignment]
-):
+class QAppsService(ServiceFactory[QAppsClient]):
     SERVICE_NAME = "qapps"
     _SERVICE_PROP = "qapps"

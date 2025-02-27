@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ec2.client import EC2Client
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ec2.client import EC2Client
-except ImportError:
-    EC2Client = object  # type: ignore[misc,assignment]
 
-
-class EC2Service(
-    ServiceFactory[EC2Client]  # type: ignore[misc,assignment]
-):
+class EC2Service(ServiceFactory[EC2Client]):
     SERVICE_NAME = "ec2"
     _SERVICE_PROP = "ec2"

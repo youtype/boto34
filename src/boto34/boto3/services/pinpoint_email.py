@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_pinpoint_email.client import PinpointEmailClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_pinpoint_email.client import PinpointEmailClient
-except ImportError:
-    PinpointEmailClient = object  # type: ignore[misc,assignment]
 
-
-class PinpointEmailService(
-    ServiceFactory[PinpointEmailClient]  # type: ignore[misc,assignment]
-):
+class PinpointEmailService(ServiceFactory[PinpointEmailClient]):
     SERVICE_NAME = "pinpoint-email"
     _SERVICE_PROP = "pinpoint_email"

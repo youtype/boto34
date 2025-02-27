@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_elb.client import ElasticLoadBalancingClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_elb.client import ElasticLoadBalancingClient
-except ImportError:
-    ElasticLoadBalancingClient = object  # type: ignore[misc,assignment]
 
-
-class ElasticLoadBalancingService(
-    ServiceFactory[ElasticLoadBalancingClient]  # type: ignore[misc,assignment]
-):
+class ElasticLoadBalancingService(ServiceFactory[ElasticLoadBalancingClient]):
     SERVICE_NAME = "elb"
     _SERVICE_PROP = "elb"

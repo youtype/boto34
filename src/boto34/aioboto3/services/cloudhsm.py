@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudhsm.client import CloudHSMClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudhsm.client import CloudHSMClient
-except ImportError:
-    CloudHSMClient = object  # type: ignore[misc,assignment]
 
-
-class CloudHSMService(
-    ServiceFactory[CloudHSMClient]  # type: ignore[misc,assignment]
-):
+class CloudHSMService(ServiceFactory[CloudHSMClient]):
     SERVICE_NAME = "cloudhsm"
     _SERVICE_PROP = "cloudhsm"

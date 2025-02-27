@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_ecs.client import ECSClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_ecs.client import ECSClient
-except ImportError:
-    ECSClient = object  # type: ignore[misc,assignment]
 
-
-class ECSService(
-    ServiceFactory[ECSClient]  # type: ignore[misc,assignment]
-):
+class ECSService(ServiceFactory[ECSClient]):
     SERVICE_NAME = "ecs"
     _SERVICE_PROP = "ecs"

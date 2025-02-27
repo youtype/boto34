@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_s3.client import S3Client
+from types_boto3_s3.service_resource import S3ServiceResource
+
 from boto34.boto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_boto3_s3.client import S3Client
-    from types_boto3_s3.service_resource import S3ServiceResource
-except ImportError:
-    S3Client = object  # type: ignore[misc,assignment]
-    S3ServiceResource = object  # type: ignore[misc,assignment]
 
-
-class S3Service(
-    ServiceResourceFactory[S3Client, S3ServiceResource]  # type: ignore[misc,assignment]
-):
+class S3Service(ServiceResourceFactory[S3Client, S3ServiceResource]):
     SERVICE_NAME = "s3"
     _SERVICE_PROP = "s3"

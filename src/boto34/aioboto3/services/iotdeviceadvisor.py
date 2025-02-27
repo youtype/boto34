@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iotdeviceadvisor.client import IoTDeviceAdvisorClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_iotdeviceadvisor.client import IoTDeviceAdvisorClient
-except ImportError:
-    IoTDeviceAdvisorClient = object  # type: ignore[misc,assignment]
 
-
-class IoTDeviceAdvisorService(
-    ServiceFactory[IoTDeviceAdvisorClient]  # type: ignore[misc,assignment]
-):
+class IoTDeviceAdvisorService(ServiceFactory[IoTDeviceAdvisorClient]):
     SERVICE_NAME = "iotdeviceadvisor"
     _SERVICE_PROP = "iotdeviceadvisor"

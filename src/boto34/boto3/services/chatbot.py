@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_chatbot.client import ChatbotClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_chatbot.client import ChatbotClient
-except ImportError:
-    ChatbotClient = object  # type: ignore[misc,assignment]
 
-
-class ChatbotService(
-    ServiceFactory[ChatbotClient]  # type: ignore[misc,assignment]
-):
+class ChatbotService(ServiceFactory[ChatbotClient]):
     SERVICE_NAME = "chatbot"
     _SERVICE_PROP = "chatbot"

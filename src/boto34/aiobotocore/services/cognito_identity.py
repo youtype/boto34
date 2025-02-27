@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cognito_identity.client import CognitoIdentityClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cognito_identity.client import CognitoIdentityClient
-except ImportError:
-    CognitoIdentityClient = object  # type: ignore[misc,assignment]
 
-
-class CognitoIdentityService(
-    ServiceFactory[CognitoIdentityClient]  # type: ignore[misc,assignment]
-):
+class CognitoIdentityService(ServiceFactory[CognitoIdentityClient]):
     SERVICE_NAME = "cognito-identity"
     _SERVICE_PROP = "cognito_identity"

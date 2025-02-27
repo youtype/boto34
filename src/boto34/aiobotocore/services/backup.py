@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_backup.client import BackupClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_backup.client import BackupClient
-except ImportError:
-    BackupClient = object  # type: ignore[misc,assignment]
 
-
-class BackupService(
-    ServiceFactory[BackupClient]  # type: ignore[misc,assignment]
-):
+class BackupService(ServiceFactory[BackupClient]):
     SERVICE_NAME = "backup"
     _SERVICE_PROP = "backup"

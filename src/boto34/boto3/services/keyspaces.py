@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_keyspaces.client import KeyspacesClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_keyspaces.client import KeyspacesClient
-except ImportError:
-    KeyspacesClient = object  # type: ignore[misc,assignment]
 
-
-class KeyspacesService(
-    ServiceFactory[KeyspacesClient]  # type: ignore[misc,assignment]
-):
+class KeyspacesService(ServiceFactory[KeyspacesClient]):
     SERVICE_NAME = "keyspaces"
     _SERVICE_PROP = "keyspaces"

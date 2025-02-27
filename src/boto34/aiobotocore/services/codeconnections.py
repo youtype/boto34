@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_codeconnections.client import CodeConnectionsClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_codeconnections.client import CodeConnectionsClient
-except ImportError:
-    CodeConnectionsClient = object  # type: ignore[misc,assignment]
 
-
-class CodeConnectionsService(
-    ServiceFactory[CodeConnectionsClient]  # type: ignore[misc,assignment]
-):
+class CodeConnectionsService(ServiceFactory[CodeConnectionsClient]):
     SERVICE_NAME = "codeconnections"
     _SERVICE_PROP = "codeconnections"

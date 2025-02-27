@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudformation.client import CloudFormationClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudformation.client import CloudFormationClient
-except ImportError:
-    CloudFormationClient = object  # type: ignore[misc,assignment]
 
-
-class CloudFormationService(
-    ServiceFactory[CloudFormationClient]  # type: ignore[misc,assignment]
-):
+class CloudFormationService(ServiceFactory[CloudFormationClient]):
     SERVICE_NAME = "cloudformation"
     _SERVICE_PROP = "cloudformation"

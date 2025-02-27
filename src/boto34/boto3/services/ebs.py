@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_ebs.client import EBSClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_ebs.client import EBSClient
-except ImportError:
-    EBSClient = object  # type: ignore[misc,assignment]
 
-
-class EBSService(
-    ServiceFactory[EBSClient]  # type: ignore[misc,assignment]
-):
+class EBSService(ServiceFactory[EBSClient]):
     SERVICE_NAME = "ebs"
     _SERVICE_PROP = "ebs"

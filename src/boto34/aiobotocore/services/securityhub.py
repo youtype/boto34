@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_securityhub.client import SecurityHubClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_securityhub.client import SecurityHubClient
-except ImportError:
-    SecurityHubClient = object  # type: ignore[misc,assignment]
 
-
-class SecurityHubService(
-    ServiceFactory[SecurityHubClient]  # type: ignore[misc,assignment]
-):
+class SecurityHubService(ServiceFactory[SecurityHubClient]):
     SERVICE_NAME = "securityhub"
     _SERVICE_PROP = "securityhub"

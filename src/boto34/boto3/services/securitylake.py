@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_securitylake.client import SecurityLakeClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_securitylake.client import SecurityLakeClient
-except ImportError:
-    SecurityLakeClient = object  # type: ignore[misc,assignment]
 
-
-class SecurityLakeService(
-    ServiceFactory[SecurityLakeClient]  # type: ignore[misc,assignment]
-):
+class SecurityLakeService(ServiceFactory[SecurityLakeClient]):
     SERVICE_NAME = "securitylake"
     _SERVICE_PROP = "securitylake"

@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_serverlessrepo.client import ServerlessApplicationRepositoryClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_serverlessrepo.client import ServerlessApplicationRepositoryClient
-except ImportError:
-    ServerlessApplicationRepositoryClient = object  # type: ignore[misc,assignment]
 
-
-class ServerlessApplicationRepositoryService(
-    ServiceFactory[ServerlessApplicationRepositoryClient]  # type: ignore[misc,assignment]
-):
+class ServerlessApplicationRepositoryService(ServiceFactory[ServerlessApplicationRepositoryClient]):
     SERVICE_NAME = "serverlessrepo"
     _SERVICE_PROP = "serverlessrepo"

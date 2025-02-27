@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_arc_zonal_shift.client import ARCZonalShiftClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_arc_zonal_shift.client import ARCZonalShiftClient
-except ImportError:
-    ARCZonalShiftClient = object  # type: ignore[misc,assignment]
 
-
-class ARCZonalShiftService(
-    ServiceFactory[ARCZonalShiftClient]  # type: ignore[misc,assignment]
-):
+class ARCZonalShiftService(ServiceFactory[ARCZonalShiftClient]):
     SERVICE_NAME = "arc-zonal-shift"
     _SERVICE_PROP = "arc_zonal_shift"

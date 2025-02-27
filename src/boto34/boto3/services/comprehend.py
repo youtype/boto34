@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_comprehend.client import ComprehendClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_comprehend.client import ComprehendClient
-except ImportError:
-    ComprehendClient = object  # type: ignore[misc,assignment]
 
-
-class ComprehendService(
-    ServiceFactory[ComprehendClient]  # type: ignore[misc,assignment]
-):
+class ComprehendService(ServiceFactory[ComprehendClient]):
     SERVICE_NAME = "comprehend"
     _SERVICE_PROP = "comprehend"

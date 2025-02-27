@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sdb.client import SimpleDBClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sdb.client import SimpleDBClient
-except ImportError:
-    SimpleDBClient = object  # type: ignore[misc,assignment]
 
-
-class SimpleDBService(
-    ServiceFactory[SimpleDBClient]  # type: ignore[misc,assignment]
-):
+class SimpleDBService(ServiceFactory[SimpleDBClient]):
     SERVICE_NAME = "sdb"
     _SERVICE_PROP = "sdb"

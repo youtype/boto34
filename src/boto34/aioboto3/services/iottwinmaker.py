@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iottwinmaker.client import IoTTwinMakerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_iottwinmaker.client import IoTTwinMakerClient
-except ImportError:
-    IoTTwinMakerClient = object  # type: ignore[misc,assignment]
 
-
-class IoTTwinMakerService(
-    ServiceFactory[IoTTwinMakerClient]  # type: ignore[misc,assignment]
-):
+class IoTTwinMakerService(ServiceFactory[IoTTwinMakerClient]):
     SERVICE_NAME = "iottwinmaker"
     _SERVICE_PROP = "iottwinmaker"

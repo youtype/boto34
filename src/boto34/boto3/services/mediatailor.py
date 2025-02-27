@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_mediatailor.client import MediaTailorClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_mediatailor.client import MediaTailorClient
-except ImportError:
-    MediaTailorClient = object  # type: ignore[misc,assignment]
 
-
-class MediaTailorService(
-    ServiceFactory[MediaTailorClient]  # type: ignore[misc,assignment]
-):
+class MediaTailorService(ServiceFactory[MediaTailorClient]):
     SERVICE_NAME = "mediatailor"
     _SERVICE_PROP = "mediatailor"

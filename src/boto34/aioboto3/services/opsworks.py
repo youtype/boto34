@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_opsworks.client import OpsWorksClient
+from types_aiobotocore_opsworks.service_resource import OpsWorksServiceResource
+
 from boto34.aioboto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_aiobotocore_opsworks.client import OpsWorksClient
-    from types_aiobotocore_opsworks.service_resource import OpsWorksServiceResource
-except ImportError:
-    OpsWorksClient = object  # type: ignore[misc,assignment]
-    OpsWorksServiceResource = object  # type: ignore[misc,assignment]
 
-
-class OpsWorksService(
-    ServiceResourceFactory[OpsWorksClient, OpsWorksServiceResource]  # type: ignore[misc,assignment]
-):
+class OpsWorksService(ServiceResourceFactory[OpsWorksClient, OpsWorksServiceResource]):
     SERVICE_NAME = "opsworks"
     _SERVICE_PROP = "opsworks"

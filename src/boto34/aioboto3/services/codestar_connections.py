@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_codestar_connections.client import CodeStarconnectionsClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_codestar_connections.client import CodeStarconnectionsClient
-except ImportError:
-    CodeStarconnectionsClient = object  # type: ignore[misc,assignment]
 
-
-class CodeStarconnectionsService(
-    ServiceFactory[CodeStarconnectionsClient]  # type: ignore[misc,assignment]
-):
+class CodeStarconnectionsService(ServiceFactory[CodeStarconnectionsClient]):
     SERVICE_NAME = "codestar-connections"
     _SERVICE_PROP = "codestar_connections"

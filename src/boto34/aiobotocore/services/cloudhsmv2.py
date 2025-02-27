@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudhsmv2.client import CloudHSMV2Client
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudhsmv2.client import CloudHSMV2Client
-except ImportError:
-    CloudHSMV2Client = object  # type: ignore[misc,assignment]
 
-
-class CloudHSMV2Service(
-    ServiceFactory[CloudHSMV2Client]  # type: ignore[misc,assignment]
-):
+class CloudHSMV2Service(ServiceFactory[CloudHSMV2Client]):
     SERVICE_NAME = "cloudhsmv2"
     _SERVICE_PROP = "cloudhsmv2"

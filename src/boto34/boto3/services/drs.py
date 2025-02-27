@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_drs.client import DrsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_drs.client import DrsClient
-except ImportError:
-    DrsClient = object  # type: ignore[misc,assignment]
 
-
-class DrsService(
-    ServiceFactory[DrsClient]  # type: ignore[misc,assignment]
-):
+class DrsService(ServiceFactory[DrsClient]):
     SERVICE_NAME = "drs"
     _SERVICE_PROP = "drs"

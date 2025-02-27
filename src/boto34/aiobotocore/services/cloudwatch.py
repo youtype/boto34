@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudwatch.client import CloudWatchClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudwatch.client import CloudWatchClient
-except ImportError:
-    CloudWatchClient = object  # type: ignore[misc,assignment]
 
-
-class CloudWatchService(
-    ServiceFactory[CloudWatchClient]  # type: ignore[misc,assignment]
-):
+class CloudWatchService(ServiceFactory[CloudWatchClient]):
     SERVICE_NAME = "cloudwatch"
     _SERVICE_PROP = "cloudwatch"

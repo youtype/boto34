@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_firehose.client import FirehoseClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_firehose.client import FirehoseClient
-except ImportError:
-    FirehoseClient = object  # type: ignore[misc,assignment]
 
-
-class FirehoseService(
-    ServiceFactory[FirehoseClient]  # type: ignore[misc,assignment]
-):
+class FirehoseService(ServiceFactory[FirehoseClient]):
     SERVICE_NAME = "firehose"
     _SERVICE_PROP = "firehose"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sms_voice.client import SMSVoiceClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sms_voice.client import SMSVoiceClient
-except ImportError:
-    SMSVoiceClient = object  # type: ignore[misc,assignment]
 
-
-class SMSVoiceService(
-    ServiceFactory[SMSVoiceClient]  # type: ignore[misc,assignment]
-):
+class SMSVoiceService(ServiceFactory[SMSVoiceClient]):
     SERVICE_NAME = "sms-voice"
     _SERVICE_PROP = "sms_voice"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_taxsettings.client import TaxSettingsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_taxsettings.client import TaxSettingsClient
-except ImportError:
-    TaxSettingsClient = object  # type: ignore[misc,assignment]
 
-
-class TaxSettingsService(
-    ServiceFactory[TaxSettingsClient]  # type: ignore[misc,assignment]
-):
+class TaxSettingsService(ServiceFactory[TaxSettingsClient]):
     SERVICE_NAME = "taxsettings"
     _SERVICE_PROP = "taxsettings"

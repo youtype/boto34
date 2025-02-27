@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_acm_pca.client import ACMPCAClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_acm_pca.client import ACMPCAClient
-except ImportError:
-    ACMPCAClient = object  # type: ignore[misc,assignment]
 
-
-class ACMPCAService(
-    ServiceFactory[ACMPCAClient]  # type: ignore[misc,assignment]
-):
+class ACMPCAService(ServiceFactory[ACMPCAClient]):
     SERVICE_NAME = "acm-pca"
     _SERVICE_PROP = "acm_pca"

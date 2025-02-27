@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_cognito_idp.client import CognitoIdentityProviderClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_cognito_idp.client import CognitoIdentityProviderClient
-except ImportError:
-    CognitoIdentityProviderClient = object  # type: ignore[misc,assignment]
 
-
-class CognitoIdentityProviderService(
-    ServiceFactory[CognitoIdentityProviderClient]  # type: ignore[misc,assignment]
-):
+class CognitoIdentityProviderService(ServiceFactory[CognitoIdentityProviderClient]):
     SERVICE_NAME = "cognito-idp"
     _SERVICE_PROP = "cognito_idp"

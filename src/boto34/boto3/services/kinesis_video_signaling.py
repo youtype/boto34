@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_kinesis_video_signaling.client import KinesisVideoSignalingChannelsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_kinesis_video_signaling.client import KinesisVideoSignalingChannelsClient
-except ImportError:
-    KinesisVideoSignalingChannelsClient = object  # type: ignore[misc,assignment]
 
-
-class KinesisVideoSignalingChannelsService(
-    ServiceFactory[KinesisVideoSignalingChannelsClient]  # type: ignore[misc,assignment]
-):
+class KinesisVideoSignalingChannelsService(ServiceFactory[KinesisVideoSignalingChannelsClient]):
     SERVICE_NAME = "kinesis-video-signaling"
     _SERVICE_PROP = "kinesis_video_signaling"

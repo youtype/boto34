@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ssm_sap.client import SsmSapClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ssm_sap.client import SsmSapClient
-except ImportError:
-    SsmSapClient = object  # type: ignore[misc,assignment]
 
-
-class SsmSapService(
-    ServiceFactory[SsmSapClient]  # type: ignore[misc,assignment]
-):
+class SsmSapService(ServiceFactory[SsmSapClient]):
     SERVICE_NAME = "ssm-sap"
     _SERVICE_PROP = "ssm_sap"

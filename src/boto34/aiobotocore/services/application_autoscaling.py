@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_application_autoscaling.client import ApplicationAutoScalingClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_application_autoscaling.client import ApplicationAutoScalingClient
-except ImportError:
-    ApplicationAutoScalingClient = object  # type: ignore[misc,assignment]
 
-
-class ApplicationAutoScalingService(
-    ServiceFactory[ApplicationAutoScalingClient]  # type: ignore[misc,assignment]
-):
+class ApplicationAutoScalingService(ServiceFactory[ApplicationAutoScalingClient]):
     SERVICE_NAME = "application-autoscaling"
     _SERVICE_PROP = "application_autoscaling"

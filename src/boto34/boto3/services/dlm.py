@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_dlm.client import DLMClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_dlm.client import DLMClient
-except ImportError:
-    DLMClient = object  # type: ignore[misc,assignment]
 
-
-class DLMService(
-    ServiceFactory[DLMClient]  # type: ignore[misc,assignment]
-):
+class DLMService(ServiceFactory[DLMClient]):
     SERVICE_NAME = "dlm"
     _SERVICE_PROP = "dlm"

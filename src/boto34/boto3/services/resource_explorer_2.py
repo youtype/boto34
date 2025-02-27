@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_resource_explorer_2.client import ResourceExplorerClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_resource_explorer_2.client import ResourceExplorerClient
-except ImportError:
-    ResourceExplorerClient = object  # type: ignore[misc,assignment]
 
-
-class ResourceExplorerService(
-    ServiceFactory[ResourceExplorerClient]  # type: ignore[misc,assignment]
-):
+class ResourceExplorerService(ServiceFactory[ResourceExplorerClient]):
     SERVICE_NAME = "resource-explorer-2"
     _SERVICE_PROP = "resource_explorer_2"

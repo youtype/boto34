@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_pca_connector_ad.client import PcaConnectorAdClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_pca_connector_ad.client import PcaConnectorAdClient
-except ImportError:
-    PcaConnectorAdClient = object  # type: ignore[misc,assignment]
 
-
-class PcaConnectorAdService(
-    ServiceFactory[PcaConnectorAdClient]  # type: ignore[misc,assignment]
-):
+class PcaConnectorAdService(ServiceFactory[PcaConnectorAdClient]):
     SERVICE_NAME = "pca-connector-ad"
     _SERVICE_PROP = "pca_connector_ad"

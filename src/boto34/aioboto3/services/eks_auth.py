@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_eks_auth.client import EKSAuthClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_eks_auth.client import EKSAuthClient
-except ImportError:
-    EKSAuthClient = object  # type: ignore[misc,assignment]
 
-
-class EKSAuthService(
-    ServiceFactory[EKSAuthClient]  # type: ignore[misc,assignment]
-):
+class EKSAuthService(ServiceFactory[EKSAuthClient]):
     SERVICE_NAME = "eks-auth"
     _SERVICE_PROP = "eks_auth"

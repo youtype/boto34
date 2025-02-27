@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudfront.client import CloudFrontClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudfront.client import CloudFrontClient
-except ImportError:
-    CloudFrontClient = object  # type: ignore[misc,assignment]
 
-
-class CloudFrontService(
-    ServiceFactory[CloudFrontClient]  # type: ignore[misc,assignment]
-):
+class CloudFrontService(ServiceFactory[CloudFrontClient]):
     SERVICE_NAME = "cloudfront"
     _SERVICE_PROP = "cloudfront"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_transcribe.client import TranscribeServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_transcribe.client import TranscribeServiceClient
-except ImportError:
-    TranscribeServiceClient = object  # type: ignore[misc,assignment]
 
-
-class TranscribeServiceService(
-    ServiceFactory[TranscribeServiceClient]  # type: ignore[misc,assignment]
-):
+class TranscribeServiceService(ServiceFactory[TranscribeServiceClient]):
     SERVICE_NAME = "transcribe"
     _SERVICE_PROP = "transcribe"

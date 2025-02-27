@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_devicefarm.client import DeviceFarmClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_devicefarm.client import DeviceFarmClient
-except ImportError:
-    DeviceFarmClient = object  # type: ignore[misc,assignment]
 
-
-class DeviceFarmService(
-    ServiceFactory[DeviceFarmClient]  # type: ignore[misc,assignment]
-):
+class DeviceFarmService(ServiceFactory[DeviceFarmClient]):
     SERVICE_NAME = "devicefarm"
     _SERVICE_PROP = "devicefarm"

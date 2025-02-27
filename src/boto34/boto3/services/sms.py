@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_sms.client import SMSClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_sms.client import SMSClient
-except ImportError:
-    SMSClient = object  # type: ignore[misc,assignment]
 
-
-class SMSService(
-    ServiceFactory[SMSClient]  # type: ignore[misc,assignment]
-):
+class SMSService(ServiceFactory[SMSClient]):
     SERVICE_NAME = "sms"
     _SERVICE_PROP = "sms"

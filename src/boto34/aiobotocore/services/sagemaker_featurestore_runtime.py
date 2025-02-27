@@ -29,18 +29,13 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sagemaker_featurestore_runtime.client import (
+    SageMakerFeatureStoreRuntimeClient,
+)
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sagemaker_featurestore_runtime.client import (
-        SageMakerFeatureStoreRuntimeClient,
-    )
-except ImportError:
-    SageMakerFeatureStoreRuntimeClient = object  # type: ignore[misc,assignment]
 
-
-class SageMakerFeatureStoreRuntimeService(
-    ServiceFactory[SageMakerFeatureStoreRuntimeClient]  # type: ignore[misc,assignment]
-):
+class SageMakerFeatureStoreRuntimeService(ServiceFactory[SageMakerFeatureStoreRuntimeClient]):
     SERVICE_NAME = "sagemaker-featurestore-runtime"
     _SERVICE_PROP = "sagemaker_featurestore_runtime"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_s3.client import S3Client
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_s3.client import S3Client
-except ImportError:
-    S3Client = object  # type: ignore[misc,assignment]
 
-
-class S3Service(
-    ServiceFactory[S3Client]  # type: ignore[misc,assignment]
-):
+class S3Service(ServiceFactory[S3Client]):
     SERVICE_NAME = "s3"
     _SERVICE_PROP = "s3"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_cloudtrail.client import CloudTrailClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_cloudtrail.client import CloudTrailClient
-except ImportError:
-    CloudTrailClient = object  # type: ignore[misc,assignment]
 
-
-class CloudTrailService(
-    ServiceFactory[CloudTrailClient]  # type: ignore[misc,assignment]
-):
+class CloudTrailService(ServiceFactory[CloudTrailClient]):
     SERVICE_NAME = "cloudtrail"
     _SERVICE_PROP = "cloudtrail"

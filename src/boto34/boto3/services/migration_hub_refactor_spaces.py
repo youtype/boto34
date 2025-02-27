@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_migration_hub_refactor_spaces.client import MigrationHubRefactorSpacesClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_migration_hub_refactor_spaces.client import MigrationHubRefactorSpacesClient
-except ImportError:
-    MigrationHubRefactorSpacesClient = object  # type: ignore[misc,assignment]
 
-
-class MigrationHubRefactorSpacesService(
-    ServiceFactory[MigrationHubRefactorSpacesClient]  # type: ignore[misc,assignment]
-):
+class MigrationHubRefactorSpacesService(ServiceFactory[MigrationHubRefactorSpacesClient]):
     SERVICE_NAME = "migration-hub-refactor-spaces"
     _SERVICE_PROP = "migration_hub_refactor_spaces"

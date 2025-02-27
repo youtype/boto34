@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_macie2.client import Macie2Client
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_macie2.client import Macie2Client
-except ImportError:
-    Macie2Client = object  # type: ignore[misc,assignment]
 
-
-class Macie2Service(
-    ServiceFactory[Macie2Client]  # type: ignore[misc,assignment]
-):
+class Macie2Service(ServiceFactory[Macie2Client]):
     SERVICE_NAME = "macie2"
     _SERVICE_PROP = "macie2"

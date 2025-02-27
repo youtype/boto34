@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_proton.client import ProtonClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_proton.client import ProtonClient
-except ImportError:
-    ProtonClient = object  # type: ignore[misc,assignment]
 
-
-class ProtonService(
-    ServiceFactory[ProtonClient]  # type: ignore[misc,assignment]
-):
+class ProtonService(ServiceFactory[ProtonClient]):
     SERVICE_NAME = "proton"
     _SERVICE_PROP = "proton"

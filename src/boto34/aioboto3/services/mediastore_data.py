@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_mediastore_data.client import MediaStoreDataClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_mediastore_data.client import MediaStoreDataClient
-except ImportError:
-    MediaStoreDataClient = object  # type: ignore[misc,assignment]
 
-
-class MediaStoreDataService(
-    ServiceFactory[MediaStoreDataClient]  # type: ignore[misc,assignment]
-):
+class MediaStoreDataService(ServiceFactory[MediaStoreDataClient]):
     SERVICE_NAME = "mediastore-data"
     _SERVICE_PROP = "mediastore_data"

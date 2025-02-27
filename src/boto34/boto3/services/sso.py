@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_sso.client import SSOClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_sso.client import SSOClient
-except ImportError:
-    SSOClient = object  # type: ignore[misc,assignment]
 
-
-class SSOService(
-    ServiceFactory[SSOClient]  # type: ignore[misc,assignment]
-):
+class SSOService(ServiceFactory[SSOClient]):
     SERVICE_NAME = "sso"
     _SERVICE_PROP = "sso"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_qldb_session.client import QLDBSessionClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_qldb_session.client import QLDBSessionClient
-except ImportError:
-    QLDBSessionClient = object  # type: ignore[misc,assignment]
 
-
-class QLDBSessionService(
-    ServiceFactory[QLDBSessionClient]  # type: ignore[misc,assignment]
-):
+class QLDBSessionService(ServiceFactory[QLDBSessionClient]):
     SERVICE_NAME = "qldb-session"
     _SERVICE_PROP = "qldb_session"

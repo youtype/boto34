@@ -27,18 +27,13 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_bedrock_data_automation_runtime.client import (
+    RuntimeforBedrockDataAutomationClient,
+)
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_bedrock_data_automation_runtime.client import (
-        RuntimeforBedrockDataAutomationClient,
-    )
-except ImportError:
-    RuntimeforBedrockDataAutomationClient = object  # type: ignore[misc,assignment]
 
-
-class RuntimeforBedrockDataAutomationService(
-    ServiceFactory[RuntimeforBedrockDataAutomationClient]  # type: ignore[misc,assignment]
-):
+class RuntimeforBedrockDataAutomationService(ServiceFactory[RuntimeforBedrockDataAutomationClient]):
     SERVICE_NAME = "bedrock-data-automation-runtime"
     _SERVICE_PROP = "bedrock_data_automation_runtime"

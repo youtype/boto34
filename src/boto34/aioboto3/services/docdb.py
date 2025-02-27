@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_docdb.client import DocDBClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_docdb.client import DocDBClient
-except ImportError:
-    DocDBClient = object  # type: ignore[misc,assignment]
 
-
-class DocDBService(
-    ServiceFactory[DocDBClient]  # type: ignore[misc,assignment]
-):
+class DocDBService(ServiceFactory[DocDBClient]):
     SERVICE_NAME = "docdb"
     _SERVICE_PROP = "docdb"

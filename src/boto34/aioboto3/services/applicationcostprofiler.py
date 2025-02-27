@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_applicationcostprofiler.client import ApplicationCostProfilerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_applicationcostprofiler.client import ApplicationCostProfilerClient
-except ImportError:
-    ApplicationCostProfilerClient = object  # type: ignore[misc,assignment]
 
-
-class ApplicationCostProfilerService(
-    ServiceFactory[ApplicationCostProfilerClient]  # type: ignore[misc,assignment]
-):
+class ApplicationCostProfilerService(ServiceFactory[ApplicationCostProfilerClient]):
     SERVICE_NAME = "applicationcostprofiler"
     _SERVICE_PROP = "applicationcostprofiler"

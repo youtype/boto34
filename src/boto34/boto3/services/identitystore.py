@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_identitystore.client import IdentityStoreClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_identitystore.client import IdentityStoreClient
-except ImportError:
-    IdentityStoreClient = object  # type: ignore[misc,assignment]
 
-
-class IdentityStoreService(
-    ServiceFactory[IdentityStoreClient]  # type: ignore[misc,assignment]
-):
+class IdentityStoreService(ServiceFactory[IdentityStoreClient]):
     SERVICE_NAME = "identitystore"
     _SERVICE_PROP = "identitystore"

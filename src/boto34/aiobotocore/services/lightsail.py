@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_lightsail.client import LightsailClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_lightsail.client import LightsailClient
-except ImportError:
-    LightsailClient = object  # type: ignore[misc,assignment]
 
-
-class LightsailService(
-    ServiceFactory[LightsailClient]  # type: ignore[misc,assignment]
-):
+class LightsailService(ServiceFactory[LightsailClient]):
     SERVICE_NAME = "lightsail"
     _SERVICE_PROP = "lightsail"

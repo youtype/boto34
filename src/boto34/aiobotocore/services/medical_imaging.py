@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_medical_imaging.client import HealthImagingClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_medical_imaging.client import HealthImagingClient
-except ImportError:
-    HealthImagingClient = object  # type: ignore[misc,assignment]
 
-
-class HealthImagingService(
-    ServiceFactory[HealthImagingClient]  # type: ignore[misc,assignment]
-):
+class HealthImagingService(ServiceFactory[HealthImagingClient]):
     SERVICE_NAME = "medical-imaging"
     _SERVICE_PROP = "medical_imaging"

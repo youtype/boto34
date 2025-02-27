@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_network_firewall.client import NetworkFirewallClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_network_firewall.client import NetworkFirewallClient
-except ImportError:
-    NetworkFirewallClient = object  # type: ignore[misc,assignment]
 
-
-class NetworkFirewallService(
-    ServiceFactory[NetworkFirewallClient]  # type: ignore[misc,assignment]
-):
+class NetworkFirewallService(ServiceFactory[NetworkFirewallClient]):
     SERVICE_NAME = "network-firewall"
     _SERVICE_PROP = "network_firewall"

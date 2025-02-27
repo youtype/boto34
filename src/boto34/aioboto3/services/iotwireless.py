@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iotwireless.client import IoTWirelessClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_iotwireless.client import IoTWirelessClient
-except ImportError:
-    IoTWirelessClient = object  # type: ignore[misc,assignment]
 
-
-class IoTWirelessService(
-    ServiceFactory[IoTWirelessClient]  # type: ignore[misc,assignment]
-):
+class IoTWirelessService(ServiceFactory[IoTWirelessClient]):
     SERVICE_NAME = "iotwireless"
     _SERVICE_PROP = "iotwireless"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_lakeformation.client import LakeFormationClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_lakeformation.client import LakeFormationClient
-except ImportError:
-    LakeFormationClient = object  # type: ignore[misc,assignment]
 
-
-class LakeFormationService(
-    ServiceFactory[LakeFormationClient]  # type: ignore[misc,assignment]
-):
+class LakeFormationService(ServiceFactory[LakeFormationClient]):
     SERVICE_NAME = "lakeformation"
     _SERVICE_PROP = "lakeformation"

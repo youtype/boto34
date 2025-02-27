@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_appstream.client import AppStreamClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_appstream.client import AppStreamClient
-except ImportError:
-    AppStreamClient = object  # type: ignore[misc,assignment]
 
-
-class AppStreamService(
-    ServiceFactory[AppStreamClient]  # type: ignore[misc,assignment]
-):
+class AppStreamService(ServiceFactory[AppStreamClient]):
     SERVICE_NAME = "appstream"
     _SERVICE_PROP = "appstream"

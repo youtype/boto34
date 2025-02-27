@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ec2_instance_connect.client import EC2InstanceConnectClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ec2_instance_connect.client import EC2InstanceConnectClient
-except ImportError:
-    EC2InstanceConnectClient = object  # type: ignore[misc,assignment]
 
-
-class EC2InstanceConnectService(
-    ServiceFactory[EC2InstanceConnectClient]  # type: ignore[misc,assignment]
-):
+class EC2InstanceConnectService(ServiceFactory[EC2InstanceConnectClient]):
     SERVICE_NAME = "ec2-instance-connect"
     _SERVICE_PROP = "ec2_instance_connect"

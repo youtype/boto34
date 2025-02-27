@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_security_ir.client import SecurityIncidentResponseClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_security_ir.client import SecurityIncidentResponseClient
-except ImportError:
-    SecurityIncidentResponseClient = object  # type: ignore[misc,assignment]
 
-
-class SecurityIncidentResponseService(
-    ServiceFactory[SecurityIncidentResponseClient]  # type: ignore[misc,assignment]
-):
+class SecurityIncidentResponseService(ServiceFactory[SecurityIncidentResponseClient]):
     SERVICE_NAME = "security-ir"
     _SERVICE_PROP = "security_ir"

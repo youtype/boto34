@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_payment_cryptography_data.client import PaymentCryptographyDataPlaneClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_payment_cryptography_data.client import PaymentCryptographyDataPlaneClient
-except ImportError:
-    PaymentCryptographyDataPlaneClient = object  # type: ignore[misc,assignment]
 
-
-class PaymentCryptographyDataPlaneService(
-    ServiceFactory[PaymentCryptographyDataPlaneClient]  # type: ignore[misc,assignment]
-):
+class PaymentCryptographyDataPlaneService(ServiceFactory[PaymentCryptographyDataPlaneClient]):
     SERVICE_NAME = "payment-cryptography-data"
     _SERVICE_PROP = "payment_cryptography_data"

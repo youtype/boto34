@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_chime_sdk_meetings.client import ChimeSDKMeetingsClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_chime_sdk_meetings.client import ChimeSDKMeetingsClient
-except ImportError:
-    ChimeSDKMeetingsClient = object  # type: ignore[misc,assignment]
 
-
-class ChimeSDKMeetingsService(
-    ServiceFactory[ChimeSDKMeetingsClient]  # type: ignore[misc,assignment]
-):
+class ChimeSDKMeetingsService(ServiceFactory[ChimeSDKMeetingsClient]):
     SERVICE_NAME = "chime-sdk-meetings"
     _SERVICE_PROP = "chime_sdk_meetings"

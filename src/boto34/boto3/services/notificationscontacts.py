@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_notificationscontacts.client import UserNotificationsContactsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_notificationscontacts.client import UserNotificationsContactsClient
-except ImportError:
-    UserNotificationsContactsClient = object  # type: ignore[misc,assignment]
 
-
-class UserNotificationsContactsService(
-    ServiceFactory[UserNotificationsContactsClient]  # type: ignore[misc,assignment]
-):
+class UserNotificationsContactsService(ServiceFactory[UserNotificationsContactsClient]):
     SERVICE_NAME = "notificationscontacts"
     _SERVICE_PROP = "notificationscontacts"

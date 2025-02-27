@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_elasticbeanstalk.client import ElasticBeanstalkClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_elasticbeanstalk.client import ElasticBeanstalkClient
-except ImportError:
-    ElasticBeanstalkClient = object  # type: ignore[misc,assignment]
 
-
-class ElasticBeanstalkService(
-    ServiceFactory[ElasticBeanstalkClient]  # type: ignore[misc,assignment]
-):
+class ElasticBeanstalkService(ServiceFactory[ElasticBeanstalkClient]):
     SERVICE_NAME = "elasticbeanstalk"
     _SERVICE_PROP = "elasticbeanstalk"

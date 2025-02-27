@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_dms.client import DatabaseMigrationServiceClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_dms.client import DatabaseMigrationServiceClient
-except ImportError:
-    DatabaseMigrationServiceClient = object  # type: ignore[misc,assignment]
 
-
-class DatabaseMigrationServiceService(
-    ServiceFactory[DatabaseMigrationServiceClient]  # type: ignore[misc,assignment]
-):
+class DatabaseMigrationServiceService(ServiceFactory[DatabaseMigrationServiceClient]):
     SERVICE_NAME = "dms"
     _SERVICE_PROP = "dms"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_appsync.client import AppSyncClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_appsync.client import AppSyncClient
-except ImportError:
-    AppSyncClient = object  # type: ignore[misc,assignment]
 
-
-class AppSyncService(
-    ServiceFactory[AppSyncClient]  # type: ignore[misc,assignment]
-):
+class AppSyncService(ServiceFactory[AppSyncClient]):
     SERVICE_NAME = "appsync"
     _SERVICE_PROP = "appsync"

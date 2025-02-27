@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_privatenetworks.client import Private5GClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_privatenetworks.client import Private5GClient
-except ImportError:
-    Private5GClient = object  # type: ignore[misc,assignment]
 
-
-class Private5GService(
-    ServiceFactory[Private5GClient]  # type: ignore[misc,assignment]
-):
+class Private5GService(ServiceFactory[Private5GClient]):
     SERVICE_NAME = "privatenetworks"
     _SERVICE_PROP = "privatenetworks"

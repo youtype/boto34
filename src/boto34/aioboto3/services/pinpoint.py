@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_pinpoint.client import PinpointClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_pinpoint.client import PinpointClient
-except ImportError:
-    PinpointClient = object  # type: ignore[misc,assignment]
 
-
-class PinpointService(
-    ServiceFactory[PinpointClient]  # type: ignore[misc,assignment]
-):
+class PinpointService(ServiceFactory[PinpointClient]):
     SERVICE_NAME = "pinpoint"
     _SERVICE_PROP = "pinpoint"

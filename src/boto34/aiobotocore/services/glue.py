@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_glue.client import GlueClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_glue.client import GlueClient
-except ImportError:
-    GlueClient = object  # type: ignore[misc,assignment]
 
-
-class GlueService(
-    ServiceFactory[GlueClient]  # type: ignore[misc,assignment]
-):
+class GlueService(ServiceFactory[GlueClient]):
     SERVICE_NAME = "glue"
     _SERVICE_PROP = "glue"

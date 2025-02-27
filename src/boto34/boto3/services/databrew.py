@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_databrew.client import GlueDataBrewClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_databrew.client import GlueDataBrewClient
-except ImportError:
-    GlueDataBrewClient = object  # type: ignore[misc,assignment]
 
-
-class GlueDataBrewService(
-    ServiceFactory[GlueDataBrewClient]  # type: ignore[misc,assignment]
-):
+class GlueDataBrewService(ServiceFactory[GlueDataBrewClient]):
     SERVICE_NAME = "databrew"
     _SERVICE_PROP = "databrew"

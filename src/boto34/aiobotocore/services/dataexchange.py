@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_dataexchange.client import DataExchangeClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_dataexchange.client import DataExchangeClient
-except ImportError:
-    DataExchangeClient = object  # type: ignore[misc,assignment]
 
-
-class DataExchangeService(
-    ServiceFactory[DataExchangeClient]  # type: ignore[misc,assignment]
-):
+class DataExchangeService(ServiceFactory[DataExchangeClient]):
     SERVICE_NAME = "dataexchange"
     _SERVICE_PROP = "dataexchange"

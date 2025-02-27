@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_bedrock_runtime.client import BedrockRuntimeClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_bedrock_runtime.client import BedrockRuntimeClient
-except ImportError:
-    BedrockRuntimeClient = object  # type: ignore[misc,assignment]
 
-
-class BedrockRuntimeService(
-    ServiceFactory[BedrockRuntimeClient]  # type: ignore[misc,assignment]
-):
+class BedrockRuntimeService(ServiceFactory[BedrockRuntimeClient]):
     SERVICE_NAME = "bedrock-runtime"
     _SERVICE_PROP = "bedrock_runtime"

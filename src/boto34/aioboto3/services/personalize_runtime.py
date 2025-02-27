@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_personalize_runtime.client import PersonalizeRuntimeClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_personalize_runtime.client import PersonalizeRuntimeClient
-except ImportError:
-    PersonalizeRuntimeClient = object  # type: ignore[misc,assignment]
 
-
-class PersonalizeRuntimeService(
-    ServiceFactory[PersonalizeRuntimeClient]  # type: ignore[misc,assignment]
-):
+class PersonalizeRuntimeService(ServiceFactory[PersonalizeRuntimeClient]):
     SERVICE_NAME = "personalize-runtime"
     _SERVICE_PROP = "personalize_runtime"

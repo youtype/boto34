@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_controltower.client import ControlTowerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_controltower.client import ControlTowerClient
-except ImportError:
-    ControlTowerClient = object  # type: ignore[misc,assignment]
 
-
-class ControlTowerService(
-    ServiceFactory[ControlTowerClient]  # type: ignore[misc,assignment]
-):
+class ControlTowerService(ServiceFactory[ControlTowerClient]):
     SERVICE_NAME = "controltower"
     _SERVICE_PROP = "controltower"

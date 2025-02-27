@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_codeguru_reviewer.client import CodeGuruReviewerClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_codeguru_reviewer.client import CodeGuruReviewerClient
-except ImportError:
-    CodeGuruReviewerClient = object  # type: ignore[misc,assignment]
 
-
-class CodeGuruReviewerService(
-    ServiceFactory[CodeGuruReviewerClient]  # type: ignore[misc,assignment]
-):
+class CodeGuruReviewerService(ServiceFactory[CodeGuruReviewerClient]):
     SERVICE_NAME = "codeguru-reviewer"
     _SERVICE_PROP = "codeguru_reviewer"

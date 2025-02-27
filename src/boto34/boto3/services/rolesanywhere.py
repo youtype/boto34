@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_rolesanywhere.client import IAMRolesAnywhereClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_rolesanywhere.client import IAMRolesAnywhereClient
-except ImportError:
-    IAMRolesAnywhereClient = object  # type: ignore[misc,assignment]
 
-
-class IAMRolesAnywhereService(
-    ServiceFactory[IAMRolesAnywhereClient]  # type: ignore[misc,assignment]
-):
+class IAMRolesAnywhereService(ServiceFactory[IAMRolesAnywhereClient]):
     SERVICE_NAME = "rolesanywhere"
     _SERVICE_PROP = "rolesanywhere"

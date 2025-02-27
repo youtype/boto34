@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_sagemaker_a2i_runtime.client import AugmentedAIRuntimeClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_sagemaker_a2i_runtime.client import AugmentedAIRuntimeClient
-except ImportError:
-    AugmentedAIRuntimeClient = object  # type: ignore[misc,assignment]
 
-
-class AugmentedAIRuntimeService(
-    ServiceFactory[AugmentedAIRuntimeClient]  # type: ignore[misc,assignment]
-):
+class AugmentedAIRuntimeService(ServiceFactory[AugmentedAIRuntimeClient]):
     SERVICE_NAME = "sagemaker-a2i-runtime"
     _SERVICE_PROP = "sagemaker_a2i_runtime"

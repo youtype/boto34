@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_license_manager.client import LicenseManagerClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_license_manager.client import LicenseManagerClient
-except ImportError:
-    LicenseManagerClient = object  # type: ignore[misc,assignment]
 
-
-class LicenseManagerService(
-    ServiceFactory[LicenseManagerClient]  # type: ignore[misc,assignment]
-):
+class LicenseManagerService(ServiceFactory[LicenseManagerClient]):
     SERVICE_NAME = "license-manager"
     _SERVICE_PROP = "license_manager"

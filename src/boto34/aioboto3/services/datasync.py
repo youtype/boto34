@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_datasync.client import DataSyncClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_datasync.client import DataSyncClient
-except ImportError:
-    DataSyncClient = object  # type: ignore[misc,assignment]
 
-
-class DataSyncService(
-    ServiceFactory[DataSyncClient]  # type: ignore[misc,assignment]
-):
+class DataSyncService(ServiceFactory[DataSyncClient]):
     SERVICE_NAME = "datasync"
     _SERVICE_PROP = "datasync"

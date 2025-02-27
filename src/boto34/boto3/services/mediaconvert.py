@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_mediaconvert.client import MediaConvertClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_mediaconvert.client import MediaConvertClient
-except ImportError:
-    MediaConvertClient = object  # type: ignore[misc,assignment]
 
-
-class MediaConvertService(
-    ServiceFactory[MediaConvertClient]  # type: ignore[misc,assignment]
-):
+class MediaConvertService(ServiceFactory[MediaConvertClient]):
     SERVICE_NAME = "mediaconvert"
     _SERVICE_PROP = "mediaconvert"

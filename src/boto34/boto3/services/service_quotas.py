@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_service_quotas.client import ServiceQuotasClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_service_quotas.client import ServiceQuotasClient
-except ImportError:
-    ServiceQuotasClient = object  # type: ignore[misc,assignment]
 
-
-class ServiceQuotasService(
-    ServiceFactory[ServiceQuotasClient]  # type: ignore[misc,assignment]
-):
+class ServiceQuotasService(ServiceFactory[ServiceQuotasClient]):
     SERVICE_NAME = "service-quotas"
     _SERVICE_PROP = "service_quotas"

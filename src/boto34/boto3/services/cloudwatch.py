@@ -31,18 +31,12 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_cloudwatch.client import CloudWatchClient
+from types_boto3_cloudwatch.service_resource import CloudWatchServiceResource
+
 from boto34.boto3.service_factory import ServiceResourceFactory
 
-try:
-    from types_boto3_cloudwatch.client import CloudWatchClient
-    from types_boto3_cloudwatch.service_resource import CloudWatchServiceResource
-except ImportError:
-    CloudWatchClient = object  # type: ignore[misc,assignment]
-    CloudWatchServiceResource = object  # type: ignore[misc,assignment]
 
-
-class CloudWatchService(
-    ServiceResourceFactory[CloudWatchClient, CloudWatchServiceResource]  # type: ignore[misc,assignment]
-):
+class CloudWatchService(ServiceResourceFactory[CloudWatchClient, CloudWatchServiceResource]):
     SERVICE_NAME = "cloudwatch"
     _SERVICE_PROP = "cloudwatch"

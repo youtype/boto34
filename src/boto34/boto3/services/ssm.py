@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_ssm.client import SSMClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_ssm.client import SSMClient
-except ImportError:
-    SSMClient = object  # type: ignore[misc,assignment]
 
-
-class SSMService(
-    ServiceFactory[SSMClient]  # type: ignore[misc,assignment]
-):
+class SSMService(ServiceFactory[SSMClient]):
     SERVICE_NAME = "ssm"
     _SERVICE_PROP = "ssm"

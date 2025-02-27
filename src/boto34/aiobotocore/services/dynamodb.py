@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_dynamodb.client import DynamoDBClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_dynamodb.client import DynamoDBClient
-except ImportError:
-    DynamoDBClient = object  # type: ignore[misc,assignment]
 
-
-class DynamoDBService(
-    ServiceFactory[DynamoDBClient]  # type: ignore[misc,assignment]
-):
+class DynamoDBService(ServiceFactory[DynamoDBClient]):
     SERVICE_NAME = "dynamodb"
     _SERVICE_PROP = "dynamodb"

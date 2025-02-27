@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sagemaker.client import SageMakerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sagemaker.client import SageMakerClient
-except ImportError:
-    SageMakerClient = object  # type: ignore[misc,assignment]
 
-
-class SageMakerService(
-    ServiceFactory[SageMakerClient]  # type: ignore[misc,assignment]
-):
+class SageMakerService(ServiceFactory[SageMakerClient]):
     SERVICE_NAME = "sagemaker"
     _SERVICE_PROP = "sagemaker"

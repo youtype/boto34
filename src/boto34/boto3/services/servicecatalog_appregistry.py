@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_servicecatalog_appregistry.client import AppRegistryClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_servicecatalog_appregistry.client import AppRegistryClient
-except ImportError:
-    AppRegistryClient = object  # type: ignore[misc,assignment]
 
-
-class AppRegistryService(
-    ServiceFactory[AppRegistryClient]  # type: ignore[misc,assignment]
-):
+class AppRegistryService(ServiceFactory[AppRegistryClient]):
     SERVICE_NAME = "servicecatalog-appregistry"
     _SERVICE_PROP = "servicecatalog_appregistry"

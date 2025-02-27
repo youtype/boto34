@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_translate.client import TranslateClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_translate.client import TranslateClient
-except ImportError:
-    TranslateClient = object  # type: ignore[misc,assignment]
 
-
-class TranslateService(
-    ServiceFactory[TranslateClient]  # type: ignore[misc,assignment]
-):
+class TranslateService(ServiceFactory[TranslateClient]):
     SERVICE_NAME = "translate"
     _SERVICE_PROP = "translate"

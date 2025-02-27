@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sqs.client import SQSClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sqs.client import SQSClient
-except ImportError:
-    SQSClient = object  # type: ignore[misc,assignment]
 
-
-class SQSService(
-    ServiceFactory[SQSClient]  # type: ignore[misc,assignment]
-):
+class SQSService(ServiceFactory[SQSClient]):
     SERVICE_NAME = "sqs"
     _SERVICE_PROP = "sqs"

@@ -27,18 +27,15 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.aioboto3.service_factory import ServiceFactory
+from types_aiobotocore_bcm_pricing_calculator.client import (
+    BillingandCostManagementPricingCalculatorClient,
+)
 
-try:
-    from types_aiobotocore_bcm_pricing_calculator.client import (
-        BillingandCostManagementPricingCalculatorClient,
-    )
-except ImportError:
-    BillingandCostManagementPricingCalculatorClient = object  # type: ignore[misc,assignment]
+from boto34.aioboto3.service_factory import ServiceFactory
 
 
 class BillingandCostManagementPricingCalculatorService(
-    ServiceFactory[BillingandCostManagementPricingCalculatorClient]  # type: ignore[misc,assignment]
+    ServiceFactory[BillingandCostManagementPricingCalculatorClient]
 ):
     SERVICE_NAME = "bcm-pricing-calculator"
     _SERVICE_PROP = "bcm_pricing_calculator"

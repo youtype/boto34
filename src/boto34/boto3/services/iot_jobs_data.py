@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_iot_jobs_data.client import IoTJobsDataPlaneClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_iot_jobs_data.client import IoTJobsDataPlaneClient
-except ImportError:
-    IoTJobsDataPlaneClient = object  # type: ignore[misc,assignment]
 
-
-class IoTJobsDataPlaneService(
-    ServiceFactory[IoTJobsDataPlaneClient]  # type: ignore[misc,assignment]
-):
+class IoTJobsDataPlaneService(ServiceFactory[IoTJobsDataPlaneClient]):
     SERVICE_NAME = "iot-jobs-data"
     _SERVICE_PROP = "iot_jobs_data"

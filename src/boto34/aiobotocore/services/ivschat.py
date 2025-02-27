@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ivschat.client import IvschatClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ivschat.client import IvschatClient
-except ImportError:
-    IvschatClient = object  # type: ignore[misc,assignment]
 
-
-class IvschatService(
-    ServiceFactory[IvschatClient]  # type: ignore[misc,assignment]
-):
+class IvschatService(ServiceFactory[IvschatClient]):
     SERVICE_NAME = "ivschat"
     _SERVICE_PROP = "ivschat"

@@ -27,18 +27,13 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_license_manager_user_subscriptions.client import (
+    LicenseManagerUserSubscriptionsClient,
+)
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_license_manager_user_subscriptions.client import (
-        LicenseManagerUserSubscriptionsClient,
-    )
-except ImportError:
-    LicenseManagerUserSubscriptionsClient = object  # type: ignore[misc,assignment]
 
-
-class LicenseManagerUserSubscriptionsService(
-    ServiceFactory[LicenseManagerUserSubscriptionsClient]  # type: ignore[misc,assignment]
-):
+class LicenseManagerUserSubscriptionsService(ServiceFactory[LicenseManagerUserSubscriptionsClient]):
     SERVICE_NAME = "license-manager-user-subscriptions"
     _SERVICE_PROP = "license_manager_user_subscriptions"

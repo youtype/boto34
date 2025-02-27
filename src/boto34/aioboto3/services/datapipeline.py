@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_datapipeline.client import DataPipelineClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_datapipeline.client import DataPipelineClient
-except ImportError:
-    DataPipelineClient = object  # type: ignore[misc,assignment]
 
-
-class DataPipelineService(
-    ServiceFactory[DataPipelineClient]  # type: ignore[misc,assignment]
-):
+class DataPipelineService(ServiceFactory[DataPipelineClient]):
     SERVICE_NAME = "datapipeline"
     _SERVICE_PROP = "datapipeline"

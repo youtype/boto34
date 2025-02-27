@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_codestar_notifications.client import CodeStarNotificationsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_codestar_notifications.client import CodeStarNotificationsClient
-except ImportError:
-    CodeStarNotificationsClient = object  # type: ignore[misc,assignment]
 
-
-class CodeStarNotificationsService(
-    ServiceFactory[CodeStarNotificationsClient]  # type: ignore[misc,assignment]
-):
+class CodeStarNotificationsService(ServiceFactory[CodeStarNotificationsClient]):
     SERVICE_NAME = "codestar-notifications"
     _SERVICE_PROP = "codestar_notifications"

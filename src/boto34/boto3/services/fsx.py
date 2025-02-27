@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_fsx.client import FSxClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_fsx.client import FSxClient
-except ImportError:
-    FSxClient = object  # type: ignore[misc,assignment]
 
-
-class FSxService(
-    ServiceFactory[FSxClient]  # type: ignore[misc,assignment]
-):
+class FSxService(ServiceFactory[FSxClient]):
     SERVICE_NAME = "fsx"
     _SERVICE_PROP = "fsx"

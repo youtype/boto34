@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_workspaces_web.client import WorkSpacesWebClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_workspaces_web.client import WorkSpacesWebClient
-except ImportError:
-    WorkSpacesWebClient = object  # type: ignore[misc,assignment]
 
-
-class WorkSpacesWebService(
-    ServiceFactory[WorkSpacesWebClient]  # type: ignore[misc,assignment]
-):
+class WorkSpacesWebService(ServiceFactory[WorkSpacesWebClient]):
     SERVICE_NAME = "workspaces-web"
     _SERVICE_PROP = "workspaces_web"

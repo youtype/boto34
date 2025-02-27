@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_signer.client import SignerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_signer.client import SignerClient
-except ImportError:
-    SignerClient = object  # type: ignore[misc,assignment]
 
-
-class SignerService(
-    ServiceFactory[SignerClient]  # type: ignore[misc,assignment]
-):
+class SignerService(ServiceFactory[SignerClient]):
     SERVICE_NAME = "signer"
     _SERVICE_PROP = "signer"

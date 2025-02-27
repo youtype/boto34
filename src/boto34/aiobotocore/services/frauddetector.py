@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_frauddetector.client import FraudDetectorClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_frauddetector.client import FraudDetectorClient
-except ImportError:
-    FraudDetectorClient = object  # type: ignore[misc,assignment]
 
-
-class FraudDetectorService(
-    ServiceFactory[FraudDetectorClient]  # type: ignore[misc,assignment]
-):
+class FraudDetectorService(ServiceFactory[FraudDetectorClient]):
     SERVICE_NAME = "frauddetector"
     _SERVICE_PROP = "frauddetector"

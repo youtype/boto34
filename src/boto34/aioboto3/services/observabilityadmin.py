@@ -27,18 +27,13 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.aioboto3.service_factory import ServiceFactory
+from types_aiobotocore_observabilityadmin.client import CloudWatchObservabilityAdminServiceClient
 
-try:
-    from types_aiobotocore_observabilityadmin.client import (
-        CloudWatchObservabilityAdminServiceClient,
-    )
-except ImportError:
-    CloudWatchObservabilityAdminServiceClient = object  # type: ignore[misc,assignment]
+from boto34.aioboto3.service_factory import ServiceFactory
 
 
 class CloudWatchObservabilityAdminServiceService(
-    ServiceFactory[CloudWatchObservabilityAdminServiceClient]  # type: ignore[misc,assignment]
+    ServiceFactory[CloudWatchObservabilityAdminServiceClient]
 ):
     SERVICE_NAME = "observabilityadmin"
     _SERVICE_PROP = "observabilityadmin"

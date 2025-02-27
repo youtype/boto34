@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_mq.client import MQClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_mq.client import MQClient
-except ImportError:
-    MQClient = object  # type: ignore[misc,assignment]
 
-
-class MQService(
-    ServiceFactory[MQClient]  # type: ignore[misc,assignment]
-):
+class MQService(ServiceFactory[MQClient]):
     SERVICE_NAME = "mq"
     _SERVICE_PROP = "mq"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_logs.client import CloudWatchLogsClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_logs.client import CloudWatchLogsClient
-except ImportError:
-    CloudWatchLogsClient = object  # type: ignore[misc,assignment]
 
-
-class CloudWatchLogsService(
-    ServiceFactory[CloudWatchLogsClient]  # type: ignore[misc,assignment]
-):
+class CloudWatchLogsService(ServiceFactory[CloudWatchLogsClient]):
     SERVICE_NAME = "logs"
     _SERVICE_PROP = "logs"

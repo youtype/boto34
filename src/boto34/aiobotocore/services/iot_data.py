@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iot_data.client import IoTDataPlaneClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_iot_data.client import IoTDataPlaneClient
-except ImportError:
-    IoTDataPlaneClient = object  # type: ignore[misc,assignment]
 
-
-class IoTDataPlaneService(
-    ServiceFactory[IoTDataPlaneClient]  # type: ignore[misc,assignment]
-):
+class IoTDataPlaneService(ServiceFactory[IoTDataPlaneClient]):
     SERVICE_NAME = "iot-data"
     _SERVICE_PROP = "iot_data"

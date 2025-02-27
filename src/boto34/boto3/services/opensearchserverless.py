@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_opensearchserverless.client import OpenSearchServiceServerlessClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_opensearchserverless.client import OpenSearchServiceServerlessClient
-except ImportError:
-    OpenSearchServiceServerlessClient = object  # type: ignore[misc,assignment]
 
-
-class OpenSearchServiceServerlessService(
-    ServiceFactory[OpenSearchServiceServerlessClient]  # type: ignore[misc,assignment]
-):
+class OpenSearchServiceServerlessService(ServiceFactory[OpenSearchServiceServerlessClient]):
     SERVICE_NAME = "opensearchserverless"
     _SERVICE_PROP = "opensearchserverless"

@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_pca_connector_scep.client import PrivateCAConnectorforSCEPClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_pca_connector_scep.client import PrivateCAConnectorforSCEPClient
-except ImportError:
-    PrivateCAConnectorforSCEPClient = object  # type: ignore[misc,assignment]
 
-
-class PrivateCAConnectorforSCEPService(
-    ServiceFactory[PrivateCAConnectorforSCEPClient]  # type: ignore[misc,assignment]
-):
+class PrivateCAConnectorforSCEPService(ServiceFactory[PrivateCAConnectorforSCEPClient]):
     SERVICE_NAME = "pca-connector-scep"
     _SERVICE_PROP = "pca_connector_scep"

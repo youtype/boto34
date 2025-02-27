@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_directconnect.client import DirectConnectClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_directconnect.client import DirectConnectClient
-except ImportError:
-    DirectConnectClient = object  # type: ignore[misc,assignment]
 
-
-class DirectConnectService(
-    ServiceFactory[DirectConnectClient]  # type: ignore[misc,assignment]
-):
+class DirectConnectService(ServiceFactory[DirectConnectClient]):
     SERVICE_NAME = "directconnect"
     _SERVICE_PROP = "directconnect"

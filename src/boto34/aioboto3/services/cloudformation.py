@@ -33,18 +33,14 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.aioboto3.service_factory import ServiceResourceFactory
+from types_aiobotocore_cloudformation.client import CloudFormationClient
+from types_aiobotocore_cloudformation.service_resource import CloudFormationServiceResource
 
-try:
-    from types_aiobotocore_cloudformation.client import CloudFormationClient
-    from types_aiobotocore_cloudformation.service_resource import CloudFormationServiceResource
-except ImportError:
-    CloudFormationClient = object  # type: ignore[misc,assignment]
-    CloudFormationServiceResource = object  # type: ignore[misc,assignment]
+from boto34.aioboto3.service_factory import ServiceResourceFactory
 
 
 class CloudFormationService(
-    ServiceResourceFactory[CloudFormationClient, CloudFormationServiceResource]  # type: ignore[misc,assignment]
+    ServiceResourceFactory[CloudFormationClient, CloudFormationServiceResource]
 ):
     SERVICE_NAME = "cloudformation"
     _SERVICE_PROP = "cloudformation"

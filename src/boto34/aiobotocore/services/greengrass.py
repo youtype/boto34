@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_greengrass.client import GreengrassClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_greengrass.client import GreengrassClient
-except ImportError:
-    GreengrassClient = object  # type: ignore[misc,assignment]
 
-
-class GreengrassService(
-    ServiceFactory[GreengrassClient]  # type: ignore[misc,assignment]
-):
+class GreengrassService(ServiceFactory[GreengrassClient]):
     SERVICE_NAME = "greengrass"
     _SERVICE_PROP = "greengrass"

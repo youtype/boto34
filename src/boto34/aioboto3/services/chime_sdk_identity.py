@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_chime_sdk_identity.client import ChimeSDKIdentityClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_chime_sdk_identity.client import ChimeSDKIdentityClient
-except ImportError:
-    ChimeSDKIdentityClient = object  # type: ignore[misc,assignment]
 
-
-class ChimeSDKIdentityService(
-    ServiceFactory[ChimeSDKIdentityClient]  # type: ignore[misc,assignment]
-):
+class ChimeSDKIdentityService(ServiceFactory[ChimeSDKIdentityClient]):
     SERVICE_NAME = "chime-sdk-identity"
     _SERVICE_PROP = "chime_sdk_identity"

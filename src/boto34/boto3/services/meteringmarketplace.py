@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_meteringmarketplace.client import MarketplaceMeteringClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_meteringmarketplace.client import MarketplaceMeteringClient
-except ImportError:
-    MarketplaceMeteringClient = object  # type: ignore[misc,assignment]
 
-
-class MarketplaceMeteringService(
-    ServiceFactory[MarketplaceMeteringClient]  # type: ignore[misc,assignment]
-):
+class MarketplaceMeteringService(ServiceFactory[MarketplaceMeteringClient]):
     SERVICE_NAME = "meteringmarketplace"
     _SERVICE_PROP = "meteringmarketplace"

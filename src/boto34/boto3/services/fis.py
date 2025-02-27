@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_fis.client import FISClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_fis.client import FISClient
-except ImportError:
-    FISClient = object  # type: ignore[misc,assignment]
 
-
-class FISService(
-    ServiceFactory[FISClient]  # type: ignore[misc,assignment]
-):
+class FISService(ServiceFactory[FISClient]):
     SERVICE_NAME = "fis"
     _SERVICE_PROP = "fis"

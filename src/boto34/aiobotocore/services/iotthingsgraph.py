@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iotthingsgraph.client import IoTThingsGraphClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_iotthingsgraph.client import IoTThingsGraphClient
-except ImportError:
-    IoTThingsGraphClient = object  # type: ignore[misc,assignment]
 
-
-class IoTThingsGraphService(
-    ServiceFactory[IoTThingsGraphClient]  # type: ignore[misc,assignment]
-):
+class IoTThingsGraphService(ServiceFactory[IoTThingsGraphClient]):
     SERVICE_NAME = "iotthingsgraph"
     _SERVICE_PROP = "iotthingsgraph"

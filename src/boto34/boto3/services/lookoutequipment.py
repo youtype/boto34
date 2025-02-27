@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_lookoutequipment.client import LookoutEquipmentClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_lookoutequipment.client import LookoutEquipmentClient
-except ImportError:
-    LookoutEquipmentClient = object  # type: ignore[misc,assignment]
 
-
-class LookoutEquipmentService(
-    ServiceFactory[LookoutEquipmentClient]  # type: ignore[misc,assignment]
-):
+class LookoutEquipmentService(ServiceFactory[LookoutEquipmentClient]):
     SERVICE_NAME = "lookoutequipment"
     _SERVICE_PROP = "lookoutequipment"

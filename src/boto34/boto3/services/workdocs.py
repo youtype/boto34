@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_workdocs.client import WorkDocsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_workdocs.client import WorkDocsClient
-except ImportError:
-    WorkDocsClient = object  # type: ignore[misc,assignment]
 
-
-class WorkDocsService(
-    ServiceFactory[WorkDocsClient]  # type: ignore[misc,assignment]
-):
+class WorkDocsService(ServiceFactory[WorkDocsClient]):
     SERVICE_NAME = "workdocs"
     _SERVICE_PROP = "workdocs"

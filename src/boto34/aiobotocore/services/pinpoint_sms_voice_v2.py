@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_pinpoint_sms_voice_v2.client import PinpointSMSVoiceV2Client
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_pinpoint_sms_voice_v2.client import PinpointSMSVoiceV2Client
-except ImportError:
-    PinpointSMSVoiceV2Client = object  # type: ignore[misc,assignment]
 
-
-class PinpointSMSVoiceV2Service(
-    ServiceFactory[PinpointSMSVoiceV2Client]  # type: ignore[misc,assignment]
-):
+class PinpointSMSVoiceV2Service(ServiceFactory[PinpointSMSVoiceV2Client]):
     SERVICE_NAME = "pinpoint-sms-voice-v2"
     _SERVICE_PROP = "pinpoint_sms_voice_v2"

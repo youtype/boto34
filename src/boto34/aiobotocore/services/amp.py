@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_amp.client import PrometheusServiceClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_amp.client import PrometheusServiceClient
-except ImportError:
-    PrometheusServiceClient = object  # type: ignore[misc,assignment]
 
-
-class PrometheusServiceService(
-    ServiceFactory[PrometheusServiceClient]  # type: ignore[misc,assignment]
-):
+class PrometheusServiceService(ServiceFactory[PrometheusServiceClient]):
     SERVICE_NAME = "amp"
     _SERVICE_PROP = "amp"

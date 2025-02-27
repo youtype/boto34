@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_workspaces.client import WorkSpacesClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_workspaces.client import WorkSpacesClient
-except ImportError:
-    WorkSpacesClient = object  # type: ignore[misc,assignment]
 
-
-class WorkSpacesService(
-    ServiceFactory[WorkSpacesClient]  # type: ignore[misc,assignment]
-):
+class WorkSpacesService(ServiceFactory[WorkSpacesClient]):
     SERVICE_NAME = "workspaces"
     _SERVICE_PROP = "workspaces"

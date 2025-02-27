@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_customer_profiles.client import CustomerProfilesClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_customer_profiles.client import CustomerProfilesClient
-except ImportError:
-    CustomerProfilesClient = object  # type: ignore[misc,assignment]
 
-
-class CustomerProfilesService(
-    ServiceFactory[CustomerProfilesClient]  # type: ignore[misc,assignment]
-):
+class CustomerProfilesService(ServiceFactory[CustomerProfilesClient]):
     SERVICE_NAME = "customer-profiles"
     _SERVICE_PROP = "customer_profiles"

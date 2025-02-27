@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_swf.client import SWFClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_swf.client import SWFClient
-except ImportError:
-    SWFClient = object  # type: ignore[misc,assignment]
 
-
-class SWFService(
-    ServiceFactory[SWFClient]  # type: ignore[misc,assignment]
-):
+class SWFService(ServiceFactory[SWFClient]):
     SERVICE_NAME = "swf"
     _SERVICE_PROP = "swf"

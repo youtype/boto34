@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_workmail.client import WorkMailClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_workmail.client import WorkMailClient
-except ImportError:
-    WorkMailClient = object  # type: ignore[misc,assignment]
 
-
-class WorkMailService(
-    ServiceFactory[WorkMailClient]  # type: ignore[misc,assignment]
-):
+class WorkMailService(ServiceFactory[WorkMailClient]):
     SERVICE_NAME = "workmail"
     _SERVICE_PROP = "workmail"

@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_route53_recovery_cluster.client import Route53RecoveryClusterClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_route53_recovery_cluster.client import Route53RecoveryClusterClient
-except ImportError:
-    Route53RecoveryClusterClient = object  # type: ignore[misc,assignment]
 
-
-class Route53RecoveryClusterService(
-    ServiceFactory[Route53RecoveryClusterClient]  # type: ignore[misc,assignment]
-):
+class Route53RecoveryClusterService(ServiceFactory[Route53RecoveryClusterClient]):
     SERVICE_NAME = "route53-recovery-cluster"
     _SERVICE_PROP = "route53_recovery_cluster"

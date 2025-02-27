@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_lex_runtime.client import LexRuntimeServiceClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_lex_runtime.client import LexRuntimeServiceClient
-except ImportError:
-    LexRuntimeServiceClient = object  # type: ignore[misc,assignment]
 
-
-class LexRuntimeServiceService(
-    ServiceFactory[LexRuntimeServiceClient]  # type: ignore[misc,assignment]
-):
+class LexRuntimeServiceService(ServiceFactory[LexRuntimeServiceClient]):
     SERVICE_NAME = "lex-runtime"
     _SERVICE_PROP = "lex_runtime"

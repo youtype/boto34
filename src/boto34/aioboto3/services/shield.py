@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_shield.client import ShieldClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_shield.client import ShieldClient
-except ImportError:
-    ShieldClient = object  # type: ignore[misc,assignment]
 
-
-class ShieldService(
-    ServiceFactory[ShieldClient]  # type: ignore[misc,assignment]
-):
+class ShieldService(ServiceFactory[ShieldClient]):
     SERVICE_NAME = "shield"
     _SERVICE_PROP = "shield"

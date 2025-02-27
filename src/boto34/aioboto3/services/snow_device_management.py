@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_snow_device_management.client import SnowDeviceManagementClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_snow_device_management.client import SnowDeviceManagementClient
-except ImportError:
-    SnowDeviceManagementClient = object  # type: ignore[misc,assignment]
 
-
-class SnowDeviceManagementService(
-    ServiceFactory[SnowDeviceManagementClient]  # type: ignore[misc,assignment]
-):
+class SnowDeviceManagementService(ServiceFactory[SnowDeviceManagementClient]):
     SERVICE_NAME = "snow-device-management"
     _SERVICE_PROP = "snow_device_management"

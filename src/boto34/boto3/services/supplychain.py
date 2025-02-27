@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_supplychain.client import SupplyChainClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_supplychain.client import SupplyChainClient
-except ImportError:
-    SupplyChainClient = object  # type: ignore[misc,assignment]
 
-
-class SupplyChainService(
-    ServiceFactory[SupplyChainClient]  # type: ignore[misc,assignment]
-):
+class SupplyChainService(ServiceFactory[SupplyChainClient]):
     SERVICE_NAME = "supplychain"
     _SERVICE_PROP = "supplychain"

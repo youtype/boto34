@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_pcs.client import ParallelComputingServiceClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_pcs.client import ParallelComputingServiceClient
-except ImportError:
-    ParallelComputingServiceClient = object  # type: ignore[misc,assignment]
 
-
-class ParallelComputingServiceService(
-    ServiceFactory[ParallelComputingServiceClient]  # type: ignore[misc,assignment]
-):
+class ParallelComputingServiceService(ServiceFactory[ParallelComputingServiceClient]):
     SERVICE_NAME = "pcs"
     _SERVICE_PROP = "pcs"

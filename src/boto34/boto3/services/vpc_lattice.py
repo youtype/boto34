@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_vpc_lattice.client import VPCLatticeClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_vpc_lattice.client import VPCLatticeClient
-except ImportError:
-    VPCLatticeClient = object  # type: ignore[misc,assignment]
 
-
-class VPCLatticeService(
-    ServiceFactory[VPCLatticeClient]  # type: ignore[misc,assignment]
-):
+class VPCLatticeService(ServiceFactory[VPCLatticeClient]):
     SERVICE_NAME = "vpc-lattice"
     _SERVICE_PROP = "vpc_lattice"

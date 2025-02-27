@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_detective.client import DetectiveClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_detective.client import DetectiveClient
-except ImportError:
-    DetectiveClient = object  # type: ignore[misc,assignment]
 
-
-class DetectiveService(
-    ServiceFactory[DetectiveClient]  # type: ignore[misc,assignment]
-):
+class DetectiveService(ServiceFactory[DetectiveClient]):
     SERVICE_NAME = "detective"
     _SERVICE_PROP = "detective"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_mediapackagev2.client import Mediapackagev2Client
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_mediapackagev2.client import Mediapackagev2Client
-except ImportError:
-    Mediapackagev2Client = object  # type: ignore[misc,assignment]
 
-
-class Mediapackagev2Service(
-    ServiceFactory[Mediapackagev2Client]  # type: ignore[misc,assignment]
-):
+class Mediapackagev2Service(ServiceFactory[Mediapackagev2Client]):
     SERVICE_NAME = "mediapackagev2"
     _SERVICE_PROP = "mediapackagev2"

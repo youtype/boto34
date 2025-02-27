@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_b2bi.client import B2BIClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_b2bi.client import B2BIClient
-except ImportError:
-    B2BIClient = object  # type: ignore[misc,assignment]
 
-
-class B2BIService(
-    ServiceFactory[B2BIClient]  # type: ignore[misc,assignment]
-):
+class B2BIService(ServiceFactory[B2BIClient]):
     SERVICE_NAME = "b2bi"
     _SERVICE_PROP = "b2bi"

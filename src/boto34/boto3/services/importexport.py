@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_importexport.client import ImportExportClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_importexport.client import ImportExportClient
-except ImportError:
-    ImportExportClient = object  # type: ignore[misc,assignment]
 
-
-class ImportExportService(
-    ServiceFactory[ImportExportClient]  # type: ignore[misc,assignment]
-):
+class ImportExportService(ServiceFactory[ImportExportClient]):
     SERVICE_NAME = "importexport"
     _SERVICE_PROP = "importexport"

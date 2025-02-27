@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_cleanrooms.client import CleanRoomsServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_cleanrooms.client import CleanRoomsServiceClient
-except ImportError:
-    CleanRoomsServiceClient = object  # type: ignore[misc,assignment]
 
-
-class CleanRoomsServiceService(
-    ServiceFactory[CleanRoomsServiceClient]  # type: ignore[misc,assignment]
-):
+class CleanRoomsServiceService(ServiceFactory[CleanRoomsServiceClient]):
     SERVICE_NAME = "cleanrooms"
     _SERVICE_PROP = "cleanrooms"

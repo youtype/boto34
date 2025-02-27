@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_connectcampaignsv2.client import ConnectCampaignServiceV2Client
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_connectcampaignsv2.client import ConnectCampaignServiceV2Client
-except ImportError:
-    ConnectCampaignServiceV2Client = object  # type: ignore[misc,assignment]
 
-
-class ConnectCampaignServiceV2Service(
-    ServiceFactory[ConnectCampaignServiceV2Client]  # type: ignore[misc,assignment]
-):
+class ConnectCampaignServiceV2Service(ServiceFactory[ConnectCampaignServiceV2Client]):
     SERVICE_NAME = "connectcampaignsv2"
     _SERVICE_PROP = "connectcampaignsv2"

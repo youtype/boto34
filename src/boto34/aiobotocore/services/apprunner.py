@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_apprunner.client import AppRunnerClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_apprunner.client import AppRunnerClient
-except ImportError:
-    AppRunnerClient = object  # type: ignore[misc,assignment]
 
-
-class AppRunnerService(
-    ServiceFactory[AppRunnerClient]  # type: ignore[misc,assignment]
-):
+class AppRunnerService(ServiceFactory[AppRunnerClient]):
     SERVICE_NAME = "apprunner"
     _SERVICE_PROP = "apprunner"

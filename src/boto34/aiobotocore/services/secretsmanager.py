@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_secretsmanager.client import SecretsManagerClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_secretsmanager.client import SecretsManagerClient
-except ImportError:
-    SecretsManagerClient = object  # type: ignore[misc,assignment]
 
-
-class SecretsManagerService(
-    ServiceFactory[SecretsManagerClient]  # type: ignore[misc,assignment]
-):
+class SecretsManagerService(ServiceFactory[SecretsManagerClient]):
     SERVICE_NAME = "secretsmanager"
     _SERVICE_PROP = "secretsmanager"

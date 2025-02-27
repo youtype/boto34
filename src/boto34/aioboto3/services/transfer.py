@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_transfer.client import TransferClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_transfer.client import TransferClient
-except ImportError:
-    TransferClient = object  # type: ignore[misc,assignment]
 
-
-class TransferService(
-    ServiceFactory[TransferClient]  # type: ignore[misc,assignment]
-):
+class TransferService(ServiceFactory[TransferClient]):
     SERVICE_NAME = "transfer"
     _SERVICE_PROP = "transfer"

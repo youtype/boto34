@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_route53_recovery_readiness.client import Route53RecoveryReadinessClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_route53_recovery_readiness.client import Route53RecoveryReadinessClient
-except ImportError:
-    Route53RecoveryReadinessClient = object  # type: ignore[misc,assignment]
 
-
-class Route53RecoveryReadinessService(
-    ServiceFactory[Route53RecoveryReadinessClient]  # type: ignore[misc,assignment]
-):
+class Route53RecoveryReadinessService(ServiceFactory[Route53RecoveryReadinessClient]):
     SERVICE_NAME = "route53-recovery-readiness"
     _SERVICE_PROP = "route53_recovery_readiness"

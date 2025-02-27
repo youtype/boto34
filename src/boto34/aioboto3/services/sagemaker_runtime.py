@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sagemaker_runtime.client import SageMakerRuntimeClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sagemaker_runtime.client import SageMakerRuntimeClient
-except ImportError:
-    SageMakerRuntimeClient = object  # type: ignore[misc,assignment]
 
-
-class SageMakerRuntimeService(
-    ServiceFactory[SageMakerRuntimeClient]  # type: ignore[misc,assignment]
-):
+class SageMakerRuntimeService(ServiceFactory[SageMakerRuntimeClient]):
     SERVICE_NAME = "sagemaker-runtime"
     _SERVICE_PROP = "sagemaker_runtime"

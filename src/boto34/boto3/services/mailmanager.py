@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_mailmanager.client import MailManagerClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_mailmanager.client import MailManagerClient
-except ImportError:
-    MailManagerClient = object  # type: ignore[misc,assignment]
 
-
-class MailManagerService(
-    ServiceFactory[MailManagerClient]  # type: ignore[misc,assignment]
-):
+class MailManagerService(ServiceFactory[MailManagerClient]):
     SERVICE_NAME = "mailmanager"
     _SERVICE_PROP = "mailmanager"

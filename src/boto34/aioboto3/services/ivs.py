@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ivs.client import IVSClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ivs.client import IVSClient
-except ImportError:
-    IVSClient = object  # type: ignore[misc,assignment]
 
-
-class IVSService(
-    ServiceFactory[IVSClient]  # type: ignore[misc,assignment]
-):
+class IVSService(ServiceFactory[IVSClient]):
     SERVICE_NAME = "ivs"
     _SERVICE_PROP = "ivs"

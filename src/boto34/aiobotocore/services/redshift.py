@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_redshift.client import RedshiftClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_redshift.client import RedshiftClient
-except ImportError:
-    RedshiftClient = object  # type: ignore[misc,assignment]
 
-
-class RedshiftService(
-    ServiceFactory[RedshiftClient]  # type: ignore[misc,assignment]
-):
+class RedshiftService(ServiceFactory[RedshiftClient]):
     SERVICE_NAME = "redshift"
     _SERVICE_PROP = "redshift"

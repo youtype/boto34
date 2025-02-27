@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_lookoutvision.client import LookoutforVisionClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_lookoutvision.client import LookoutforVisionClient
-except ImportError:
-    LookoutforVisionClient = object  # type: ignore[misc,assignment]
 
-
-class LookoutforVisionService(
-    ServiceFactory[LookoutforVisionClient]  # type: ignore[misc,assignment]
-):
+class LookoutforVisionService(ServiceFactory[LookoutforVisionClient]):
     SERVICE_NAME = "lookoutvision"
     _SERVICE_PROP = "lookoutvision"

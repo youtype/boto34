@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iotsecuretunneling.client import IoTSecureTunnelingClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_iotsecuretunneling.client import IoTSecureTunnelingClient
-except ImportError:
-    IoTSecureTunnelingClient = object  # type: ignore[misc,assignment]
 
-
-class IoTSecureTunnelingService(
-    ServiceFactory[IoTSecureTunnelingClient]  # type: ignore[misc,assignment]
-):
+class IoTSecureTunnelingService(ServiceFactory[IoTSecureTunnelingClient]):
     SERVICE_NAME = "iotsecuretunneling"
     _SERVICE_PROP = "iotsecuretunneling"

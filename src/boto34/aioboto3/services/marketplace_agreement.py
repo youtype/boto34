@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_marketplace_agreement.client import AgreementServiceClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_marketplace_agreement.client import AgreementServiceClient
-except ImportError:
-    AgreementServiceClient = object  # type: ignore[misc,assignment]
 
-
-class AgreementServiceService(
-    ServiceFactory[AgreementServiceClient]  # type: ignore[misc,assignment]
-):
+class AgreementServiceService(ServiceFactory[AgreementServiceClient]):
     SERVICE_NAME = "marketplace-agreement"
     _SERVICE_PROP = "marketplace_agreement"

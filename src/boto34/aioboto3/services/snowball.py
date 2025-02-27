@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_snowball.client import SnowballClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_snowball.client import SnowballClient
-except ImportError:
-    SnowballClient = object  # type: ignore[misc,assignment]
 
-
-class SnowballService(
-    ServiceFactory[SnowballClient]  # type: ignore[misc,assignment]
-):
+class SnowballService(ServiceFactory[SnowballClient]):
     SERVICE_NAME = "snowball"
     _SERVICE_PROP = "snowball"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_forecastquery.client import ForecastQueryServiceClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_forecastquery.client import ForecastQueryServiceClient
-except ImportError:
-    ForecastQueryServiceClient = object  # type: ignore[misc,assignment]
 
-
-class ForecastQueryServiceService(
-    ServiceFactory[ForecastQueryServiceClient]  # type: ignore[misc,assignment]
-):
+class ForecastQueryServiceService(ServiceFactory[ForecastQueryServiceClient]):
     SERVICE_NAME = "forecastquery"
     _SERVICE_PROP = "forecastquery"

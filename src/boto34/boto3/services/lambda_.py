@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_lambda.client import LambdaClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_lambda.client import LambdaClient
-except ImportError:
-    LambdaClient = object  # type: ignore[misc,assignment]
 
-
-class LambdaService(
-    ServiceFactory[LambdaClient]  # type: ignore[misc,assignment]
-):
+class LambdaService(ServiceFactory[LambdaClient]):
     SERVICE_NAME = "lambda"
     _SERVICE_PROP = "lambda_"

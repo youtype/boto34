@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_stepfunctions.client import SFNClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_stepfunctions.client import SFNClient
-except ImportError:
-    SFNClient = object  # type: ignore[misc,assignment]
 
-
-class SFNService(
-    ServiceFactory[SFNClient]  # type: ignore[misc,assignment]
-):
+class SFNService(ServiceFactory[SFNClient]):
     SERVICE_NAME = "stepfunctions"
     _SERVICE_PROP = "stepfunctions"

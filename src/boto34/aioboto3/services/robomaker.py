@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_robomaker.client import RoboMakerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_robomaker.client import RoboMakerClient
-except ImportError:
-    RoboMakerClient = object  # type: ignore[misc,assignment]
 
-
-class RoboMakerService(
-    ServiceFactory[RoboMakerClient]  # type: ignore[misc,assignment]
-):
+class RoboMakerService(ServiceFactory[RoboMakerClient]):
     SERVICE_NAME = "robomaker"
     _SERVICE_PROP = "robomaker"

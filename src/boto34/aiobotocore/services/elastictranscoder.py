@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_elastictranscoder.client import ElasticTranscoderClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_elastictranscoder.client import ElasticTranscoderClient
-except ImportError:
-    ElasticTranscoderClient = object  # type: ignore[misc,assignment]
 
-
-class ElasticTranscoderService(
-    ServiceFactory[ElasticTranscoderClient]  # type: ignore[misc,assignment]
-):
+class ElasticTranscoderService(ServiceFactory[ElasticTranscoderClient]):
     SERVICE_NAME = "elastictranscoder"
     _SERVICE_PROP = "elastictranscoder"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_datazone.client import DataZoneClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_datazone.client import DataZoneClient
-except ImportError:
-    DataZoneClient = object  # type: ignore[misc,assignment]
 
-
-class DataZoneService(
-    ServiceFactory[DataZoneClient]  # type: ignore[misc,assignment]
-):
+class DataZoneService(ServiceFactory[DataZoneClient]):
     SERVICE_NAME = "datazone"
     _SERVICE_PROP = "datazone"

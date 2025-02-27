@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_grafana.client import ManagedGrafanaClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_grafana.client import ManagedGrafanaClient
-except ImportError:
-    ManagedGrafanaClient = object  # type: ignore[misc,assignment]
 
-
-class ManagedGrafanaService(
-    ServiceFactory[ManagedGrafanaClient]  # type: ignore[misc,assignment]
-):
+class ManagedGrafanaService(ServiceFactory[ManagedGrafanaClient]):
     SERVICE_NAME = "grafana"
     _SERVICE_PROP = "grafana"

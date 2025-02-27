@@ -27,16 +27,13 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.boto3.service_factory import ServiceFactory
+from types_boto3_bcm_data_exports.client import BillingandCostManagementDataExportsClient
 
-try:
-    from types_boto3_bcm_data_exports.client import BillingandCostManagementDataExportsClient
-except ImportError:
-    BillingandCostManagementDataExportsClient = object  # type: ignore[misc,assignment]
+from boto34.boto3.service_factory import ServiceFactory
 
 
 class BillingandCostManagementDataExportsService(
-    ServiceFactory[BillingandCostManagementDataExportsClient]  # type: ignore[misc,assignment]
+    ServiceFactory[BillingandCostManagementDataExportsClient]
 ):
     SERVICE_NAME = "bcm-data-exports"
     _SERVICE_PROP = "bcm_data_exports"

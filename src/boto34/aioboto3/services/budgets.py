@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_budgets.client import BudgetsClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_budgets.client import BudgetsClient
-except ImportError:
-    BudgetsClient = object  # type: ignore[misc,assignment]
 
-
-class BudgetsService(
-    ServiceFactory[BudgetsClient]  # type: ignore[misc,assignment]
-):
+class BudgetsService(ServiceFactory[BudgetsClient]):
     SERVICE_NAME = "budgets"
     _SERVICE_PROP = "budgets"

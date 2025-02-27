@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ssm_contacts.client import SSMContactsClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ssm_contacts.client import SSMContactsClient
-except ImportError:
-    SSMContactsClient = object  # type: ignore[misc,assignment]
 
-
-class SSMContactsService(
-    ServiceFactory[SSMContactsClient]  # type: ignore[misc,assignment]
-):
+class SSMContactsService(ServiceFactory[SSMContactsClient]):
     SERVICE_NAME = "ssm-contacts"
     _SERVICE_PROP = "ssm_contacts"

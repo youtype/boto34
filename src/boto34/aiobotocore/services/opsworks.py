@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_opsworks.client import OpsWorksClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_opsworks.client import OpsWorksClient
-except ImportError:
-    OpsWorksClient = object  # type: ignore[misc,assignment]
 
-
-class OpsWorksService(
-    ServiceFactory[OpsWorksClient]  # type: ignore[misc,assignment]
-):
+class OpsWorksService(ServiceFactory[OpsWorksClient]):
     SERVICE_NAME = "opsworks"
     _SERVICE_PROP = "opsworks"

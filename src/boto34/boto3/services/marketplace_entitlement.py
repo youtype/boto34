@@ -27,16 +27,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_marketplace_entitlement.client import MarketplaceEntitlementServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_marketplace_entitlement.client import MarketplaceEntitlementServiceClient
-except ImportError:
-    MarketplaceEntitlementServiceClient = object  # type: ignore[misc,assignment]
 
-
-class MarketplaceEntitlementServiceService(
-    ServiceFactory[MarketplaceEntitlementServiceClient]  # type: ignore[misc,assignment]
-):
+class MarketplaceEntitlementServiceService(ServiceFactory[MarketplaceEntitlementServiceClient]):
     SERVICE_NAME = "marketplace-entitlement"
     _SERVICE_PROP = "marketplace_entitlement"

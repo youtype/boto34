@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_autoscaling_plans.client import AutoScalingPlansClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_autoscaling_plans.client import AutoScalingPlansClient
-except ImportError:
-    AutoScalingPlansClient = object  # type: ignore[misc,assignment]
 
-
-class AutoScalingPlansService(
-    ServiceFactory[AutoScalingPlansClient]  # type: ignore[misc,assignment]
-):
+class AutoScalingPlansService(ServiceFactory[AutoScalingPlansClient]):
     SERVICE_NAME = "autoscaling-plans"
     _SERVICE_PROP = "autoscaling_plans"

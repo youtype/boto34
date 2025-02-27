@@ -25,16 +25,13 @@ Usage::
 
 from __future__ import annotations
 
-from boto34.aiobotocore.service_factory import ServiceFactory
+from types_aiobotocore_apptest.client import MainframeModernizationApplicationTestingClient
 
-try:
-    from types_aiobotocore_apptest.client import MainframeModernizationApplicationTestingClient
-except ImportError:
-    MainframeModernizationApplicationTestingClient = object  # type: ignore[misc,assignment]
+from boto34.aiobotocore.service_factory import ServiceFactory
 
 
 class MainframeModernizationApplicationTestingService(
-    ServiceFactory[MainframeModernizationApplicationTestingClient]  # type: ignore[misc,assignment]
+    ServiceFactory[MainframeModernizationApplicationTestingClient]
 ):
     SERVICE_NAME = "apptest"
     _SERVICE_PROP = "apptest"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_wellarchitected.client import WellArchitectedClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_wellarchitected.client import WellArchitectedClient
-except ImportError:
-    WellArchitectedClient = object  # type: ignore[misc,assignment]
 
-
-class WellArchitectedService(
-    ServiceFactory[WellArchitectedClient]  # type: ignore[misc,assignment]
-):
+class WellArchitectedService(ServiceFactory[WellArchitectedClient]):
     SERVICE_NAME = "wellarchitected"
     _SERVICE_PROP = "wellarchitected"

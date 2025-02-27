@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_globalaccelerator.client import GlobalAcceleratorClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_globalaccelerator.client import GlobalAcceleratorClient
-except ImportError:
-    GlobalAcceleratorClient = object  # type: ignore[misc,assignment]
 
-
-class GlobalAcceleratorService(
-    ServiceFactory[GlobalAcceleratorClient]  # type: ignore[misc,assignment]
-):
+class GlobalAcceleratorService(ServiceFactory[GlobalAcceleratorClient]):
     SERVICE_NAME = "globalaccelerator"
     _SERVICE_PROP = "globalaccelerator"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_tnb.client import TelcoNetworkBuilderClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_tnb.client import TelcoNetworkBuilderClient
-except ImportError:
-    TelcoNetworkBuilderClient = object  # type: ignore[misc,assignment]
 
-
-class TelcoNetworkBuilderService(
-    ServiceFactory[TelcoNetworkBuilderClient]  # type: ignore[misc,assignment]
-):
+class TelcoNetworkBuilderService(ServiceFactory[TelcoNetworkBuilderClient]):
     SERVICE_NAME = "tnb"
     _SERVICE_PROP = "tnb"

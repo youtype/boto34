@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_networkflowmonitor.client import NetworkFlowMonitorClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_networkflowmonitor.client import NetworkFlowMonitorClient
-except ImportError:
-    NetworkFlowMonitorClient = object  # type: ignore[misc,assignment]
 
-
-class NetworkFlowMonitorService(
-    ServiceFactory[NetworkFlowMonitorClient]  # type: ignore[misc,assignment]
-):
+class NetworkFlowMonitorService(ServiceFactory[NetworkFlowMonitorClient]):
     SERVICE_NAME = "networkflowmonitor"
     _SERVICE_PROP = "networkflowmonitor"

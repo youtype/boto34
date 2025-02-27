@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_cur.client import CostandUsageReportServiceClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_cur.client import CostandUsageReportServiceClient
-except ImportError:
-    CostandUsageReportServiceClient = object  # type: ignore[misc,assignment]
 
-
-class CostandUsageReportServiceService(
-    ServiceFactory[CostandUsageReportServiceClient]  # type: ignore[misc,assignment]
-):
+class CostandUsageReportServiceService(ServiceFactory[CostandUsageReportServiceClient]):
     SERVICE_NAME = "cur"
     _SERVICE_PROP = "cur"

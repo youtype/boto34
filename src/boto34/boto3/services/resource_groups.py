@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_resource_groups.client import ResourceGroupsClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_resource_groups.client import ResourceGroupsClient
-except ImportError:
-    ResourceGroupsClient = object  # type: ignore[misc,assignment]
 
-
-class ResourceGroupsService(
-    ServiceFactory[ResourceGroupsClient]  # type: ignore[misc,assignment]
-):
+class ResourceGroupsService(ServiceFactory[ResourceGroupsClient]):
     SERVICE_NAME = "resource-groups"
     _SERVICE_PROP = "resource_groups"

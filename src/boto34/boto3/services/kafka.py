@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_kafka.client import KafkaClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_kafka.client import KafkaClient
-except ImportError:
-    KafkaClient = object  # type: ignore[misc,assignment]
 
-
-class KafkaService(
-    ServiceFactory[KafkaClient]  # type: ignore[misc,assignment]
-):
+class KafkaService(ServiceFactory[KafkaClient]):
     SERVICE_NAME = "kafka"
     _SERVICE_PROP = "kafka"

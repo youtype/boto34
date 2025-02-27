@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_kendra_ranking.client import KendraRankingClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_kendra_ranking.client import KendraRankingClient
-except ImportError:
-    KendraRankingClient = object  # type: ignore[misc,assignment]
 
-
-class KendraRankingService(
-    ServiceFactory[KendraRankingClient]  # type: ignore[misc,assignment]
-):
+class KendraRankingService(ServiceFactory[KendraRankingClient]):
     SERVICE_NAME = "kendra-ranking"
     _SERVICE_PROP = "kendra_ranking"

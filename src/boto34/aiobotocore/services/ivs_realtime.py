@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ivs_realtime.client import IvsrealtimeClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ivs_realtime.client import IvsrealtimeClient
-except ImportError:
-    IvsrealtimeClient = object  # type: ignore[misc,assignment]
 
-
-class IvsrealtimeService(
-    ServiceFactory[IvsrealtimeClient]  # type: ignore[misc,assignment]
-):
+class IvsrealtimeService(ServiceFactory[IvsrealtimeClient]):
     SERVICE_NAME = "ivs-realtime"
     _SERVICE_PROP = "ivs_realtime"

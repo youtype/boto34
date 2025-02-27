@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_emr.client import EMRClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_emr.client import EMRClient
-except ImportError:
-    EMRClient = object  # type: ignore[misc,assignment]
 
-
-class EMRService(
-    ServiceFactory[EMRClient]  # type: ignore[misc,assignment]
-):
+class EMRService(ServiceFactory[EMRClient]):
     SERVICE_NAME = "emr"
     _SERVICE_PROP = "emr"

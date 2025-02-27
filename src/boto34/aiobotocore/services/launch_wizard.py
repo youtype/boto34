@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_launch_wizard.client import LaunchWizardClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_launch_wizard.client import LaunchWizardClient
-except ImportError:
-    LaunchWizardClient = object  # type: ignore[misc,assignment]
 
-
-class LaunchWizardService(
-    ServiceFactory[LaunchWizardClient]  # type: ignore[misc,assignment]
-):
+class LaunchWizardService(ServiceFactory[LaunchWizardClient]):
     SERVICE_NAME = "launch-wizard"
     _SERVICE_PROP = "launch_wizard"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_ds_data.client import DirectoryServiceDataClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_ds_data.client import DirectoryServiceDataClient
-except ImportError:
-    DirectoryServiceDataClient = object  # type: ignore[misc,assignment]
 
-
-class DirectoryServiceDataService(
-    ServiceFactory[DirectoryServiceDataClient]  # type: ignore[misc,assignment]
-):
+class DirectoryServiceDataService(ServiceFactory[DirectoryServiceDataClient]):
     SERVICE_NAME = "ds-data"
     _SERVICE_PROP = "ds_data"

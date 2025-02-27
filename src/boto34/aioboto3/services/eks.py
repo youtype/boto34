@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_eks.client import EKSClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_eks.client import EKSClient
-except ImportError:
-    EKSClient = object  # type: ignore[misc,assignment]
 
-
-class EKSService(
-    ServiceFactory[EKSClient]  # type: ignore[misc,assignment]
-):
+class EKSService(ServiceFactory[EKSClient]):
     SERVICE_NAME = "eks"
     _SERVICE_PROP = "eks"

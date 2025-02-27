@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_trustedadvisor.client import TrustedAdvisorPublicAPIClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_trustedadvisor.client import TrustedAdvisorPublicAPIClient
-except ImportError:
-    TrustedAdvisorPublicAPIClient = object  # type: ignore[misc,assignment]
 
-
-class TrustedAdvisorPublicAPIService(
-    ServiceFactory[TrustedAdvisorPublicAPIClient]  # type: ignore[misc,assignment]
-):
+class TrustedAdvisorPublicAPIService(ServiceFactory[TrustedAdvisorPublicAPIClient]):
     SERVICE_NAME = "trustedadvisor"
     _SERVICE_PROP = "trustedadvisor"

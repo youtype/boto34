@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_amplifyuibuilder.client import AmplifyUIBuilderClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_amplifyuibuilder.client import AmplifyUIBuilderClient
-except ImportError:
-    AmplifyUIBuilderClient = object  # type: ignore[misc,assignment]
 
-
-class AmplifyUIBuilderService(
-    ServiceFactory[AmplifyUIBuilderClient]  # type: ignore[misc,assignment]
-):
+class AmplifyUIBuilderService(ServiceFactory[AmplifyUIBuilderClient]):
     SERVICE_NAME = "amplifyuibuilder"
     _SERVICE_PROP = "amplifyuibuilder"

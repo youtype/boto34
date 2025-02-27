@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_rekognition.client import RekognitionClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_rekognition.client import RekognitionClient
-except ImportError:
-    RekognitionClient = object  # type: ignore[misc,assignment]
 
-
-class RekognitionService(
-    ServiceFactory[RekognitionClient]  # type: ignore[misc,assignment]
-):
+class RekognitionService(ServiceFactory[RekognitionClient]):
     SERVICE_NAME = "rekognition"
     _SERVICE_PROP = "rekognition"

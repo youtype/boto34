@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_waf_regional.client import WAFRegionalClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_waf_regional.client import WAFRegionalClient
-except ImportError:
-    WAFRegionalClient = object  # type: ignore[misc,assignment]
 
-
-class WAFRegionalService(
-    ServiceFactory[WAFRegionalClient]  # type: ignore[misc,assignment]
-):
+class WAFRegionalService(ServiceFactory[WAFRegionalClient]):
     SERVICE_NAME = "waf-regional"
     _SERVICE_PROP = "waf_regional"

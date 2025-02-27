@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_mediapackage_vod.client import MediaPackageVodClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_mediapackage_vod.client import MediaPackageVodClient
-except ImportError:
-    MediaPackageVodClient = object  # type: ignore[misc,assignment]
 
-
-class MediaPackageVodService(
-    ServiceFactory[MediaPackageVodClient]  # type: ignore[misc,assignment]
-):
+class MediaPackageVodService(ServiceFactory[MediaPackageVodClient]):
     SERVICE_NAME = "mediapackage-vod"
     _SERVICE_PROP = "mediapackage_vod"

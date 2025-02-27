@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_networkmonitor.client import CloudWatchNetworkMonitorClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_networkmonitor.client import CloudWatchNetworkMonitorClient
-except ImportError:
-    CloudWatchNetworkMonitorClient = object  # type: ignore[misc,assignment]
 
-
-class CloudWatchNetworkMonitorService(
-    ServiceFactory[CloudWatchNetworkMonitorClient]  # type: ignore[misc,assignment]
-):
+class CloudWatchNetworkMonitorService(ServiceFactory[CloudWatchNetworkMonitorClient]):
     SERVICE_NAME = "networkmonitor"
     _SERVICE_PROP = "networkmonitor"

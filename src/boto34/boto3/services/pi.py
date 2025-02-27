@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_pi.client import PIClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_pi.client import PIClient
-except ImportError:
-    PIClient = object  # type: ignore[misc,assignment]
 
-
-class PIService(
-    ServiceFactory[PIClient]  # type: ignore[misc,assignment]
-):
+class PIService(ServiceFactory[PIClient]):
     SERVICE_NAME = "pi"
     _SERVICE_PROP = "pi"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_elasticache.client import ElastiCacheClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_elasticache.client import ElastiCacheClient
-except ImportError:
-    ElastiCacheClient = object  # type: ignore[misc,assignment]
 
-
-class ElastiCacheService(
-    ServiceFactory[ElastiCacheClient]  # type: ignore[misc,assignment]
-):
+class ElastiCacheService(ServiceFactory[ElastiCacheClient]):
     SERVICE_NAME = "elasticache"
     _SERVICE_PROP = "elasticache"

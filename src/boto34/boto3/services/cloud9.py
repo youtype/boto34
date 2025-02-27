@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_cloud9.client import Cloud9Client
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_cloud9.client import Cloud9Client
-except ImportError:
-    Cloud9Client = object  # type: ignore[misc,assignment]
 
-
-class Cloud9Service(
-    ServiceFactory[Cloud9Client]  # type: ignore[misc,assignment]
-):
+class Cloud9Service(ServiceFactory[Cloud9Client]):
     SERVICE_NAME = "cloud9"
     _SERVICE_PROP = "cloud9"

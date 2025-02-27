@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_voice_id.client import VoiceIDClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_voice_id.client import VoiceIDClient
-except ImportError:
-    VoiceIDClient = object  # type: ignore[misc,assignment]
 
-
-class VoiceIDService(
-    ServiceFactory[VoiceIDClient]  # type: ignore[misc,assignment]
-):
+class VoiceIDService(ServiceFactory[VoiceIDClient]):
     SERVICE_NAME = "voice-id"
     _SERVICE_PROP = "voice_id"

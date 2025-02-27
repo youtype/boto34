@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_iotfleethub.client import IoTFleetHubClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_iotfleethub.client import IoTFleetHubClient
-except ImportError:
-    IoTFleetHubClient = object  # type: ignore[misc,assignment]
 
-
-class IoTFleetHubService(
-    ServiceFactory[IoTFleetHubClient]  # type: ignore[misc,assignment]
-):
+class IoTFleetHubService(ServiceFactory[IoTFleetHubClient]):
     SERVICE_NAME = "iotfleethub"
     _SERVICE_PROP = "iotfleethub"

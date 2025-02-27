@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_inspector_scan.client import InspectorscanClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_inspector_scan.client import InspectorscanClient
-except ImportError:
-    InspectorscanClient = object  # type: ignore[misc,assignment]
 
-
-class InspectorscanService(
-    ServiceFactory[InspectorscanClient]  # type: ignore[misc,assignment]
-):
+class InspectorscanService(ServiceFactory[InspectorscanClient]):
     SERVICE_NAME = "inspector-scan"
     _SERVICE_PROP = "inspector_scan"

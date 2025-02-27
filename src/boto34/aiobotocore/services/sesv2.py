@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sesv2.client import SESV2Client
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sesv2.client import SESV2Client
-except ImportError:
-    SESV2Client = object  # type: ignore[misc,assignment]
 
-
-class SESV2Service(
-    ServiceFactory[SESV2Client]  # type: ignore[misc,assignment]
-):
+class SESV2Service(ServiceFactory[SESV2Client]):
     SERVICE_NAME = "sesv2"
     _SERVICE_PROP = "sesv2"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_codecommit.client import CodeCommitClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_codecommit.client import CodeCommitClient
-except ImportError:
-    CodeCommitClient = object  # type: ignore[misc,assignment]
 
-
-class CodeCommitService(
-    ServiceFactory[CodeCommitClient]  # type: ignore[misc,assignment]
-):
+class CodeCommitService(ServiceFactory[CodeCommitClient]):
     SERVICE_NAME = "codecommit"
     _SERVICE_PROP = "codecommit"

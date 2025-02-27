@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_emr_containers.client import EMRContainersClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_emr_containers.client import EMRContainersClient
-except ImportError:
-    EMRContainersClient = object  # type: ignore[misc,assignment]
 
-
-class EMRContainersService(
-    ServiceFactory[EMRContainersClient]  # type: ignore[misc,assignment]
-):
+class EMRContainersService(ServiceFactory[EMRContainersClient]):
     SERVICE_NAME = "emr-containers"
     _SERVICE_PROP = "emr_containers"

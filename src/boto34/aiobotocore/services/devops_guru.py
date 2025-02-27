@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_devops_guru.client import DevOpsGuruClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_devops_guru.client import DevOpsGuruClient
-except ImportError:
-    DevOpsGuruClient = object  # type: ignore[misc,assignment]
 
-
-class DevOpsGuruService(
-    ServiceFactory[DevOpsGuruClient]  # type: ignore[misc,assignment]
-):
+class DevOpsGuruService(ServiceFactory[DevOpsGuruClient]):
     SERVICE_NAME = "devops-guru"
     _SERVICE_PROP = "devops_guru"

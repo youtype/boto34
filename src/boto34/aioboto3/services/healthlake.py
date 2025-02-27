@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_healthlake.client import HealthLakeClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_healthlake.client import HealthLakeClient
-except ImportError:
-    HealthLakeClient = object  # type: ignore[misc,assignment]
 
-
-class HealthLakeService(
-    ServiceFactory[HealthLakeClient]  # type: ignore[misc,assignment]
-):
+class HealthLakeService(ServiceFactory[HealthLakeClient]):
     SERVICE_NAME = "healthlake"
     _SERVICE_PROP = "healthlake"

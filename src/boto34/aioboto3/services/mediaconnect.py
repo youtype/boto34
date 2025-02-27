@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_mediaconnect.client import MediaConnectClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_mediaconnect.client import MediaConnectClient
-except ImportError:
-    MediaConnectClient = object  # type: ignore[misc,assignment]
 
-
-class MediaConnectService(
-    ServiceFactory[MediaConnectClient]  # type: ignore[misc,assignment]
-):
+class MediaConnectService(ServiceFactory[MediaConnectClient]):
     SERVICE_NAME = "mediaconnect"
     _SERVICE_PROP = "mediaconnect"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_entityresolution.client import EntityResolutionClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_entityresolution.client import EntityResolutionClient
-except ImportError:
-    EntityResolutionClient = object  # type: ignore[misc,assignment]
 
-
-class EntityResolutionService(
-    ServiceFactory[EntityResolutionClient]  # type: ignore[misc,assignment]
-):
+class EntityResolutionService(ServiceFactory[EntityResolutionClient]):
     SERVICE_NAME = "entityresolution"
     _SERVICE_PROP = "entityresolution"

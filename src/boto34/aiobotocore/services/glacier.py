@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_glacier.client import GlacierClient
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_glacier.client import GlacierClient
-except ImportError:
-    GlacierClient = object  # type: ignore[misc,assignment]
 
-
-class GlacierService(
-    ServiceFactory[GlacierClient]  # type: ignore[misc,assignment]
-):
+class GlacierService(ServiceFactory[GlacierClient]):
     SERVICE_NAME = "glacier"
     _SERVICE_PROP = "glacier"

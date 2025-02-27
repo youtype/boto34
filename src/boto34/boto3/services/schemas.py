@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_schemas.client import SchemasClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_schemas.client import SchemasClient
-except ImportError:
-    SchemasClient = object  # type: ignore[misc,assignment]
 
-
-class SchemasService(
-    ServiceFactory[SchemasClient]  # type: ignore[misc,assignment]
-):
+class SchemasService(ServiceFactory[SchemasClient]):
     SERVICE_NAME = "schemas"
     _SERVICE_PROP = "schemas"

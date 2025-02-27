@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_sagemaker_metrics.client import SageMakerMetricsClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_sagemaker_metrics.client import SageMakerMetricsClient
-except ImportError:
-    SageMakerMetricsClient = object  # type: ignore[misc,assignment]
 
-
-class SageMakerMetricsService(
-    ServiceFactory[SageMakerMetricsClient]  # type: ignore[misc,assignment]
-):
+class SageMakerMetricsService(ServiceFactory[SageMakerMetricsClient]):
     SERVICE_NAME = "sagemaker-metrics"
     _SERVICE_PROP = "sagemaker_metrics"

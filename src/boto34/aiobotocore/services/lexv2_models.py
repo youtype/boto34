@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_lexv2_models.client import LexModelsV2Client
+
 from boto34.aiobotocore.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_lexv2_models.client import LexModelsV2Client
-except ImportError:
-    LexModelsV2Client = object  # type: ignore[misc,assignment]
 
-
-class LexModelsV2Service(
-    ServiceFactory[LexModelsV2Client]  # type: ignore[misc,assignment]
-):
+class LexModelsV2Service(ServiceFactory[LexModelsV2Client]):
     SERVICE_NAME = "lexv2-models"
     _SERVICE_PROP = "lexv2_models"

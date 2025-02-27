@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_bedrock_agent.client import AgentsforBedrockClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_bedrock_agent.client import AgentsforBedrockClient
-except ImportError:
-    AgentsforBedrockClient = object  # type: ignore[misc,assignment]
 
-
-class AgentsforBedrockService(
-    ServiceFactory[AgentsforBedrockClient]  # type: ignore[misc,assignment]
-):
+class AgentsforBedrockService(ServiceFactory[AgentsforBedrockClient]):
     SERVICE_NAME = "bedrock-agent"
     _SERVICE_PROP = "bedrock_agent"

@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_aiobotocore_networkmanager.client import NetworkManagerClient
+
 from boto34.aioboto3.service_factory import ServiceFactory
 
-try:
-    from types_aiobotocore_networkmanager.client import NetworkManagerClient
-except ImportError:
-    NetworkManagerClient = object  # type: ignore[misc,assignment]
 
-
-class NetworkManagerService(
-    ServiceFactory[NetworkManagerClient]  # type: ignore[misc,assignment]
-):
+class NetworkManagerService(ServiceFactory[NetworkManagerClient]):
     SERVICE_NAME = "networkmanager"
     _SERVICE_PROP = "networkmanager"

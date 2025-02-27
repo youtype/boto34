@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_mediastore.client import MediaStoreClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_mediastore.client import MediaStoreClient
-except ImportError:
-    MediaStoreClient = object  # type: ignore[misc,assignment]
 
-
-class MediaStoreService(
-    ServiceFactory[MediaStoreClient]  # type: ignore[misc,assignment]
-):
+class MediaStoreService(ServiceFactory[MediaStoreClient]):
     SERVICE_NAME = "mediastore"
     _SERVICE_PROP = "mediastore"

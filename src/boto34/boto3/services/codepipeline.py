@@ -25,16 +25,11 @@ Usage::
 
 from __future__ import annotations
 
+from types_boto3_codepipeline.client import CodePipelineClient
+
 from boto34.boto3.service_factory import ServiceFactory
 
-try:
-    from types_boto3_codepipeline.client import CodePipelineClient
-except ImportError:
-    CodePipelineClient = object  # type: ignore[misc,assignment]
 
-
-class CodePipelineService(
-    ServiceFactory[CodePipelineClient]  # type: ignore[misc,assignment]
-):
+class CodePipelineService(ServiceFactory[CodePipelineClient]):
     SERVICE_NAME = "codepipeline"
     _SERVICE_PROP = "codepipeline"
