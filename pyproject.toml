@@ -1,6 +1,6 @@
 [project]
 name = "boto34"
-version = "0.1.1"
+version = "0.1.2"
 description = "Type annotated AWS SDK for boto3, aiobotocore, and aioboto3."
 readme = "README.md"
 authors = [{ name = "Vlad Emelianov", email = "vlad.emelianov.nz@gmail.com" }]
