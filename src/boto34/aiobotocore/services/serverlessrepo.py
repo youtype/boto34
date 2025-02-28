@@ -1,0 +1,21 @@
+"""
+Wrapper for aiobotocore ServerlessApplicationRepository service.
+
+[Documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_serverlessrepo/)
+
+Copyright 2025 Vlad Emelianov
+"""
+
+from __future__ import annotations
+
+from types_aiobotocore_serverlessrepo.client import ServerlessApplicationRepositoryClient
+
+from boto34.aiobotocore.service_factory import ServiceFactory
+
+
+class ServerlessApplicationRepositoryService(ServiceFactory[ServerlessApplicationRepositoryClient]):
+    """
+    ServerlessApplicationRepository service wrapper.
+
+    [Documentation](https://youtype.github.io/types_aiobotocore_docs/types_aiobotocore_serverlessrepo/)
+    """

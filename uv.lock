@@ -454,6 +454,7 @@ aioboto3 = [
     { name = "aioboto3" },
     { name = "types-aioboto3-lite" },
     { name = "types-aiobotocore-full" },
+    { name = "types-boto3-lite" },
 ]
 aiobotocore = [
     { name = "aiobotocore" },
@@ -497,6 +498,7 @@ requires-dist = [
     { name = "types-aiobotocore-full", marker = "extra == 'aiobotocore'" },
     { name = "types-aiobotocore-lite", marker = "extra == 'aiobotocore'" },
     { name = "types-boto3-full", marker = "extra == 'boto3'" },
+    { name = "types-boto3-lite", marker = "extra == 'aioboto3'" },
     { name = "types-boto3-lite", marker = "extra == 'boto3'" },
     { name = "typing-extensions" },
 ]
