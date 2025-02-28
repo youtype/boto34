@@ -99,6 +99,7 @@ pythonVersion = "3.8"
 
 
 [tool.mypy]
+mypy_path = "src"
 python_version = "3.8"
 warn_return_any = true
 warn_unused_ignores = false
@@ -106,6 +107,9 @@ disallow_untyped_defs = true
 ignore_missing_imports = true
 ignore_errors = false
 
+[[tool.mypy.overrides]]
+module = "mypy-tests.*"
+ignore_errors = true
 
 [tool.ruff]
 exclude = [

@@ -36,6 +36,6 @@ def test_session_proxy_methods() -> None:
 def test_session_invalid_service(moto_server_url: str) -> None:
     session = get_session()
     s3_session = session.s3
-    s3_session.SERVICE_NAME = "invalid"
+    s3_session.service_name = "invalid"
     with pytest.raises(UnknownServiceError):
         s3_session.client(endpoint_url=moto_server_url)

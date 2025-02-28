@@ -29,13 +29,15 @@ _Client = TypeVar("_Client", bound=AioBaseClient)
 class ServiceFactory(Generic[_Client]):
     """
     Service session wrapper for aiobotocore.
+
+    Attributes:
+        service_name: botocore service name
+        session: Underlying aiobotocore.Session
     """
 
-    SERVICE_NAME: str = ""
-    _SERVICE_PROP: str = "service"
-
-    def __init__(self, session: Session) -> None:
-        self._session = session
+    def __init__(self, service_name: str, session: Session) -> None:
+        self.service_name = service_name
+        self.session = session
 
     def create_client(
         self,
@@ -47,7 +49,7 @@ class ServiceFactory(Generic[_Client]):
 
         Arguments are the same, but service_name is ignored.
         """
-        return self._session.create_client(service_name=self.SERVICE_NAME, **kwargs)
+        return self.session.create_client(service_name=self.service_name, **kwargs)
 
     async def get_service_model(
         self, service_name: str | None = None, api_version: str | None = None
@@ -57,7 +59,7 @@ class ServiceFactory(Generic[_Client]):
 
         Arguments are the same, but service_name is ignored.
         """
-        return await self._session.get_service_model(self.SERVICE_NAME, api_version)
+        return await self.session.get_service_model(self.service_name, api_version)
 
     async def get_service_data(
         self, service_name: str | None = None, api_version: str | None = None
@@ -67,7 +69,7 @@ class ServiceFactory(Generic[_Client]):
 
         Arguments are the same, but service_name is ignored.
         """
-        return await self._session.get_service_data(self.SERVICE_NAME, api_version)
+        return await self.session.get_service_data(self.service_name, api_version)
 
     async def get_available_regions(
         self,
@@ -80,8 +82,8 @@ class ServiceFactory(Generic[_Client]):
 
         Arguments are the same, but service_name is ignored.
         """
-        return await self._session.get_available_regions(
-            service_name=self.SERVICE_NAME,
+        return await self.session.get_available_regions(
+            service_name=self.service_name,
             partition_name=partition_name,
             allow_non_regional=allow_non_regional,
         )

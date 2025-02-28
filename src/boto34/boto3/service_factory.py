@@ -27,19 +27,30 @@ _ServiceResource = TypeVar("_ServiceResource", bound=ServiceResource)
 
 
 class ServiceFactory(Generic[_Client]):
-    SERVICE_NAME: str = ""
-    _SERVICE_PROP: str = "service"
+    """
+    Service session wrapper for boto3.
 
-    def __init__(self, session: Session) -> None:
-        self._session = session
+    Attributes:
+        service_name: botocore service name
+        session: Underlying boto3.Session
+    """
+
+    def __init__(self, service_name: str, session: Session) -> None:
+        self.service_name = service_name
+        self.session = session
 
     def client(
         self,
         service_name: str | None = None,
         **kwargs: Unpack[ClientKwargs],
     ) -> _Client:
-        result: _Client = self._session.client(
-            service_name=self.SERVICE_NAME,
+        """
+        Proxy method to boto3.session.Session.client.
+
+        Arguments are the same, but service_name is ignored.
+        """
+        result: _Client = self.session.client(
+            service_name=self.service_name,
             **kwargs,
         )
         return result
@@ -50,8 +61,13 @@ class ServiceFactory(Generic[_Client]):
         partition_name: str = "aws",
         allow_non_regional: bool = False,
     ) -> list[str]:
-        return self._session.get_available_regions(
-            service_name=self.SERVICE_NAME,
+        """
+        Proxy method to boto3.session.Session.get_available_regions.
+
+        Arguments are the same, but service_name is ignored.
+        """
+        return self.session.get_available_regions(
+            service_name=self.service_name,
             partition_name=partition_name,
             allow_non_regional=allow_non_regional,
         )
@@ -66,8 +82,12 @@ class ServiceResourceFactory(
         service_name: str | None = None,
         **kwargs: Unpack[ResourceKwargs],
     ) -> _ServiceResource:
-        result: _ServiceResource = self._session.resource(
-            service_name=self.SERVICE_NAME,
+        """
+        Proxy method to boto3.session.Session.resource.
+
+        Arguments are the same, but service_name is ignored.
+        """
+        return self.session.resource(
+            service_name=self.service_name,
             **kwargs,
         )
-        return result

@@ -1,5 +1,5 @@
 """
-Service session wrapper for aiobotocore.
+Service session wrapper for aioboto3.
 
 Copyright 2025 Vlad Emelianov
 """
@@ -31,14 +31,16 @@ _ServiceResource = TypeVar("_ServiceResource", bound=AIOBoto3ServiceResource)
 
 class ServiceFactory(Generic[_Client]):
     """
-    Service session wrapper for aiobotocore.
+    Service session wrapper for aioboto3.
+
+    Attributes:
+        service_name: botocore service name
+        session: Underlying aioboto3.Session
     """
 
-    SERVICE_NAME: str = ""
-    _SERVICE_PROP: str = "service"
-
-    def __init__(self, session: Session) -> None:
-        self._session = session
+    def __init__(self, service_name: str, session: Session) -> None:
+        self.service_name = service_name
+        self.session = session
 
     def client(
         self,
@@ -50,7 +52,7 @@ class ServiceFactory(Generic[_Client]):
 
         Arguments are the same, but service_name is ignored.
         """
-        return self._session.client(service_name=self.SERVICE_NAME, **kwargs)
+        return self.session.client(service_name=self.service_name, **kwargs)
 
     def get_available_regions(
         self,
@@ -64,8 +66,8 @@ class ServiceFactory(Generic[_Client]):
         Arguments are the same, but service_name is ignored.
         """
         result: Awaitable[list[str]]
-        result = self._session.get_available_regions(  # type: ignore[assignment]
-            service_name=self.SERVICE_NAME,
+        result = self.session.get_available_regions(  # type: ignore[assignment]
+            service_name=self.service_name,
             partition_name=partition_name,
             allow_non_regional=allow_non_regional,
         )
@@ -86,4 +88,4 @@ class ServiceResourceFactory(
 
         Arguments are the same, but service_name is ignored.
         """
-        return self._session.resource(service_name=self.SERVICE_NAME, **kwargs)
+        return self.session.resource(service_name=self.service_name, **kwargs)
