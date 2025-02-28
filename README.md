@@ -29,7 +29,7 @@ This package is part of [mypy_boto3_builder](https://github.com/youtype/mypy_bot
 
 ## Features
 
-- Type safety for all [400+ AWS services](./docs/services.md)
+- Type checking for all [400+ AWS services](./docs/services.md)
 - Auto-completion for every client, resource, request, response, waiter, and paginator
 - Support for `boto3`, `aiobotocore` and `aioboto3`
 - Compatible with [PyCharm](https://www.jetbrains.com/pycharm/), no 100% CPU load this time
