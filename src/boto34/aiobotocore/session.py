@@ -24,7 +24,7 @@ from __future__ import annotations
 
 from typing import Mapping
 
-from aiobotocore.session import AioSession as _Session
+from aiobotocore.session import AioSession
 from types_aiobotocore_accessanalyzer.client import AccessAnalyzerClient
 from types_aiobotocore_account.client import AccountClient
 from types_aiobotocore_acm.client import ACMClient
@@ -443,7 +443,7 @@ from types_aiobotocore_xray.client import XRayClient
 from boto34.aiobotocore.service_factory import ServiceFactory
 
 
-class Session(_Session):
+class Session(AioSession):
     @property
     def accessanalyzer(self) -> ServiceFactory[AccessAnalyzerClient]:
         return ServiceFactory("accessanalyzer", self)

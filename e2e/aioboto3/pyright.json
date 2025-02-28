@@ -1,0 +1,72 @@
+[
+    {
+        "severity": "information",
+        "message": "Type of \"session\" is \"Session\"",
+        "range": {
+            "start": {
+                "line": 9,
+                "character": 16
+            },
+            "end": {
+                "line": 9,
+                "character": 23
+            }
+        }
+    },
+    {
+        "severity": "information",
+        "message": "Type of \"client\" is \"S3Client\"",
+        "range": {
+            "start": {
+                "line": 11,
+                "character": 20
+            },
+            "end": {
+                "line": 11,
+                "character": 26
+            }
+        }
+    },
+    {
+        "severity": "information",
+        "message": "Type of \"waiter\" is \"ObjectExistsWaiter\"",
+        "range": {
+            "start": {
+                "line": 13,
+                "character": 20
+            },
+            "end": {
+                "line": 13,
+                "character": 26
+            }
+        }
+    },
+    {
+        "severity": "information",
+        "message": "Type of \"paginator\" is \"ListPartsPaginator\"",
+        "range": {
+            "start": {
+                "line": 15,
+                "character": 20
+            },
+            "end": {
+                "line": 15,
+                "character": 29
+            }
+        }
+    },
+    {
+        "severity": "information",
+        "message": "Type of \"resource\" is \"S3ServiceResource\"",
+        "range": {
+            "start": {
+                "line": 17,
+                "character": 20
+            },
+            "end": {
+                "line": 17,
+                "character": 28
+            }
+        }
+    }
+]

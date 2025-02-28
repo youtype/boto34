@@ -25,7 +25,7 @@ Usage::
     ```
 """
 
-from boto3.session import Session as _Session
+from boto3.session import Session as Boto3Session
 from types_boto3_accessanalyzer.client import AccessAnalyzerClient
 from types_boto3_account.client import AccountClient
 from types_boto3_acm.client import ACMClient
@@ -448,7 +448,7 @@ from types_boto3_xray.client import XRayClient
 from boto34.boto3.service_factory import ServiceFactory, ServiceResourceFactory
 
 
-class Session(_Session):
+class Session(Boto3Session):
     @property
     def accessanalyzer(self) -> ServiceFactory[AccessAnalyzerClient]:
         return ServiceFactory("accessanalyzer", self)

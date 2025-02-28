@@ -1,0 +1,6 @@
+e2e/boto3/sample.py:10: note: Revealed type is "boto34.boto3.session.Session"
+e2e/boto3/sample.py:12: note: Revealed type is "types_boto3_s3.client.S3Client"
+e2e/boto3/sample.py:14: note: Revealed type is "types_boto3_s3.service_resource.S3ServiceResource"
+e2e/boto3/sample.py:16: note: Revealed type is "types_boto3_s3.waiter.ObjectExistsWaiter"
+e2e/boto3/sample.py:18: note: Revealed type is "types_boto3_s3.paginator.ListPartsPaginator"
+Success: no issues found in 1 source file

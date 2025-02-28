@@ -1,0 +1,5 @@
+e2e/aiobotocore/sample.py:10: note: Revealed type is "boto34.aiobotocore.session.Session"
+e2e/aiobotocore/sample.py:12: note: Revealed type is "types_aiobotocore_s3.client.S3Client"
+e2e/aiobotocore/sample.py:14: note: Revealed type is "types_aiobotocore_s3.waiter.ObjectExistsWaiter"
+e2e/aiobotocore/sample.py:16: note: Revealed type is "types_aiobotocore_s3.paginator.ListPartsPaginator"
+Success: no issues found in 1 source file

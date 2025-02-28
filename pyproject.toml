@@ -36,7 +36,7 @@ dependencies = ["typing-extensions"]
 
 [project.optional-dependencies]
 boto3 = ["boto3", "types-boto3-lite", "types-boto3-full"]
-aioboto3 = ["aioboto3", "types-aioboto3-lite", "types-aiobotocore-full"]
+aioboto3 = ["aioboto3", "types-boto3-lite", "types-aioboto3-lite", "types-aiobotocore-full"]
 aiobotocore = [
     "aiobotocore",
     "types-aiobotocore-lite",
@@ -58,6 +58,7 @@ dev = [
     "aiobotocore",
     "aioboto3",
     "moto[server,s3]",
+    "loguru",
 ]
 
 
@@ -123,6 +124,7 @@ exclude = [
     ".vscode",
     "build",
     "dist",
+    "e2e",
 ]
 
 line-length = 100
