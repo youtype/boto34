@@ -34,6 +34,24 @@ This package is part of [mypy_boto3_builder](https://github.com/youtype/mypy_bot
 - Support for `boto3`, `aiobotocore` and `aioboto3`
 - Compatible with [PyCharm](https://www.jetbrains.com/pycharm/), no 100% CPU load this time
 
+```mermaid
+---
+config:
+    xyChart:
+        width: 900
+        height: 600
+    themeVariables:
+        xyChart:
+            plotColorPalette: "#264b96,#bf212f"
+---
+xychart-beta
+    title "Type checking speed (lower is better)"
+    x-axis "Type checkers" [pyright, "VSCode / pylance", PyCharm, mypy]
+    y-axis "Overhead time (in seconds)" 0 --> 100
+    bar [3, 3, 35, 74]
+    bar [2, 2, 2, 6]
+```
+
 ## What is not included
 
 - No drop-in replacement, you need to rewrite your code a bit
