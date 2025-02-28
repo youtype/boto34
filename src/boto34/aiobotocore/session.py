@@ -26,7 +26,6 @@ from typing import Mapping
 
 from aiobotocore.session import AioSession
 
-from boto34.aiobotocore.service_factory import ServiceFactory
 from boto34.aiobotocore.services.accessanalyzer import AccessAnalyzerService
 from boto34.aiobotocore.services.account import AccountService
 from boto34.aiobotocore.services.acm import ACMService
