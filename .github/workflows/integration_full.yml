@@ -21,11 +21,6 @@ jobs:
           - "3.13" # latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python_version }}
-          allow-prereleases: true
       - name: Set up uv
         uses: astral-sh/setup-uv@v4
         with:
@@ -34,4 +29,5 @@ jobs:
         run: |
           uv run scripts/integration.py \
             --product ${{ matrix.product }} \
+            --python ${{ matrix.python_version }} \
             -d
