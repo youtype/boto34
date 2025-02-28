@@ -29,28 +29,11 @@ This package is part of [mypy_boto3_builder](https://github.com/youtype/mypy_bot
 
 ## Features
 
-- Type safety for all [400+ AWS services](./services.md)
+- Type safety for all [400+ AWS services](./docs/services.md)
 - Auto-completion for every client, resource, request, response, waiter, and paginator
 - Support for `boto3`, `aiobotocore` and `aioboto3`
 - Compatible with [PyCharm](https://www.jetbrains.com/pycharm/), no 100% CPU load this time
-
-```mermaid
----
-config:
-    xyChart:
-        width: 900
-        height: 600
-    themeVariables:
-        xyChart:
-            plotColorPalette: "#264b96,#bf212f"
----
-xychart-beta
-    title "Type checking speed (lower is better)"
-    x-axis "Type checkers" [pyright, "VSCode / pylance", PyCharm, mypy]
-    y-axis "Overhead time (in seconds)" 0 --> 100
-    bar [3, 3, 35, 74]
-    bar [2, 2, 2, 6]
-```
+- A decent type checking time (see [Comparison of type checkers](./docs/type_checkers.md))
 
 ## What is not included
 
@@ -88,7 +71,7 @@ s3_resource = session.s3.resource(region_name="us-east-1")
 s3_object = resource.Bucket("bucket").put_object(Key="key", Body=b"message")
 ```
 
-Full list of supported AWS services can be found in [services.md](./services.md).
+Full list of supported AWS services can be found in [Supported AWS services](./docs/services.md).
 
 ### aiobotocore
 

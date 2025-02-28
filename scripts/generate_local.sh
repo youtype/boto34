@@ -10,4 +10,4 @@ uv run mypy_boto3_builder ../boto34/src --product boto34-aiobotocore
 uv run mypy_boto3_builder ../boto34/src --product boto34-aioboto3
 cd -
 
-mv src/boto34/services.md ./services.md
+mv ./src/boto34/services.md ./docs/services.md

@@ -10,4 +10,4 @@ uvx --with ruff --with aiobotocore mypy-boto3-builder ../boto34/src --product bo
 uvx --with ruff --with aioboto3 mypy-boto3-builder ../boto34/src --product boto34-aioboto3
 cd -
 
-mv src/boto34/services.md ./services.md
+mv ./src/boto34/services.md ./docs/services.md
