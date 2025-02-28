@@ -1,8 +1,9 @@
 # Comparison of type checkers
 
-<code style="color : blue">⬤</code> Cold start *(initial run after installation)*
-
-<code style="color : red">⬤</code> Warm start with cache *(consequent runs)*
+| Color | Start type |
+|-|-|
+| $${\color{blue}⬤}$$ | Cold start (initial run after installation) |
+| $${\color{red}⬤}$$ | Warm start with cache (consequent runs) |
 
 ```mermaid
 ---
