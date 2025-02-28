@@ -9,9 +9,8 @@ from __future__ import annotations
 from collections.abc import Awaitable
 from typing import TYPE_CHECKING, Generic, TypeVar
 
-from typing_extensions import Unpack
+from aiobotocore.config import AioConfig
 
-from boto34.aioboto3.type_defs import ClientKwargs, ResourceKwargs
 from boto34.exceptions import Boto34Error
 
 try:
@@ -45,14 +44,33 @@ class ServiceFactory(Generic[_Client]):
     def client(
         self,
         service_name: str | None = None,
-        **kwargs: Unpack[ClientKwargs],
+        region_name: str | None = None,
+        api_version: str | None = None,
+        use_ssl: bool | None = None,
+        verify: bool | str | None = None,
+        endpoint_url: str | None = None,
+        aws_access_key_id: str | None = None,
+        aws_secret_access_key: str | None = None,
+        aws_session_token: str | None = None,
+        config: AioConfig | None = None,
     ) -> ClientCreatorContext[_Client]:
         """
         Proxy method to aioboto3.session.Session.client.
 
         Arguments are the same, but service_name is ignored.
         """
-        return self.session.client(service_name=self.service_name, **kwargs)
+        return self.session.client(
+            service_name=self.service_name,
+            region_name=region_name,
+            api_version=api_version,
+            use_ssl=use_ssl,
+            verify=verify,
+            endpoint_url=endpoint_url,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+            aws_session_token=aws_session_token,
+            config=config,
+        )
 
     def get_available_regions(
         self,
@@ -81,11 +99,30 @@ class ServiceResourceFactory(
     def resource(
         self,
         service_name: str | None = None,
-        **kwargs: Unpack[ResourceKwargs],
+        region_name: str | None = None,
+        api_version: str | None = None,
+        use_ssl: bool | None = None,
+        verify: bool | str | None = None,
+        endpoint_url: str | None = None,
+        aws_access_key_id: str | None = None,
+        aws_secret_access_key: str | None = None,
+        aws_session_token: str | None = None,
+        config: AioConfig | None = None,
     ) -> ResourceCreatorContext[_ServiceResource]:
         """
         Proxy method to aioboto3.session.Session.resource.
 
         Arguments are the same, but service_name is ignored.
         """
-        return self.session.resource(service_name=self.service_name, **kwargs)
+        return self.session.resource(
+            service_name=self.service_name,
+            region_name=region_name,
+            api_version=api_version,
+            use_ssl=use_ssl,
+            verify=verify,
+            endpoint_url=endpoint_url,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+            aws_session_token=aws_session_token,
+            config=config,
+        )

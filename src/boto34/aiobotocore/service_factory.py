@@ -8,10 +8,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Generic, TypeVar
 
+from aiobotocore.config import AioConfig
 from botocore.model import ServiceModel
-from typing_extensions import Unpack
 
-from boto34.aiobotocore.type_defs import ClientKwargs
 from boto34.exceptions import Boto34Error
 
 try:
@@ -42,14 +41,33 @@ class ServiceFactory(Generic[_Client]):
     def create_client(
         self,
         service_name: str | None = None,
-        **kwargs: Unpack[ClientKwargs],
+        region_name: str | None = None,
+        api_version: str | None = None,
+        use_ssl: bool | None = None,
+        verify: bool | str | None = None,
+        endpoint_url: str | None = None,
+        aws_access_key_id: str | None = None,
+        aws_secret_access_key: str | None = None,
+        aws_session_token: str | None = None,
+        config: AioConfig | None = None,
     ) -> ClientCreatorContext[_Client]:
         """
         Proxy method to aiobotocore.session.Session.create_client.
 
         Arguments are the same, but service_name is ignored.
         """
-        return self.session.create_client(service_name=self.service_name, **kwargs)
+        return self.session.create_client(
+            service_name=self.service_name,
+            region_name=region_name,
+            api_version=api_version,
+            use_ssl=use_ssl,
+            verify=verify,
+            endpoint_url=endpoint_url,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+            aws_session_token=aws_session_token,
+            config=config,
+        )
 
     async def get_service_model(
         self, service_name: str | None = None, api_version: str | None = None

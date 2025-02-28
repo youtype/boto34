@@ -9,9 +9,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Generic, TypeVar
 
 from botocore.client import BaseClient
-from typing_extensions import Unpack
+from botocore.config import Config
 
-from boto34.boto3.type_defs import ClientKwargs, ResourceKwargs
 from boto34.exceptions import Boto34Error
 
 try:
@@ -42,7 +41,15 @@ class ServiceFactory(Generic[_Client]):
     def client(
         self,
         service_name: str | None = None,
-        **kwargs: Unpack[ClientKwargs],
+        region_name: str | None = None,
+        api_version: str | None = None,
+        use_ssl: bool | None = None,
+        verify: bool | str | None = None,
+        endpoint_url: str | None = None,
+        aws_access_key_id: str | None = None,
+        aws_secret_access_key: str | None = None,
+        aws_session_token: str | None = None,
+        config: Config | None = None,
     ) -> _Client:
         """
         Proxy method to boto3.session.Session.client.
@@ -51,7 +58,15 @@ class ServiceFactory(Generic[_Client]):
         """
         result: _Client = self.session.client(
             service_name=self.service_name,
-            **kwargs,
+            region_name=region_name,
+            api_version=api_version,
+            use_ssl=use_ssl,
+            verify=verify,
+            endpoint_url=endpoint_url,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+            aws_session_token=aws_session_token,
+            config=config,
         )
         return result
 
@@ -80,7 +95,15 @@ class ServiceResourceFactory(
     def resource(
         self,
         service_name: str | None = None,
-        **kwargs: Unpack[ResourceKwargs],
+        region_name: str | None = None,
+        api_version: str | None = None,
+        use_ssl: bool | None = None,
+        verify: bool | str | None = None,
+        endpoint_url: str | None = None,
+        aws_access_key_id: str | None = None,
+        aws_secret_access_key: str | None = None,
+        aws_session_token: str | None = None,
+        config: Config | None = None,
     ) -> _ServiceResource:
         """
         Proxy method to boto3.session.Session.resource.
@@ -89,6 +112,14 @@ class ServiceResourceFactory(
         """
         result: _ServiceResource = self.session.resource(
             service_name=self.service_name,
-            **kwargs,
+            region_name=region_name,
+            api_version=api_version,
+            use_ssl=use_ssl,
+            verify=verify,
+            endpoint_url=endpoint_url,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+            aws_session_token=aws_session_token,
+            config=config,
         )
         return result

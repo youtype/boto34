@@ -32,7 +32,7 @@ classifiers = [
     "Typing :: Typed",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = ["typing-extensions"]
+dependencies = []
 
 [project.optional-dependencies]
 boto3 = ["boto3", "types-boto3-lite", "types-boto3-full"]
@@ -165,6 +165,7 @@ ignore = [
     "TC",      # flake8-type-checking
     "FBT",     # flake8-boolean-trap
     "E501",    # line-too-long
+    "PLR0917", # too-many-positional-arguments
 ]
 fixable = ["ALL"]
 unfixable = ["B"]

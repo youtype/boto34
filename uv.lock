@@ -445,9 +445,6 @@ wheels = [
 name = "boto34"
 version = "0.1.2"
 source = { editable = "." }
-dependencies = [
-    { name = "typing-extensions" },
-]
 
 [package.optional-dependencies]
 aioboto3 = [
@@ -500,7 +497,6 @@ requires-dist = [
     { name = "types-boto3-full", marker = "extra == 'boto3'" },
     { name = "types-boto3-lite", marker = "extra == 'aioboto3'" },
     { name = "types-boto3-lite", marker = "extra == 'boto3'" },
-    { name = "typing-extensions" },
 ]
 provides-extras = ["boto3", "aioboto3", "aiobotocore"]
 
