@@ -1,8 +1,8 @@
 # Comparison of type checkers
 
-<span style="color: #264b96">⬤</span> Cold start (initial run after installation)
+<code style="color : blue">⬤</code> Cold start *(initial run after installation)*
 
-<span style="color: #bf212f">⬤</span> Warm start with cache (consequent runs)
+<code style="color : red">⬤</code> Warm start with cache *(consequent runs)*
 
 ```mermaid
 ---
