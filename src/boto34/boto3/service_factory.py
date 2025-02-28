@@ -87,7 +87,8 @@ class ServiceResourceFactory(
 
         Arguments are the same, but service_name is ignored.
         """
-        return self.session.resource(
+        result: _ServiceResource = self.session.resource(
             service_name=self.service_name,
             **kwargs,
         )
+        return result
